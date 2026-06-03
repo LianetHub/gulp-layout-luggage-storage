@@ -192,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let valid = true;
         const nameInput = form.querySelector('[name="name"]');
         const phoneInput = form.querySelector('[name="phone"]');
+        const agreeInput = form.querySelector('[name="agree"]');
 
         if (!nameInput?.value.trim()) {
             setFieldError(nameInput, true);
@@ -205,6 +206,13 @@ document.addEventListener("DOMContentLoaded", () => {
             valid = false;
         } else {
             setFieldError(phoneInput, false);
+        }
+
+        if (agreeInput && !agreeInput.checked) {
+            agreeInput.classList.add('_error');
+            valid = false;
+        } else if (agreeInput) {
+            agreeInput.classList.remove('_error');
         }
 
         return valid;
@@ -258,6 +266,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('.booking__fields .form__control, .popup__form .form__control').forEach((input) => {
         input.addEventListener('input', () => setFieldError(input, false));
+    });
+
+    document.querySelectorAll('.checkbox__input').forEach((input) => {
+        input.addEventListener('change', () => input.classList.remove('_error'));
     });
 
     // Функция для блокировки/разблокировки прокрутки страницы

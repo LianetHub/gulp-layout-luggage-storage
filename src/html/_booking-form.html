@@ -14,9 +14,8 @@
             </button>
             <button type="button" class="booking__date-other booking__chip" data-value="other">
                 <span class="booking__date-other-icon" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.5" y="4" width="15" height="13.5" rx="2" stroke="currentColor" stroke-width="1.5" />
-                        <path d="M2.5 8h15M6.5 2v3M13.5 2v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <svg width="20" height="20" aria-hidden="true">
+                        <use href="@img/icons/sprite.svg#calendar"></use>
                     </svg>
                 </span>
                 <span class="booking__date-other-label">Другая дата</span>
@@ -33,10 +32,6 @@
             <span class="booking__badge">200 ₽/шт.</span>
         </div>
         <div class="booking__time-range" data-booking-time-range>
-            <div class="booking__time-labels">
-                <span class="booking__time-label">с <output class="booking__time-output" id="booking-time-from">09:45</output></span>
-                <span class="booking__time-label">до <output class="booking__time-output" id="booking-time-to">17:30</output></span>
-            </div>
             <div class="booking__time-slider" id="booking-time-slider" aria-label="Интервал времени хранения"></div>
             <input type="hidden" name="time_from" id="booking-time-from-value" value="585">
             <input type="hidden" name="time_to" id="booking-time-to-value" value="1050">
@@ -47,36 +42,54 @@
         <legend class="booking__group-title">Сколько вещей?</legend>
         <p class="booking__note booking__note--inline">Мы берём деньги за единицу багажа</p>
         <div class="booking__items" id="booking-counters">
-            <article class="booking__item booking__counter" data-price="300" data-name="Ручная кладь">
-                <img class="booking__item-icon" src="@img/sections/pricing/hand-luggage.png" alt="">
-                <h4 class="booking__item-title booking__counter-name">Ручная кладь</h4>
-                <div class="booking__item-controls booking__counter-controls">
-                    <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить ручную кладь">−</button>
-                    <span class="booking__counter-value" data-qty>3</span>
-                    <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить ручную кладь">+</button>
+            <div class="booking__item booking__counter" data-price="300" data-name="Ручная кладь">
+                <div class="booking__item-image">
+                    <img src="@img/sections/booking/carry-on-baggage.png" alt="Ручная кладь">
                 </div>
-                <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
-            </article>
-            <article class="booking__item booking__counter" data-price="300" data-name="Чемодан">
-                <img class="booking__item-icon" src="@img/sections/pricing/suitcase.png" alt="">
-                <h4 class="booking__item-title booking__counter-name">Чемодан</h4>
-                <div class="booking__item-controls booking__counter-controls">
-                    <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить чемоданы">−</button>
-                    <span class="booking__counter-value" data-qty>1</span>
-                    <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить чемоданы">+</button>
+                <div class="booking__item-content">
+                    <h4 class="booking__item-title booking__counter-name">Ручная кладь</h4>
+                    <div class="booking__item-footer">
+                        <div class="booking__item-controls booking__counter-controls">
+                            <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить ручную кладь">−</button>
+                            <span class="booking__counter-value" data-qty>1</span>
+                            <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить ручную кладь">+</button>
+                        </div>
+                        <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
+                    </div>
                 </div>
-                <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
-            </article>
-            <article class="booking__item booking__counter" data-price="800" data-name="Негабарит">
-                <img class="booking__item-icon" src="@img/sections/pricing/oversized.png" alt="">
-                <h4 class="booking__item-title booking__counter-name">Негабарит</h4>
-                <div class="booking__item-controls booking__counter-controls">
-                    <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить негабарит">−</button>
-                    <span class="booking__counter-value" data-qty>0</span>
-                    <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить негабарит">+</button>
+            </div>
+            <div class="booking__item booking__counter" data-price="300" data-name="Чемодан">
+                <div class="booking__item-image">
+                    <img src="@img/sections/booking/suitcase.png" alt="Чемодан">
                 </div>
-                <p class="booking__item-price booking__counter-price">800 ₽/шт.</p>
-            </article>
+                <div class="booking__item-content">
+                    <h4 class="booking__item-title booking__counter-name">Чемодан</h4>
+                    <div class="booking__item-footer">
+                        <div class="booking__item-controls booking__counter-controls">
+                            <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить чемоданы">−</button>
+                            <span class="booking__counter-value" data-qty>1</span>
+                            <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить чемоданы">+</button>
+                        </div>
+                        <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="booking__item booking__counter" data-price="800" data-name="Негабарит">
+                <div class="booking__item-image">
+                    <img src="@img/sections/booking/oversized.png" alt="Негабарит">
+                </div>
+                <div class="booking__item-content">
+                    <h4 class="booking__item-title booking__counter-name">Негабарит</h4>
+                    <div class="booking__item-footer">
+                        <div class="booking__item-controls booking__counter-controls">
+                            <button type="button" class="booking__counter-btn" data-action="dec" aria-label="Уменьшить негабарит">−</button>
+                            <span class="booking__counter-value" data-qty>1</span>
+                            <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить негабарит">+</button>
+                        </div>
+                        <p class="booking__item-price booking__counter-price">800 ₽/шт.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </fieldset>
 
@@ -103,28 +116,36 @@
         </div>
     </div>
 
-    <div class="booking__fields">
-        <div class="booking__field">
-            <label class="visually-hidden" for="booking_name">Ваше имя</label>
-            <input type="text" name="name" id="booking_name" class="form__control booking__input" placeholder="Ваше имя" autocomplete="name" required>
-            <img class="booking__field-icon" src="@img/man.svg" width="20" height="20" alt="" aria-hidden="true">
+
+    <div class="booking__footer">
+        <div class="booking__fields">
+            <div class="booking__field">
+                <label class="visually-hidden" for="booking_name">Ваше имя</label>
+                <input type="text" name="name" id="booking_name" class="form__control booking__input" placeholder="Ваше имя" autocomplete="name" required>
+                <svg class="booking__field-icon" width="20" height="20" aria-hidden="true">
+                    <use href="@img/icons/sprite.svg#man"></use>
+                </svg>
+            </div>
+            <div class="booking__field">
+                <label class="visually-hidden" for="booking_phone">Номер телефона</label>
+                <input type="tel" name="phone" id="booking_phone" class="form__control booking__input" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
+                <svg class="booking__field-icon" width="20" height="20" aria-hidden="true">
+                    <use href="@img/icons/sprite.svg#phone-handset"></use>
+                </svg>
+            </div>
         </div>
-        <div class="booking__field">
-            <label class="visually-hidden" for="booking_phone">Номер телефона</label>
-            <input type="tel" name="phone" id="booking_phone" class="form__control booking__input" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
-            <img class="booking__field-icon" src="@img/phone.svg" width="20" height="20" alt="" aria-hidden="true">
+        <div class="booking__footer-col">
+            <button type="submit" class="booking__submit">
+                <span class="booking__submit-title">Бронировать</span>
+                <span class="booking__submit-note">Оплата при оформлении багажа</span>
+            </button>
+
+            <label class="checkbox">
+                <input type="checkbox" name="agree" class="checkbox__input hidden" id="booking_agree" required>
+                <span class="checkbox__text"><span>Нажимая кнопку, я подтверждаю своё согласие на <a href="#">обработку персональных данных</a></span></span>
+            </label>
         </div>
     </div>
 
     <p class="booking__status" id="booking-status" role="status" aria-live="polite" hidden></p>
-
-    <button type="submit" class="booking__submit">
-        <span class="booking__submit-title">Бронировать</span>
-        <span class="booking__submit-note">Оплата при оформлении багажа</span>
-    </button>
-
-    <p class="booking__privacy">
-        <img class="booking__privacy-icon" src="@img/tick.svg" width="14" height="14" alt="" aria-hidden="true">
-        <span>Нажимая кнопку, я подтверждаю своё согласие на <a href="#">обработку персональных данных</a></span>
-    </p>
 </form>

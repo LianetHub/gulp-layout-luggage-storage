@@ -48,7 +48,11 @@
                     </div>
 
                 </section>
-
+                <!-- 
+              <a href="#booking" class="promo__scroll">
+                    <span class="promo__scroll-label">Далее</span>
+                    <span class="promo__scroll-icon" aria-hidden="true"></span>
+                </a> -->
                 <section class="rate" id="rate">
                     <div class="rate__container">
                         <h2 class="rate__title">Репутация, заработанная годами</h2>
@@ -62,28 +66,21 @@
                         </div>
                     </div>
                 </section>
-                <!-- 
-           
-              <a href="#booking" class="promo__scroll">
-                    <span class="promo__scroll-label">Далее</span>
-                    <span class="promo__scroll-icon" aria-hidden="true"></span>
-                </a> -->
+
 
 
 
                 <section class="booking" id="booking">
                     <div class="booking__container">
-                        <div class="booking__layout">
-                            <aside class="booking__aside" aria-hidden="true">
-                                <figure class="booking__figure">
-                                    <img class="booking__figure-img" src="@img/sections/booking/operator-left.png" alt="">
-                                    <figcaption class="booking__figure-caption">Оставь багаж — и отдыхай, Наташ!</figcaption>
-                                </figure>
-                            </aside>
-                            <div class="booking__panel">
-                                <h2 class="booking__form-title">Быстрое бронирование</h2>
-                                @@include('html/_booking-form.html', {})
-                            </div>
+                        <aside class="booking__aside" aria-hidden="true">
+                            <figure class="booking__figure">
+                                <img class="booking__figure-img" src="@img/sections/booking/operator-left.png" alt="">
+                                <figcaption class="booking__figure-caption"><span>Оставь</span> <span>багаж —</span> <span>и&nbsp;отдыхай,</span> <span>Наташ!</span></figcaption>
+                            </figure>
+                        </aside>
+                        <div class="booking__panel">
+                            <h2 class="booking__form-title">Быстрое бронирование</h2>
+                            @@include('html/_booking-form.html', {})
                         </div>
                     </div>
                 </section>

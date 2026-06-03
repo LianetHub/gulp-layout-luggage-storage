@@ -1,6 +1,23 @@
+.booking__time-range {
+	position: relative;
+	padding-top: rem(24);
+	margin-bottom: 5.5rem;
+}
+
+$booking-track-height: rem(2);
+$booking-track-active-height: rem(4);
+$booking-dot-size: rem(10);
+$booking-dot-radius: rem(5);
+$booking-pin-size: rem(56);
+$booking-pin-gap: rem(20);
+$booking-pin-top: calc(#{$booking-track-height} + #{$booking-dot-radius} + #{$booking-pin-gap});
+$booking-handle-width: $booking-pin-size;
+$booking-handle-height: calc(#{$booking-pin-top} + #{$booking-pin-size});
+$booking-handle-offset: calc(#{$booking-handle-width} / -2);
+
 .booking__time-slider {
-	height: rem(48);
-	padding: 0 rem(20);
+	height: $booking-track-height;
+	margin: rem(32) 0 rem(44);
 
 	&.noUi-target {
 		border: none;
@@ -13,60 +30,136 @@
 	}
 
 	.noUi-connects {
-		top: 50%;
-		transform: translateY(-50%);
-		height: rem(4);
-		border-radius: rem(4);
+		top: 0;
+		height: $booking-track-height;
+		border-radius: rem(2);
 		background: rgba($text, 0.12);
 	}
 
 	.noUi-connect {
 		background: $booking-pink;
+		height: $booking-track-active-height;
+		top: calc((#{$booking-track-height} - #{$booking-track-active-height}) / 2);
 	}
 
-	.noUi-origin {
-		height: rem(4);
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	.noUi-horizontal .noUi-handle {
-		width: rem(40);
-		height: rem(40);
-		right: rem(-20);
-		top: 50%;
-		transform: translateY(-50%);
+	.noUi-handle {
 		border: none;
-		border-radius: 50%;
-		background: $booking-pink;
+		border-radius: 0;
+		background: transparent;
 		box-shadow: none;
-		cursor: grab;
 
 		&::before,
 		&::after {
 			display: none;
+			content: none;
 		}
+
+		&.noUi-active {
+			border: none;
+			background: transparent;
+			box-shadow: none;
+		}
+	}
+
+	&.noUi-horizontal .noUi-handle {
+		width: $booking-handle-width;
+		height: $booking-handle-height;
+		right: $booking-handle-offset;
+		top: 0;
+		cursor: grab;
 
 		&:active {
 			cursor: grabbing;
 		}
 	}
 
+	.noUi-touch-area {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		cursor: inherit;
+	}
+
 	.noUi-handle:focus-visible {
-		outline: rem(2) solid $accent;
-		outline-offset: rem(2);
+		outline: none;
+
+		.booking__time-handle-dot {
+			box-shadow: 0 0 0 rem(2) $accent;
+		}
 	}
 }
 
-.booking__time-handle-label {
+.booking__time-handle-visual {
 	position: absolute;
 	inset: 0;
+	pointer-events: none;
+}
+
+.booking__time-handle-time {
+	position: absolute;
+	left: 50%;
+	top: calc(#{$booking-track-height} - #{$booking-dot-radius});
+	transform: translate(-50%, calc(-100% - rem(8)));
+	white-space: nowrap;
+	font-size: rem(24);
+	line-height: 1.2;
+	color: $text;
+}
+
+.booking__time-prefix {
+	display: inline-block;
+	margin-right: 0.25em;
+	font-weight: 400;
+}
+
+.booking__time-output {
+	display: inline-block;
+
+	font-weight: 700;
+
+}
+
+.booking__time-handle-dot {
+	position: absolute;
+	left: 50%;
+	top: calc(#{$booking-track-height} - #{$booking-dot-radius});
+	z-index: 2;
+	transform: translateX(-50%);
+	width: $booking-dot-size;
+	height: $booking-dot-size;
+	border: none;
+	border-radius: 50%;
+	background: $booking-pink;
+	box-shadow: none;
+}
+
+.booking__time-handle-pin {
+	position: absolute;
+	left: 50%;
+	top: $booking-pin-top;
+	width: $booking-pin-size;
+	height: $booking-pin-size;
+	background: $booking-pink;
+	border-radius: 50% 50% 50% 0;
+	transform: translateX(-50%) rotate(135deg);
+	transform-origin: center center;
+	color: $text-inverse;
+}
+
+.booking__time-handle-pin-text {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: $text-inverse;
-	font-size: 0.75rem;
+	width: 100%;
+	height: 100%;
+	transform: rotate(-135deg);
+	font-size: rem(20);
 	font-weight: 700;
+	line-height: 1;
 	text-transform: lowercase;
-	pointer-events: none;
 }

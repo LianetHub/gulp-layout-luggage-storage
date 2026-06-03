@@ -24,15 +24,49 @@ function minutesToTime(minutes) {
 }
 
 function decorateTimeHandles(sliderEl) {
-    const labels = ['с', 'до'];
+    const prefixes = ['с', 'до'];
+    const outputIds = ['booking-time-from', 'booking-time-to'];
+    const outputs = [];
+
     sliderEl.querySelectorAll('.noUi-handle').forEach((handle, index) => {
-        if (handle.querySelector('.booking__time-handle-label')) return;
-        const label = document.createElement('span');
-        label.className = 'booking__time-handle-label';
-        label.textContent = labels[index] ?? '';
-        label.setAttribute('aria-hidden', 'true');
-        handle.appendChild(label);
+        if (handle.classList.contains('booking__time-handle--ready')) return;
+
+        const prefix = prefixes[index] ?? '';
+        handle.classList.add('booking__time-handle--ready');
+        handle.textContent = '';
+
+        const visual = document.createElement('span');
+        visual.className = 'booking__time-handle-visual';
+        visual.setAttribute('aria-hidden', 'true');
+
+        const timeEl = document.createElement('span');
+        timeEl.className = 'booking__time-handle-time';
+
+        const prefixEl = document.createElement('span');
+        prefixEl.className = 'booking__time-prefix';
+        prefixEl.textContent = prefix;
+
+        const output = document.createElement('output');
+        output.className = 'booking__time-output';
+        output.id = outputIds[index] ?? '';
+
+        const dot = document.createElement('span');
+        dot.className = 'booking__time-handle-dot';
+
+        const pin = document.createElement('span');
+        pin.className = 'booking__time-handle-pin';
+        pin.innerHTML = `<span class="booking__time-handle-pin-text">${prefix}</span>`;
+
+        const touchArea = document.createElement('div');
+        touchArea.className = 'noUi-touch-area';
+
+        timeEl.append(prefixEl, output);
+        visual.append(timeEl, dot, pin);
+        handle.append(visual, touchArea);
+        outputs.push(output);
     });
+
+    return outputs;
 }
 
 export function initBooking({ validateForm, showStatus } = {}) {
@@ -46,8 +80,8 @@ export function initBooking({ validateForm, showStatus } = {}) {
     const bookingSummaryCalc = document.getElementById('booking-summary-calc');
     const bookingSummaryTime = document.getElementById('booking-summary-time');
     const bookingSummaryDate = document.getElementById('booking-summary-date');
-    const bookingTimeFromOut = document.getElementById('booking-time-from');
-    const bookingTimeToOut = document.getElementById('booking-time-to');
+    let bookingTimeFromOut = document.getElementById('booking-time-from');
+    let bookingTimeToOut = document.getElementById('booking-time-to');
     const bookingTimeFromInput = document.getElementById('booking-time-from-value');
     const bookingTimeToInput = document.getElementById('booking-time-to-value');
     const bookingTimeSlider = document.getElementById('booking-time-slider');
@@ -163,11 +197,15 @@ export function initBooking({ validateForm, showStatus } = {}) {
         });
 
         timeSlider = bookingTimeSlider.noUiSlider;
-        decorateTimeHandles(bookingTimeSlider);
+        const timeOutputs = decorateTimeHandles(bookingTimeSlider);
+        if (timeOutputs[0]) bookingTimeFromOut = timeOutputs[0];
+        if (timeOutputs[1]) bookingTimeToOut = timeOutputs[1];
 
         timeSlider.on('update', (values) => {
             updateBookingTimeRange(Number(values[0]), Number(values[1]));
         });
+
+        updateBookingTimeRange(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
     }
 
     if (bookingCounters) {
@@ -203,7 +241,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (validateForm && !validateForm(bookingForm)) {
-            showStatus?.(bookingStatus, 'Укажите имя и корректный номер телефона (+7).', true);
+            showStatus?.(bookingStatus, 'Проверьте поля формы, номер телефона (+7) и согласие на обработку данных.', true);
             bookingForm.querySelector('._error')?.focus();
             return;
         }

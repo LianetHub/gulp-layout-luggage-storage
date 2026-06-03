@@ -77,19 +77,21 @@
 		transition: border-color 0.3s ease 0s, color 0.3s ease 0s;
 		width: 100%;
 		color: $text;
-		font-size: 1rem;
+		font-size: 1.55rem;
+		border-radius: 0;
 
-		font-weight: 450;
+		font-weight: 600;
 		line-height: 137.5%;
-		border-radius: rem(6);
-		padding: em(15);
-		min-height: rem(58);
-		border: rem(1) solid rgba(27, 43, 69, 0.31);
+
+		padding: 0 0 em(8) 0;
+		border-bottom: rem(1) solid rgba(27, 43, 69, 0.31);
 
 		&::placeholder {
 			opacity: 1;
 			color: #575757;
 		}
+
+		&:focus-visible {}
 
 		&:hover,
 		&:focus {
@@ -396,5 +398,55 @@
 		&:hover,
 		&:active,
 		&.active {}
+	}
+}
+
+.checkbox {
+	display: block;
+	cursor: pointer;
+
+	&__input {
+		&:checked+.checkbox__text::before {
+			border: none;
+			background: url("@img/tick.svg") center / contain no-repeat;
+		}
+
+		&._error+.checkbox__text::before {
+			border-color: #e53935;
+		}
+	}
+
+	&__text {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		cursor: pointer;
+		user-select: none;
+		font-size: 0.675rem;
+		color: #a3a3a3;
+
+
+
+		&::before {
+			content: "";
+			flex-shrink: 0;
+			width: rem(14);
+			height: rem(14);
+			margin-top: rem(2);
+			border: rem(1) solid currentColor;
+			border-radius: rem(2);
+			box-sizing: border-box;
+		}
+
+		a {
+			color: #99ccff;
+			text-decoration: underline;
+
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
 	}
 }
