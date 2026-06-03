@@ -2,6 +2,7 @@
 
 import { initPromoAnimation } from './modules/promo-animation.js';
 import { initBooking } from './modules/booking.js';
+import { initYandexMaps } from './modules/map.js';
 
 // Инициализация Fancybox
 if (typeof Fancybox !== "undefined" && Fancybox !== null) {
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getNavigator();
 
     initPromoAnimation();
+    initYandexMaps();
 
     window.addEventListener('resize', () => {
         getNavigator()

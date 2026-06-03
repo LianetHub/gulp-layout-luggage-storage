@@ -6,6 +6,7 @@
 	position: relative;
 	color: $text-inverse;
 	overflow: hidden;
+	z-index: 1;
 	min-height: rem(1040);
 	// min-height: 100svh;
 
@@ -33,7 +34,9 @@
 		padding-top: rem(190);
 	}
 
-	&__container {}
+	&__container {
+		position: relative;
+	}
 
 	&__head {
 		text-align: center;
@@ -131,6 +134,10 @@
 	}
 
 	&__scroll {
+		position: absolute;
+		z-index: 4;
+		right: 100%;
+		bottom: 25%;
 		display: inline-flex;
 		flex-direction: column;
 		align-items: center;
@@ -150,30 +157,46 @@
 		writing-mode: vertical-rl;
 		transform: rotate(180deg);
 		font-family: $font-display;
-		font-weight: 700;
-		font-size: 0.875rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-weight: 800;
+		font-size: 1rem;
+		line-height: 1;
+		letter-spacing: 0.02em;
 	}
 
 	&__scroll-icon {
-		width: rem(44);
-		height: rem(72);
+		flex-shrink: 0;
+		width: rem(28);
+		height: rem(46);
+		border: rem(2) solid $text-inverse;
 		border-radius: rem(999);
-		background: linear-gradient(180deg, #7b5cff 0%, #1dbbfe 100%);
-		box-shadow: 0 rem(8) rem(24) rgba(#1dbbfe, 0.35);
+		background: transparent;
 		position: relative;
 
 		&::after {
 			content: "";
 			position: absolute;
 			left: 50%;
-			top: 50%;
-			width: rem(10);
-			height: rem(10);
-			border-right: rem(2) solid $text-inverse;
-			border-bottom: rem(2) solid $text-inverse;
-			transform: translate(-50%, -35%) rotate(45deg);
+			bottom: rem(9);
+			width: rem(7);
+			height: rem(7);
+			border-radius: 50%;
+			background: #8f2fff;
+			transform: translateX(-50%);
+			animation: promo-scroll-dot 1.8s ease-in-out infinite;
+		}
+	}
+
+	@keyframes promo-scroll-dot {
+
+		0%,
+		100% {
+			transform: translateX(-50%) translateY(0);
+			opacity: 1;
+		}
+
+		50% {
+			transform: translateX(-50%) translateY(rem(-10));
+			opacity: 0.35;
 		}
 	}
 
