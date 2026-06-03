@@ -131,8 +131,6 @@
                 </section>
 
 
-
-
                 <section class="booking" id="booking">
                     <div class="booking__container">
                         <aside class="booking__aside" aria-hidden="true">
@@ -300,67 +298,60 @@
 
                 <section class="pricing" id="pricing">
                     <div class="pricing__container">
-                        <header class="pricing__intro section-head section-head--center">
+                        <div class="pricing__intro section-head section-head--center">
                             <p class="section-head__lead">Бронирование — это формальная процедура!</p>
                             <h2 class="section-head__title">Гарантированно оформим и разместим ваш багаж</h2>
                             <p class="pricing__speed">
                                 <span class="pricing__speed-text">за минуту</span>
-                                <img class="pricing__speed-icon" src="img/clock.svg" width="40" height="40" alt="" aria-hidden="true">
+                                <svg class="pricing__speed-icon" width="40" height="40" aria-hidden="true">
+                                    <use href="img/icons/sprite.svg#clock"></use>
+                                </svg>
                             </p>
-                        </header>
-
-                        <div class="pricing__intro-deco" aria-hidden="true">
-                            <p class="pricing__unit-note">шт. — чемодан, сумка, рюкзак</p>
+                            <p class="pricing__unit-note"><span>шт.</span> — чемодан, сумка, рюкзак</p>
                             <div class="pricing__record">
-                                <img class="pricing__record-img" src="img/sections/pricing/suitcase.png" width="120" height="120" alt="">
-                                <p class="pricing__record-text"><span class="pricing__record-value">&gt;230</span> Единиц багажа за день, рекорд от 2024 года</p>
+                                <img class="pricing__record-img" src="img/sections/pricing/record-badge.png" alt="">
+                                <p class="pricing__record-text">
+                                    <span class="pricing__record-value">>230</span>
+                                    <span>Единиц багажа</span>
+                                    <span>за день, рекорд</span>
+                                    <span>от 2024 года</span>
+                                </p>
                             </div>
                         </div>
+
 
                         <div class="pricing__rates">
                             <h3 class="pricing__rates-title">Стоимость наших услуг:</h3>
 
                             <ul class="pricing__grid pricing__grid--top">
-                                <li class="pricing__card">
-                                    <div class="pricing__card-body">
-                                        <p class="pricing__card-price">200 <small>₽/шт.</small></p>
-                                        <p class="pricing__card-desc">Хранение единицы багажа в течении 3-х часов</p>
-                                    </div>
-                                    <img src="img/sections/pricing/hand-luggage.png" class="pricing__card-img" alt="">
+                                <li class="pricing__card" style="background-image: url('img/sections/pricing/card-1.png');">
+                                    <p class="pricing__card-price">200 <small>₽/шт.</small></p>
+                                    <p class="pricing__card-desc">Хранение единицы багажа в течении <br> 3-х&nbsp;часов</p>
                                 </li>
-                                <li class="pricing__card">
-                                    <div class="pricing__card-body">
-                                        <p class="pricing__card-price">300 <small>₽/шт.</small></p>
-                                        <p class="pricing__card-desc">Хранение единицы багажа от 3-х часов и до планового закрытия (19:00)</p>
-                                    </div>
-                                    <img src="img/sections/pricing/suitcase.png" class="pricing__card-img" alt="">
+                                <li class="pricing__card" style="background-image: url('img/sections/pricing/card-2.png');">
+                                    <p class="pricing__card-price">300 <small>₽/шт.</small></p>
+                                    <p class="pricing__card-desc">Хранение единицы багажа от 3-х часов и&nbsp;до планового закрытия (19:00)</p>
+
                                 </li>
-                                <li class="pricing__card pricing__card--hourly">
-                                    <div class="pricing__card-body">
-                                        <p class="pricing__card-price">+100 <small>₽/шт.</small></p>
-                                        <span class="pricing__card-badge">в час</span>
-                                        <p class="pricing__card-desc">Хранение багажа после 19:00 оплачивается дополнительно</p>
-                                    </div>
-                                    <img src="img/sections/pricing/night-extra.png" class="pricing__card-img" alt="">
+                                <li class="pricing__card" style="background-image: url('img/sections/pricing/card-3.png');">
+                                    <p class="pricing__card-price">+100 <small>₽/шт.</small></p>
+                                    <p class="pricing__card-desc pricing__card-desc--wide">Хранение багажа после&nbsp;19:00 оплачивается дополнительно</p>
+                                    <span class="pricing__card-badge">в час</span>
                                 </li>
-                                <li class="pricing__card">
-                                    <div class="pricing__card-body">
-                                        <p class="pricing__card-price">600 <small>₽/шт.</small></p>
-                                        <p class="pricing__card-desc">Суточное хранение. Сдать багаж сегодня, забрать завтра</p>
-                                    </div>
-                                    <img src="img/sections/pricing/record-badge.png" class="pricing__card-img" alt="">
+                                <li class="pricing__card" style="background-image: url('img/sections/pricing/card-4.png');">
+                                    <p class="pricing__card-price">600 <small>₽/шт.</small></p>
+                                    <p class="pricing__card-desc">Суточное хранение. Сдать багаж сегодня, забрать завтра</p>
+                                </li>
+                                <li class="pricing__tagline-item">
+                                    <p class="pricing__tagline">Мы знаем что для вас&nbsp;важно, и закрыли все потребности</p>
+                                </li>
+                                <li class="pricing__card pricing__card--wide" style="background-image: url('img/sections/pricing/card-5.png');">
+                                    <p class="pricing__card-price">800 <small>₽/шт.</small></p>
+                                    <p class="pricing__card-desc">Хранение негабаритных вещей. Велочемоданы, большие коробки, сапборды и т.д.</p>
                                 </li>
                             </ul>
 
                             <div class="pricing__bottom">
-                                <p class="pricing__tagline">Мы знаем что для вас важно, и закрыли все потребности</p>
-                                <article class="pricing__card pricing__card--wide">
-                                    <div class="pricing__card-body">
-                                        <p class="pricing__card-price">800 <small>₽/шт.</small></p>
-                                        <p class="pricing__card-desc">Хранение негабаритных вещей. Велочемоданы, большие коробки, сапборды и т.д.</p>
-                                    </div>
-                                    <img src="img/sections/pricing/oversized.png" class="pricing__card-img" alt="">
-                                </article>
                             </div>
                         </div>
                     </div>

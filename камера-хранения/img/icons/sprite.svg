@@ -12,4 +12,12 @@
   <symbol id="phone-handset" viewBox="0 0 786 788" fill="none">
     <path d="M51.4663 29.3563C82.9369 -2.13834 177.856 -7.38497 178.594 9.27503C179.301 25.927 264.116 210.647 264.87 227.299C265.593 243.959 208.93 300.724 192.357 317.36C175.944 333.83 303.182 477.967 305.588 480.682C308.326 483.111 452.129 610.667 468.552 594.222C485.116 577.578 541.77 520.803 558.382 521.542C574.996 522.28 759.286 607.286 775.906 608.008C792.51 608.77 787.288 703.896 755.833 735.43C728.99 762.336 589.877 860.098 347.964 685.538C321.43 670.235 279.404 635.138 215.7 571.323C215.645 571.283 215.621 571.259 215.605 571.228C215.517 571.18 215.509 571.132 215.446 571.076C215.406 571.03 215.35 570.99 215.304 570.926C215.256 570.887 215.2 570.839 215.153 570.791C151.481 506.946 116.494 464.815 101.248 438.25C-72.8764 195.748 24.6396 56.287 51.4663 29.3563Z" fill="currentColor"/>
   </symbol>
+  <symbol id="clock" viewBox="0 0 40 40" fill="none">
+    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="56" d="M21.5 27.8l-1.7-7.5 3.8-8.4"/>
+    <path stroke="currentColor" stroke-width="2" stroke-miterlimit="56" d="M37.1 27.8c-4.3 9.4-15.5 13.6-24.9 9.3S-1.4 21.6 2.9 12.2 18.4-1.4 27.8 2.9 41.4 18.4 37.1 27.8"/>
+    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="56" d="M27 4.6l-.3.7"/>
+    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="56" d="M13.3 34.7 13 35.4"/>
+    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="56" d="M5.3 13.3 4.6 13"/>
+    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="56" d="M35.4 27l-.7-.3"/>
+  </symbol>
 </svg>
