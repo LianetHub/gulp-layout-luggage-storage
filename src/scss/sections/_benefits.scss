@@ -1,6 +1,6 @@
 .benefits {
 	@extend .section-padding;
-	background: $bg-light;
+
 
 	&__grid {
 		display: grid;
@@ -13,19 +13,25 @@
 		@media (min-width: $md2) {
 			grid-template-columns: repeat(4, 1fr);
 			gap: 1.5rem;
+			row-gap: 3.75rem;
 		}
 	}
 
 	&__card {
 		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
-		min-height: rem(280);
-		padding: 1.25rem;
+		min-height: rem(400);
+		padding: 2rem 1.5rem;
 		border-radius: rem(16);
-		background: $secondary;
 		color: $text-inverse;
-		overflow: hidden;
+		background-image:
+			var(--benefits-card-bg, none),
+			linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
+		background-position: right bottom, center;
+		background-size: contain, auto;
+		background-repeat: no-repeat, no-repeat;
 
 		@media (min-width: $md5) {
 			&--wide {
@@ -34,7 +40,9 @@
 		}
 
 		&--paid {
-			background: $bg-white;
+			background:
+				var(--benefits-card-bg, none),
+				$bg-white;
 			color: $text;
 			border: rem(1) solid rgba($text, 0.1);
 		}
@@ -44,14 +52,19 @@
 		display: inline-block;
 		align-self: flex-start;
 		margin-bottom: 0.75rem;
-		padding: 0.35rem 0.75rem;
+		text-transform: uppercase;
+		padding: 0.5rem 0.875rem;
 		border-radius: rem(6);
-		background: $accent;
+		background: #8f2fff;
 		color: $text-inverse;
 		font-family: $font-display;
 		font-weight: 800;
 		font-size: 1rem;
 		line-height: 1.2;
+		position: absolute;
+		top: -1.15rem;
+		left: 1.5rem;
+		transform: rotate(-3deg);
 
 		.benefits__card--paid & {
 			background: $promo-pink;
@@ -62,18 +75,19 @@
 	&__card-title {
 		font-family: $font-display;
 		font-weight: 700;
-		font-size: 1.125rem;
-		line-height: 1.25;
-		max-width: 70%;
+		font-size: 1.5rem;
+		line-height: 1.5;
+		max-width: rem(480);
+		text-transform: uppercase;
 		z-index: 1;
 	}
 
 	&__card-text {
 		margin-top: 0.5rem;
-		font-size: 0.9375rem;
+		font-size: 1rem;
 		line-height: 1.45;
 		opacity: 0.9;
-		max-width: 65%;
+		max-width: rem(320);
 		z-index: 1;
 
 		.benefits__card--paid & {
