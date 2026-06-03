@@ -1,0 +1,147 @@
+.storage {
+	@extend .section-padding;
+
+	&__head {
+		margin-bottom: 2.5rem;
+
+		@media (min-width: $md4) {
+			margin-bottom: 3rem;
+		}
+	}
+
+	&__eyebrow {
+		margin-bottom: 0.75rem;
+		font-size: 1rem;
+		line-height: 1.4;
+		color: $text;
+	}
+
+	&__title {
+		font-family: $font-display;
+		font-weight: 900;
+		font-size: 1.375rem;
+		line-height: 1.1;
+		text-transform: uppercase;
+
+		@media (min-width: $md4) {
+			font-size: 2rem;
+		}
+
+		@media (min-width: $md2) {
+			font-size: 2.5rem;
+		}
+	}
+
+	&__accent {
+		position: relative;
+		display: inline-block;
+		margin-top: 0.75rem;
+	}
+
+	&__accent-text {
+		display: inline-block;
+		padding: 0.15em 0.55em;
+		border-radius: rem(12);
+		background: $secondary;
+		color: $text-inverse;
+		font-family: $font-display;
+		font-weight: 900;
+		font-size: 1.5rem;
+		line-height: 1.2;
+
+		@media (min-width: $md4) {
+			font-size: 2rem;
+		}
+
+		@media (min-width: $md2) {
+			font-size: 2.5rem;
+		}
+	}
+
+	&__accent-icon {
+		position: absolute;
+		top: rem(-12);
+		right: rem(-20);
+		width: rem(48);
+		height: rem(48);
+		object-fit: contain;
+		pointer-events: none;
+
+		@media (min-width: $md4) {
+			width: rem(56);
+			height: rem(56);
+			top: rem(-16);
+			right: rem(-24);
+		}
+	}
+
+	&__body {
+		display: grid;
+		gap: 2.5rem;
+		align-items: start;
+
+		@media (min-width: $md2) {
+			grid-template-columns: 1fr minmax(rem(260), 0.85fr);
+			gap: 2rem 3rem;
+			align-items: center;
+		}
+	}
+
+	&__features {
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__feature {
+		display: grid;
+		grid-template-columns: rem(64) 1fr;
+		gap: 0 1.25rem;
+		align-items: start;
+	}
+
+	&__feature-icon {
+		width: rem(64);
+		height: rem(64);
+		object-fit: contain;
+	}
+
+	&__feature-title {
+		font-family: $font-display;
+		font-weight: 700;
+		font-size: 1.125rem;
+		margin-bottom: 0.35rem;
+	}
+
+	&__feature-text {
+		font-size: 0.9375rem;
+		line-height: 1.45;
+		color: rgba($text, 0.75);
+	}
+
+	&__media {
+		margin: 0;
+		justify-self: center;
+
+		@media (min-width: $md2) {
+			justify-self: end;
+		}
+	}
+
+	&__media-img {
+		display: block;
+		width: 100%;
+		max-width: rem(420);
+		height: auto;
+		margin-inline: auto;
+		object-fit: contain;
+
+		@media (min-width: $md2) {
+			margin-inline: 0 0;
+			margin-left: auto;
+		}
+	}
+}

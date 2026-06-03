@@ -1,0 +1,400 @@
+.form {
+
+	// .form__row
+	&__row {
+		display: grid;
+		gap: 1.25rem;
+
+		@media (min-width: $md3) {
+			grid-template-columns: repeat(3, 1fr);
+
+			.form__btn {
+				grid-column: span 2;
+			}
+		}
+	}
+
+	&__bottom {
+		margin-top: 1.31rem;
+		display: flex;
+		gap: 1.81rem;
+		flex-direction: column;
+
+		@media (min-width: $md3) {
+			align-items: flex-end;
+			flex-wrap: wrap;
+			flex-direction: row;
+		}
+
+		.form__btn {
+			min-height: rem(58);
+			min-width: rem(248);
+		}
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	// .form__label
+	&__label {
+		line-height: 140%;
+		font-size: 0.75rem;
+
+		@media (min-width: $md1) {
+			font-size: 0.875rem;
+		}
+	}
+
+	// .form__btn
+	&__btn {}
+
+	// .form__privacy
+	&__privacy {
+		margin-top: 1.5rem;
+		font-size: 1rem;
+		line-height: 140%;
+
+		& a {
+			color: $trust-blue;
+			text-decoration: underline;
+			transition: color 0.3s ease 0s;
+
+			@media (any-hover: hover) {
+				&:hover {
+					color: darken($color: $trust-blue, $amount: 10);
+				}
+			}
+		}
+	}
+
+	// .form__control
+	&__control {
+		text-overflow: ellipsis;
+		transition: border-color 0.3s ease 0s, color 0.3s ease 0s;
+		width: 100%;
+		color: $text;
+		font-size: 1rem;
+
+		font-weight: 450;
+		line-height: 137.5%;
+		border-radius: rem(6);
+		padding: em(15);
+		min-height: rem(58);
+		border: rem(1) solid rgba(27, 43, 69, 0.31);
+
+		&::placeholder {
+			opacity: 1;
+			color: #575757;
+		}
+
+		&:hover,
+		&:focus {
+			border-color: $accent;
+		}
+
+		&:focus {
+			&::placeholder {
+				opacity: 0;
+			}
+		}
+
+		&:disabled {
+			background: #ddd;
+			border-color: #ddd;
+		}
+
+		&._error {
+			outline: 1px solid #ba2028;
+			background: #fff1ed;
+		}
+
+		&:is(textarea) {
+			height: rem(119);
+			resize: none;
+
+			@media (min-width: $md3) {
+				text-align: left;
+			}
+		}
+	}
+
+	// .form__checkbox
+	&__checkbox {
+		display: inline-block;
+
+		width: fit-content;
+	}
+
+	// .form__checkbox-input
+	&__checkbox-input {
+		&:checked {
+			&+.form__checkbox-text {
+				&::before {
+					@extend %ic, .icon-check;
+				}
+			}
+		}
+
+		&.error {
+			&+.form__checkbox-text {
+				&::before {
+					border: rem(1) solid red;
+				}
+			}
+		}
+	}
+
+	// .form__checkbox-text
+	&__checkbox-text {
+		position: relative;
+		display: block;
+		width: fit-content;
+		font-size: 1rem;
+		line-height: 150%;
+		padding: 0 0 0 2.5em;
+		cursor: pointer;
+		user-select: none;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: rem(1) solid $text;
+			width: rem(24);
+			height: rem(24);
+			border-radius: rem(3);
+			color: $accent;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		& a {
+			text-decoration: underline;
+			white-space: nowrap;
+
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	// .form__socials
+	&__socials {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	// .form__social
+	&__social {
+		width: rem(48);
+		height: rem(48);
+		font-size: 1.25rem;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		transition: background-color 0.3s ease;
+
+		&.icon-whatsapp {
+			background: #0dc143;
+
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: darken($color: #0dc143, $amount: 10);
+				}
+			}
+		}
+
+		&.icon-telegram {
+			background: #419fd9;
+
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: darken($color: #419fd9, $amount: 10);
+				}
+			}
+		}
+	}
+
+	// .form__btn
+	&__btn {
+		white-space: nowrap;
+
+		&.btn {
+			padding-inline: 1rem;
+		}
+	}
+
+	// .form__file
+	&__file {}
+
+	// .form__file-btn
+	&__file-btn {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		user-select: none;
+		transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+		font-family: $fontfamily;
+		font-weight: 450;
+		line-height: 137.5%;
+		gap: 0.5rem;
+		border-radius: 0.625rem;
+		padding: 0.7rem 2.44rem;
+		min-height: rem(58);
+		font-size: 1rem;
+		border: rem(1) solid #fff;
+		color: #fff;
+		cursor: pointer;
+
+		&::before {
+			font-size: 2rem;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: #fff;
+				color: #000;
+			}
+		}
+	}
+}
+
+.btn {
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	user-select: none;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+	font-size: 0.9375rem;
+	border-radius: 0.25rem;
+	line-height: 1;
+	gap: 0.62rem;
+	padding: 1rem 1.25rem;
+	text-transform: uppercase;
+
+	@media (min-width: $md0) {
+		padding: 1.125rem 1.5rem;
+	}
+
+	&::before {
+		order: 1;
+	}
+
+	&:focus-visible {
+		box-shadow: 0 0 rem(1) rem(1) $text;
+	}
+
+	&.btn-primary {
+		color: #fff;
+		background: $accent;
+
+		&:hover {
+			background: darken($color: $accent, $amount: 10);
+		}
+
+		&:active {
+			background: darken($color: $accent, $amount: 15);
+		}
+	}
+
+	&.btn-secondary {
+		color: #fff;
+		background-color: $secondary;
+
+		&:hover {
+			background: darken($color: $secondary, $amount: 10);
+		}
+
+		&:active {
+			background: darken($color: $secondary, $amount: 15);
+		}
+	}
+
+	&.btn-white {
+		color: #203299;
+		background-color: #fff;
+		border: rem(1) solid #fff;
+
+		&.icon-arrows {
+			&::before {
+				background: url("@img/icons/arrows-blue.svg") center / contain no-repeat;
+			}
+		}
+
+		&:hover {
+			background-color: transparent;
+			color: #fff;
+		}
+
+		&:active {
+			opacity: 0.875;
+		}
+	}
+
+	&.btn-lg {
+		padding: 1.25rem 1.5rem;
+
+		@media (min-width: $md4) {
+			padding: 1.5rem 2.125rem;
+		}
+	}
+
+	&.btn-fullwidth {
+		width: 100%;
+		padding-inline: 1rem;
+	}
+
+	&:disabled,
+	&[aria-disabled="true"] {
+		pointer-events: none;
+
+		&::before {}
+	}
+
+	&.filter-btn {
+		width: fit-content;
+
+		&:not(:last-child) {
+			border-right: 0;
+		}
+
+		&:not(:first-child) {
+			border-left: 0;
+		}
+
+		&:hover,
+		&:active,
+		&.active {}
+	}
+}

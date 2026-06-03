@@ -1,0 +1,43 @@
+.star-rating {
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+	flex-direction: row-reverse;
+	position: relative;
+	justify-content: flex-end;
+
+	// .star-rating__input
+	&__input {
+		&:not(:checked) {
+			& ~ .star-rating__label {
+				&:hover {
+					& ~ .star-rating__label {
+						&::before {
+						}
+					}
+				}
+			}
+		}
+		&:checked {
+			& ~ .star-rating__label {
+				& ~ .star-rating__label {
+				}
+			}
+		}
+	}
+	// .star-rating__label
+	&__label {
+		cursor: pointer;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0.25rem;
+		font-size: 2.25rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: $elements-secondary;
+		&::before {
+			@extend %ic, .icon-star;
+		}
+	}
+}

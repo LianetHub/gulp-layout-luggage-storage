@@ -1,0 +1,86 @@
+.fancybox__container {
+	max-width: 100% !important;
+	padding: 0 !important;
+}
+
+.fancybox__slide {
+	padding: 0;
+}
+
+.fancybox__backdrop {
+	background: rgba(14, 22, 65, 0.7);
+}
+
+.fancybox__content {
+	color: inherit;
+	background: none;
+	padding: 0;
+}
+
+.fancybox__content :focus:not(:focus-visible):not(.carousel__button.is-close) {
+	outline: none;
+}
+
+.popup {
+	display: none;
+	background: #fff;
+	color: $text;
+	overflow-y: auto;
+	position: relative;
+	border-radius: 0.25rem;
+	max-width: 47.1875rem;
+	width: 100%;
+	padding: 2rem 1.5rem;
+	@media (min-width: $md4) {
+		padding: 5.63rem 7.88rem;
+	}
+
+	// .popup__close
+	&__close {
+		font-size: 1.5rem;
+		position: absolute;
+
+		width: 1.5rem;
+		height: 1.5rem;
+		transition: color 0.3s ease;
+		top: 0.5rem;
+		right: 0.5rem;
+		@media (min-width: $md4) {
+			top: 2.12rem;
+			right: 2.12rem;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #f06868;
+			}
+		}
+	}
+	// .popup__title
+	&__title {
+		text-align: center;
+		font-size: 2.125rem;
+		font-weight: 500;
+		line-height: 129.412%;
+		text-transform: uppercase;
+	}
+	// .popup__form
+	&__form {
+		margin-top: 1.81rem;
+	}
+
+	&__text {
+		margin-top: 1rem;
+		text-align: center;
+		font-size: 1rem;
+		line-height: 1.5;
+		color: rgba($text, 0.8);
+	}
+
+	&--success {
+		text-align: center;
+
+		.popup__text {
+			margin-bottom: 1.5rem;
+		}
+	}
+}

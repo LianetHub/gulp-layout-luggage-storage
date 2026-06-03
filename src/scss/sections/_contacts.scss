@@ -1,0 +1,142 @@
+.contacts {
+	@extend .section-padding;
+
+	&__layout {
+		display: grid;
+		gap: 2rem;
+
+		@media (min-width: $md3) {
+			grid-template-columns: 1fr 1.2fr;
+			align-items: start;
+		}
+	}
+
+	&__badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.25rem;
+	}
+
+	&__badge {
+		padding: 0.5rem 1rem;
+		border-radius: rem(8);
+		background: $secondary;
+		color: $bg-muted;
+		font-size: 0.9375rem;
+		font-weight: 600;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	&__block-title {
+		font-family: $font-display;
+		font-weight: 600;
+		font-size: 0.8125rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: $accent;
+		margin-bottom: 0.5rem;
+	}
+
+	&__address {
+		font-style: normal;
+		font-size: 1.125rem;
+		line-height: 1.45;
+		white-space: pre-line;
+	}
+
+	&__phones {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+
+		a {
+			font-size: 1.25rem;
+			font-weight: 700;
+			transition: color 0.2s;
+
+			@media (any-hover: hover) {
+				&:hover {
+					color: $accent;
+				}
+			}
+		}
+
+		span {
+			font-size: 0.875rem;
+			color: $muted;
+		}
+	}
+
+	&__messengers {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	&__messenger {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.5rem 1rem;
+		border-radius: rem(8);
+		background: $bg-light;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		transition: background 0.2s;
+
+		img {
+			width: rem(20);
+			height: rem(20);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: rgba($accent, 0.12);
+			}
+		}
+	}
+
+	&__route {
+		align-self: flex-start;
+		font-family: $font-display;
+		font-weight: 900;
+		text-transform: none;
+		border-radius: rem(8);
+	}
+
+	&__map {
+		border-radius: rem(16);
+		overflow: hidden;
+		box-shadow: $shadow;
+
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	}
+
+	&__location-tag {
+		display: inline-block;
+		margin-bottom: 0.75rem;
+		font-family: $font-display;
+		font-weight: 900;
+		font-size: 1.75rem;
+		line-height: 1.1;
+		padding: 0.15em 0.4em;
+		border-radius: rem(6);
+		background: $secondary;
+		color: $text-inverse;
+
+		@media (min-width: $md4) {
+			font-size: 2.25rem;
+		}
+	}
+}

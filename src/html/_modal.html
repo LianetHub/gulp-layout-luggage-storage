@@ -1,0 +1,29 @@
+<div id="callback" class="popup" role="dialog" aria-modal="true" aria-labelledby="callback-title" aria-hidden="true">
+    <button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
+    <h2 id="callback-title" class="popup__title title-md-desktop title-sm">Быстрое бронирование</h2>
+    <form action="#" class="popup__form form" novalidate>
+        <div class="form__field">
+            <label for="callback_name" class="form__label">Имя:</label>
+            <input type="text" name="name" id="callback_name" class="form__control" placeholder="Ваше имя" autocomplete="name" required>
+        </div>
+        <div class="form__field">
+            <label for="callback_phone" class="form__label">Номер телефона:</label>
+            <input type="tel" name="phone" id="callback_phone" class="form__control" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <div class="form__field">
+            <label class="form__checkbox">
+                <input type="checkbox" name="agree" class="form__checkbox-input hidden" id="callback_agree" required>
+                <span class="form__checkbox-text">Даю согласие на <a href="#" target="_blank" rel="noopener noreferrer">обработку персональных данных</a></span>
+            </label>
+        </div>
+        <p class="form__status" role="status" aria-live="polite" hidden></p>
+        <button type="submit" class="form__btn btn btn-secondary">Бронировать</button>
+    </form>
+</div>
+
+<div id="form-success" class="popup popup--success" role="dialog" aria-modal="true" aria-labelledby="form-success-title" aria-hidden="true">
+    <button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
+    <h2 id="form-success-title" class="popup__title title-md-desktop title-sm">Заявка принята</h2>
+    <p class="popup__text">Мы свяжемся с вами в ближайшее время для подтверждения бронирования.</p>
+    <button type="button" class="form__btn btn btn-primary" data-fancybox-close>Хорошо</button>
+</div>

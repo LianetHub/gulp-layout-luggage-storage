@@ -1,0 +1,94 @@
+.benefits {
+	@extend .section-padding;
+	background: $bg-light;
+
+	&__grid {
+		display: grid;
+		gap: 1.25rem;
+
+		@media (min-width: $md5) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: $md2) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1.5rem;
+		}
+	}
+
+	&__card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-height: rem(280);
+		padding: 1.25rem;
+		border-radius: rem(16);
+		background: $secondary;
+		color: $text-inverse;
+		overflow: hidden;
+
+		@media (min-width: $md5) {
+			&--wide {
+				grid-column: span 2;
+			}
+		}
+
+		&--paid {
+			background: $bg-white;
+			color: $text;
+			border: rem(1) solid rgba($text, 0.1);
+		}
+	}
+
+	&__badge {
+		display: inline-block;
+		align-self: flex-start;
+		margin-bottom: 0.75rem;
+		padding: 0.35rem 0.75rem;
+		border-radius: rem(6);
+		background: $accent;
+		color: $text-inverse;
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1rem;
+		line-height: 1.2;
+
+		.benefits__card--paid & {
+			background: $promo-pink;
+			color: $text-inverse;
+		}
+	}
+
+	&__card-title {
+		font-family: $font-display;
+		font-weight: 700;
+		font-size: 1.125rem;
+		line-height: 1.25;
+		max-width: 70%;
+		z-index: 1;
+	}
+
+	&__card-text {
+		margin-top: 0.5rem;
+		font-size: 0.9375rem;
+		line-height: 1.45;
+		opacity: 0.9;
+		max-width: 65%;
+		z-index: 1;
+
+		.benefits__card--paid & {
+			opacity: 0.75;
+		}
+	}
+
+	&__card-img {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		max-width: 55%;
+		max-height: 65%;
+		object-fit: contain;
+		object-position: right bottom;
+		pointer-events: none;
+	}
+}

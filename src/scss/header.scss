@@ -1,0 +1,126 @@
+.header {
+	position: relative;
+	z-index: 10;
+	padding-top: rem(24);
+	padding-bottom: rem(24);
+
+	&__container {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		gap: 0.75rem 1rem;
+		margin: 0 auto;
+
+
+		@media (min-width: $md4) {
+			gap: 1rem 2rem;
+		}
+	}
+
+	&__phone {
+
+		justify-self: start;
+		display: inline-flex;
+		align-items: center;
+		gap: rem(10);
+		font-weight: 600;
+		font-size: 0.875rem;
+		line-height: 1.2;
+		transition: opacity 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+	}
+
+	&__phone-icon {
+		display: flex;
+		flex-shrink: 0;
+		line-height: 0;
+
+		&-svg {
+			display: block;
+			width: rem(40);
+			height: rem(40);
+			color: currentColor;
+		}
+	}
+
+	&__phone-text {
+		@media (max-width: $md5) {
+			display: none;
+		}
+
+		@media (min-width: $md4) {
+			font-size: 1.5rem;
+		}
+	}
+
+	&__logo {}
+
+
+	&__messengers {
+		display: none;
+		align-items: center;
+		gap: 3.25rem;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+
+		@media (min-width: $md3) {
+			display: flex;
+		}
+	}
+
+	&__messengers-label {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		white-space: nowrap;
+
+		@media (min-width: $md4) {
+			font-size: 1rem;
+		}
+	}
+
+	&__messenger {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-weight: 700;
+		font-size: 1.5rem;
+		white-space: nowrap;
+		transition: opacity 0.2s ease;
+
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+	}
+
+
+
+
+
+	&--overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: transparent;
+		box-shadow: none;
+		color: $text-inverse;
+
+		.header__phone,
+		.header__messenger,
+		.header__messengers-label {
+			color: inherit;
+		}
+
+		.icon-menu {
+			color: $text-inverse;
+		}
+	}
+}

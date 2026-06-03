@@ -1,0 +1,113 @@
+.before-slider {
+	position: relative;
+	min-width: 100%;
+	height: 100%;
+	aspect-ratio: math.div(288, 360);
+	@media (min-width: $md5) {
+		aspect-ratio: math.div(1250, 729);
+	}
+	overflow: hidden;
+	&__image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: inherit;
+		background-size: cover;
+		background-position: center 0;
+		background-repeat: no-repeat;
+	}
+
+	&__before {
+	}
+	&__after {
+		width: 100%;
+		--value: 50%;
+		clip-path: polygon(0 0, var(--value) 0, var(--value) 100%, 0 100%);
+	}
+	&__input {
+		position: absolute;
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: inherit;
+		background: rgba(#f2f2f2, 0);
+		outline: none;
+		margin: 0;
+		transition: all 0.2s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&::-webkit-slider-container {
+			min-height: 100%;
+		}
+		&::-webkit-slider-runnable-track {
+			min-height: 100%;
+			align-self: stretch;
+		}
+		&::-ms-track {
+			min-height: 100%;
+			align-self: stretch;
+			background: transparent;
+			border-color: transparent;
+			color: transparent;
+		}
+		&::-moz-range-track {
+			min-height: 100%;
+			align-self: stretch;
+		}
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: rem(4);
+
+			height: 100%;
+			background: #fff;
+			cursor: e-resize;
+		}
+		&::-moz-range-thumb {
+			width: rem(4);
+			height: 100%;
+			background: #fff;
+			cursor: e-resize;
+		}
+		&::-ms-thumb {
+			width: rem(4);
+			height: 100%;
+			background: #fff;
+			cursor: e-resize;
+		}
+	}
+	&__button {
+		$size: rem(50);
+		pointer-events: none;
+		position: absolute;
+		width: $size;
+		height: $size;
+
+		left: calc(50% - rem(math.div(50, 2)));
+		top: calc(50% - rem(math.div(50, 2)));
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: e-resize;
+		@mixin arrow-helper() {
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-bottom: 10.5px solid white;
+			pointer-events: none;
+		}
+		&:after {
+			@include arrow-helper();
+			transform: rotate(90deg);
+		}
+		&:before {
+			@include arrow-helper();
+			transform: rotate(-90deg);
+		}
+	}
+}

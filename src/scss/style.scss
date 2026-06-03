@@ -1,0 +1,94 @@
+// Использование модулей SASS
+@use "sass:math";
+// Использование модулей SASS
+// ======================================МИКСИНЫ==============================================
+@import "mixins";
+// ======================================МИКСИНЫ==============================================
+
+// ======================================ШРИФТЫ===============================================
+@import "fonts";
+@import "icons";
+// ======================================ШРИФТЫ===============================================
+
+// Шрифты (макет: Geologica — подключить на этапе 3; пока fallback GolosText)
+$fontfamily: "Geologica", "GolosText", sans-serif;
+$font-display: "Geologica", "GolosText", sans-serif;
+$font-montserrat: "Montserrat"; // legacy, .marked-text — заменить на $font-display
+
+// Шрифт по умолчанию
+
+$md0: 1599.98px;
+$md1: 1329.98px;
+$md2: 1199.98px;
+$md3: 991.98px;
+$md4: 767.98px;
+$md5: 575.98px;
+
+// ПЕРЕМЕННЫЕ
+
+$minWidth: 320; // Минимальная ширина страницы
+$maxWidth: 1920; // Ширина макета
+$maxWidthContainer: rem(1240); // Максимальная ширина ограничивающего контейнера
+$containerPadding: 30;
+
+// ЦВЕТА — лендинг «Камера хранения» (design-spec.md)
+
+$text: #000000;
+$text-inverse: #ffffff;
+$accent: #1dbbfe;
+$accent-hover: #37c3ef;
+
+$bg-page: #fefefe;
+$bg-light: #f6f9fc;
+$bg-white: #ffffff;
+$bg-muted: #ebebeb;
+
+$secondary: #060606;
+$muted: #acacac;
+$muted-light: #a3a3a3;
+$border: #dbeafe;
+
+// Legacy (колл-центр) — убрать по мере вёрстки этапа 3
+$medical-blue: #1e3a8a;
+$medical-green: #70c27b;
+$trust-blue: $accent;
+
+$soft-blue-bg: #ebf8ff;
+$soft-green-bg: #ecfdf5;
+
+$shadow: rem(4) rem(4) rem(100) rgba($color: $secondary, $alpha: .12);
+
+$promo-pink: #ff2d9b;
+$promo-pink-dark: #d4146f;
+$promo-pink-light: #ff6bb8;
+$promo-pink-glow: rgba($promo-pink, 0.65);
+$promo-pink-glow-soft: rgba($promo-pink, 0.35);
+
+// Z-Index
+
+$ui-index-1: 1; // Для наполняющих элементов в общем потоке
+$ui-index-2: 2; // Для наполняющих элементов в общем потоке
+$ui-index-3: 3; // Для масок
+$ui-index-4: 4; // Для сайдбаров
+$ui-index-5: 5; // Для модалок
+$ui-index-6: 6; // Для элементов, перекрывающих все
+
+// ОБЩИЕ ПАРАМЕТРЫ
+
+@import "common";
+
+@import "ui";
+@import "forms";
+@import "header";
+@import "footer";
+
+// Лендинг «Камера хранения» — секции (этап 3)
+@import "landing/ui";
+@import "sections/promo";
+@import "sections/reputation";
+@import "sections/booking";
+@import "sections/pricing";
+@import "sections/benefits";
+@import "sections/storage";
+@import "sections/guests";
+@import "sections/contacts";

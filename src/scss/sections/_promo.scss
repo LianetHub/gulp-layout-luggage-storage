@@ -1,0 +1,464 @@
+.hero-stack {
+	position: relative;
+}
+
+.promo {
+	position: relative;
+	color: $text-inverse;
+	overflow: hidden;
+	// min-height: 100svh;
+	min-height: rem(1100);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(180deg, transparent 90.71%, #FFF 100%);
+		pointer-events: none;
+	}
+
+	background: linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 90.71%, #FFF 100%);
+
+	padding: rem(100) rem(0) rem(24);
+
+	@media (min-width: $md4) {
+		padding-top: rem(120);
+		padding-bottom: rem(32);
+	}
+
+	@media (min-width: $md2) {
+		padding-top: rem(190);
+	}
+
+	&__container {}
+
+	&__head {
+		text-align: center;
+		max-width: rem(920);
+		margin: 0 auto;
+	}
+
+	&__title {
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1.5rem;
+		line-height: 1.3;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+
+		@media (min-width: $md5) {
+			font-size: 1.875rem;
+		}
+
+		@media (min-width: $md4) {
+			font-size: 2.75rem;
+		}
+
+		@media (min-width: $md2) {
+			font-size: 4.125rem;
+		}
+	}
+
+	&__location {
+		margin-top: 0.75rem;
+		display: inline-block;
+		padding: 0.35em 0.85em;
+		border-radius: rem(16);
+		transform: rotate(-3deg);
+		background: linear-gradient(165deg,
+				$promo-pink-light 0%,
+				$promo-pink 42%,
+				$promo-pink-dark 100%);
+		box-shadow:
+			0 0 rem(14) $promo-pink-glow,
+			0 0 rem(32) $promo-pink-glow-soft,
+			0 0 rem(48) $promo-pink-glow-soft,
+			inset rem(2) rem(2) rem(8) rgba(#fff, 0.55),
+			inset rem(-2) rem(-4) rem(10) rgba($promo-pink-dark, 0.55),
+			inset 0 rem(1) rem(0) rgba(#fff, 0.35);
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1.25rem;
+		line-height: 1.15;
+		color: $text-inverse;
+
+		@media (min-width: $md4) {
+			font-size: 2rem;
+			padding: 0.3em 0.4em;
+			box-shadow:
+				0 0 rem(18) $promo-pink-glow,
+				0 0 rem(40) $promo-pink-glow-soft,
+				0 0 rem(60) $promo-pink-glow-soft,
+				inset rem(3) rem(3) rem(12) rgba(#fff, 0.55),
+				inset rem(-3) rem(-5) rem(14) rgba($promo-pink-dark, 0.55),
+				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
+		}
+
+		@media (min-width: $md2) {
+			font-size: 4.5rem;
+		}
+
+		@media (min-width: $md4) {
+			margin-top: -0.5rem;
+		}
+	}
+
+	&__location-text {
+		display: inline-block;
+		position: relative;
+		z-index: 1;
+	}
+
+	&__main {
+		flex: 1 1 auto;
+		display: grid;
+		align-items: end;
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+
+		@media (min-width: $md4) {
+			grid-template-columns: minmax(0, rem(280)) 1fr;
+			gap: 2rem;
+			margin-top: 2rem;
+			min-height: rem(320);
+		}
+
+		@media (min-width: $md2) {
+			grid-template-columns: minmax(0, rem(320)) 1fr;
+			min-height: rem(400);
+		}
+	}
+
+	&__aside {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
+
+		@media (min-width: $md4) {
+			gap: 1.75rem;
+			padding-bottom: rem(8);
+		}
+	}
+
+	&__scroll {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.65rem;
+		color: $text-inverse;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+	}
+
+	&__scroll-label {
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		font-family: $font-display;
+		font-weight: 700;
+		font-size: 0.875rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	&__scroll-icon {
+		width: rem(44);
+		height: rem(72);
+		border-radius: rem(999);
+		background: linear-gradient(180deg, #7b5cff 0%, #1dbbfe 100%);
+		box-shadow: 0 rem(8) rem(24) rgba(#1dbbfe, 0.35);
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: rem(10);
+			height: rem(10);
+			border-right: rem(2) solid $text-inverse;
+			border-bottom: rem(2) solid $text-inverse;
+			transform: translate(-50%, -35%) rotate(45deg);
+		}
+	}
+
+	&__stats {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	&__stats-value {
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 2.5rem;
+		line-height: 1;
+
+		@media (min-width: $md4) {
+			font-size: 3.5rem;
+		}
+	}
+
+	&__stats-text {
+		font-size: 0.9375rem;
+		line-height: 1.35;
+		max-width: rem(220);
+
+		@media (min-width: $md4) {
+			font-size: 1.125rem;
+		}
+	}
+
+	&__icons {
+		display: flex;
+		gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__icons-item {
+		width: rem(52);
+		height: rem(60);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+		img {
+			width: 55%;
+			height: 55%;
+			object-fit: contain;
+		}
+
+		&--bag {
+			background: #1dbbfe;
+		}
+
+		&--map {
+			background: #1a3d8f;
+		}
+
+		&--plane {
+			background: #8b9a3c;
+
+			img {
+				filter: brightness(0) invert(1);
+			}
+		}
+	}
+
+	// .promo__decor
+	&__decor {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		// pointer-events: none;
+	}
+
+	// .promo__cloud
+	&__cloud {
+		position: absolute;
+
+		transform: translate(0, -50%);
+
+		&--left {
+			top: 36%;
+			width: 44vw;
+			left: -14%;
+		}
+
+		&--right {
+			top: 50.5%;
+			width: 46vw;
+			right: -10%;
+		}
+
+	}
+
+	// .promo__plane
+	&__plane {
+		position: absolute;
+		bottom: 10%;
+		right: 7.25%;
+	}
+
+
+
+	&__bar {
+		position: relative;
+		z-index: 3;
+		background: $bg-white;
+		color: $text;
+		border-radius: rem(16) rem(16) 0 0;
+		margin-top: auto;
+
+		@media (min-width: $md4) {
+			border-radius: rem(20) rem(20) 0 0;
+		}
+	}
+
+	&__bar-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		padding: 1.25rem rem(19) 1.5rem;
+		max-width: $maxWidthContainer;
+		margin: 0 auto;
+
+		@media (min-width: $md3) {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: 2rem;
+			padding-top: 1.5rem;
+			padding-bottom: 1.75rem;
+		}
+	}
+
+	&__bar-title {
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1.125rem;
+		line-height: 1.2;
+		flex-shrink: 0;
+
+		@media (min-width: $md4) {
+			font-size: 1.5rem;
+		}
+
+		@media (min-width: $md2) {
+			font-size: 1.75rem;
+		}
+	}
+
+	&__ratings {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem 1.5rem;
+	}
+
+	&__rating {
+		display: grid;
+		grid-template-columns: auto auto;
+		align-items: center;
+		column-gap: 0.5rem;
+		row-gap: 0.15rem;
+		text-decoration: none;
+		color: inherit;
+		transition: opacity 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+		&--yandex {
+			grid-template-areas:
+				"value stars"
+				"caption logo";
+
+			.promo__rating-value {
+				grid-area: value;
+			}
+
+			.promo__rating-stars {
+				grid-area: stars;
+			}
+
+			.promo__rating-caption {
+				grid-area: caption;
+			}
+
+			.promo__rating-logo {
+				grid-area: logo;
+			}
+		}
+
+		&--2gis {
+			grid-template-areas:
+				"lead lead"
+				"review logo"
+				"value stars";
+			column-gap: 0.65rem;
+
+			.promo__rating-caption--lead {
+				grid-area: lead;
+			}
+
+			.promo__rating-review {
+				grid-area: review;
+			}
+
+			.promo__rating-value {
+				grid-area: value;
+			}
+
+			.promo__rating-stars {
+				grid-area: stars;
+			}
+
+			.promo__rating-logo {
+				grid-area: logo;
+			}
+		}
+	}
+
+	&__rating-value {
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1.75rem;
+		line-height: 1;
+
+		@media (min-width: $md4) {
+			font-size: 2rem;
+		}
+	}
+
+	&__rating-stars {
+		width: rem(88);
+		height: rem(16);
+		background: url("@img/star.svg") left center / rem(16) rem(16) repeat-x;
+		filter: sepia(1) saturate(4) hue-rotate(5deg);
+	}
+
+	&__rating-caption {
+		font-size: 0.75rem;
+		line-height: 1.25;
+		color: rgba($text, 0.75);
+		max-width: rem(140);
+
+		&--lead {
+			grid-area: lead;
+			font-weight: 600;
+			color: $text;
+			font-size: 0.8125rem;
+		}
+	}
+
+	&__rating-review {
+		font-size: 0.75rem;
+		color: $accent;
+		text-decoration: underline;
+	}
+
+	&__rating-logo {
+		height: rem(22);
+		width: auto;
+		justify-self: end;
+		align-self: center;
+	}
+}
