@@ -297,6 +297,7 @@ $booking-purple: #8f2fff;
 	&__item-footer {
 		display: flex;
 		align-items: center;
+		gap: 1rem;
 		justify-content: space-between;
 
 	}
@@ -313,29 +314,47 @@ $booking-purple: #8f2fff;
 		color: $muted;
 	}
 
+	&__counter-controls {
+		gap: 0;
+		min-width: rem(76);
+		height: rem(42);
+		padding: rem(10) rem(4);
+		background: $bg-muted;
+		border-radius: rem(8);
+	}
+
 	&__counter-btn {
-		width: rem(28);
-		height: rem(28);
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(24);
+		height: rem(24);
+		padding: 0;
 		border: none;
-		border-radius: rem(6);
-		background: rgba($text, 0.06);
+		border-radius: 0;
+		background: transparent;
+		color: $text;
 		font-size: 1.125rem;
+		font-weight: 400;
 		line-height: 1;
 		cursor: pointer;
-		transition: background-color 0.2s, color 0.2s;
+		transition: opacity 0.2s;
 
 		@media (any-hover: hover) {
 			&:hover {
-				background: rgba($accent, 0.15);
-				color: $accent;
+				opacity: 0.55;
 			}
 		}
 	}
 
 	&__counter-value {
+		flex: 1 1 auto;
 		min-width: rem(20);
-		font-weight: 700;
+		font-weight: 400;
 		font-size: 1rem;
+		line-height: 1;
+		text-align: center;
 	}
 
 	&__summary {

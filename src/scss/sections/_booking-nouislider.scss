@@ -2,6 +2,8 @@
 	position: relative;
 	padding-top: rem(24);
 	margin-bottom: 5.5rem;
+	padding-inline: rem(36);
+
 }
 
 $booking-track-height: rem(2);
@@ -109,6 +111,7 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 	font-size: rem(24);
 	line-height: 1.2;
 	color: $text;
+	background: #fff;
 }
 
 .booking__time-prefix {

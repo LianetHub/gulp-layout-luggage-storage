@@ -2,76 +2,98 @@
 	@extend .section-padding;
 
 	&__head {
+		position: relative;
+		z-index: 1;
 		margin-bottom: 2.5rem;
+
+		.section-head__lead {
+			margin-top: 0;
+			margin-bottom: 0.75rem;
+			max-width: none;
+		}
+
+		.section-head__title {
+			text-transform: uppercase;
+		}
 
 		@media (min-width: $md4) {
 			margin-bottom: 3rem;
 		}
 	}
 
-	&__eyebrow {
-		margin-bottom: 0.75rem;
-		font-size: 1rem;
-		line-height: 1.4;
-		color: $text;
-	}
+	&__accent {
+		margin-top: 0.75rem;
+		display: inline-flex;
+		align-items: center;
+		position: relative;
 
-	&__title {
+		gap: 0.5rem;
+		padding: 0.35em 0.85em;
+		border-radius: rem(16);
+		transform: rotate(2deg);
+		background: linear-gradient(165deg,
+				$promo-pink-light 0%,
+				$promo-pink 42%,
+				$promo-pink-dark 100%);
+		box-shadow:
+			0 0 rem(14) $promo-pink-glow,
+			0 0 rem(32) $promo-pink-glow-soft,
+			0 0 rem(48) $promo-pink-glow-soft,
+			inset rem(2) rem(2) rem(8) rgba(#fff, 0.55),
+			inset rem(-2) rem(-4) rem(10) rgba($promo-pink-dark, 0.55),
+			inset 0 rem(1) rem(0) rgba(#fff, 0.35);
 		font-family: $font-display;
-		font-weight: 900;
-		font-size: 1.375rem;
-		line-height: 1.1;
-		text-transform: uppercase;
+		font-weight: 800;
+		font-size: 1.25rem;
+		line-height: 1.15;
+		color: $text-inverse;
 
 		@media (min-width: $md4) {
+			margin-top: -0.5rem;
 			font-size: 2rem;
+			padding: 0.35em 0.25em;
+			box-shadow:
+				0 0 rem(18) $promo-pink-glow,
+				0 0 rem(40) $promo-pink-glow-soft,
+				0 0 rem(60) $promo-pink-glow-soft,
+				inset rem(3) rem(3) rem(12) rgba(#fff, 0.55),
+				inset rem(-3) rem(-5) rem(14) rgba($promo-pink-dark, 0.55),
+				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
 		}
 
 		@media (min-width: $md2) {
-			font-size: 2.5rem;
+			font-size: 4rem;
 		}
 	}
 
-	&__accent {
+	&__accent-wrapper {
 		position: relative;
-		display: inline-block;
-		margin-top: 0.75rem;
+		z-index: 1;
+		width: fit-content;
+		margin-inline: auto;
 	}
 
 	&__accent-text {
 		display: inline-block;
-		padding: 0.15em 0.55em;
-		border-radius: rem(12);
-		background: $secondary;
-		color: $text-inverse;
-		font-family: $font-display;
-		font-weight: 900;
-		font-size: 1.5rem;
-		line-height: 1.2;
-
-		@media (min-width: $md4) {
-			font-size: 2rem;
-		}
-
-		@media (min-width: $md2) {
-			font-size: 2.5rem;
-		}
+		position: relative;
+		z-index: 1;
 	}
 
 	&__accent-icon {
-		position: absolute;
-		top: rem(-12);
-		right: rem(-20);
-		width: rem(48);
-		height: rem(48);
+		flex-shrink: 0;
+		width: rem(32);
+		height: rem(32);
 		object-fit: contain;
 		pointer-events: none;
+		position: absolute;
+		bottom: calc(100% - 2.5rem);
+		left: calc(100% - 5rem);
+		z-index: -1;
 
 		@media (min-width: $md4) {
-			width: rem(56);
-			height: rem(56);
-			top: rem(-16);
-			right: rem(-24);
+			width: rem(95);
+			height: rem(110);
+
 		}
 	}
 
@@ -81,25 +103,28 @@
 		align-items: start;
 
 		@media (min-width: $md2) {
-			grid-template-columns: 1fr minmax(rem(260), 0.85fr);
-			gap: 2rem 3rem;
-			align-items: center;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+			max-width: rem(820);
+			margin: 5rem auto 0;
 		}
 	}
 
 	&__features {
+		padding-top: 0.5rem;
+		padding-bottom: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1.75rem;
-		margin: 0;
-		padding: 0;
-		list-style: none;
+		justify-content: space-between;
+		height: 100%;
+		gap: 2.5rem;
+
 	}
 
 	&__feature {
 		display: grid;
 		grid-template-columns: rem(64) 1fr;
-		gap: 0 1.25rem;
+		gap: 2.5rem;
 		align-items: start;
 	}
 
@@ -112,13 +137,13 @@
 	&__feature-title {
 		font-family: $font-display;
 		font-weight: 700;
-		font-size: 1.125rem;
+		font-size: 1.5rem;
 		margin-bottom: 0.35rem;
 	}
 
 	&__feature-text {
-		font-size: 0.9375rem;
-		line-height: 1.45;
+		font-size: 1rem;
+		line-height: 1.55;
 		color: rgba($text, 0.75);
 	}
 

@@ -91,7 +91,9 @@
 			color: #575757;
 		}
 
-		&:focus-visible {}
+		&:focus-visible {
+			outline: none;
+		}
 
 		&:hover,
 		&:focus {

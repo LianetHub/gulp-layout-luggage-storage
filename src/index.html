@@ -2,7 +2,6 @@
 <html lang="ru">
     @@include('html/_head.html', {})
     <body>
-        <a href="#main-content" class="skip-link">Перейти к содержимому</a>
         <div class="wrapper">
             @@include('html/_header.html', {})
 
@@ -185,14 +184,18 @@
 
                 <section class="storage" id="storage">
                     <div class="storage__container">
-                        <header class="storage__head section-head section-head--center">
-                            <p class="storage__eyebrow">Где хранится багаж?</p>
-                            <h2 class="storage__title">На нашем складе, без свободного доступа, под</h2>
-                            <p class="storage__accent">
-                                <span class="storage__accent-text">видеонаблюдением</span>
-                                <img src="@img/cam.svg" class="storage__accent-icon" width="56" height="56" alt="" aria-hidden="true">
-                            </p>
-                        </header>
+                        <div class="storage__head section-head section-head--center">
+                            <p class="section-head__lead">Где хранится багаж?</p>
+                            <h2 class="section-head__title">На нашем складе, без&nbsp;свободного доступа, под</h2>
+                            <div class="storage__accent-wrapper">
+                                <p class="storage__accent">
+                                    <span class="storage__accent-text">видеонаблюдением</span>
+                                </p>
+                                <span class="storage__accent-icon">
+                                    <img src="@img/sections/storage/cam.png" alt="Камера">
+                                </span>
+                            </div>
+                        </div>
 
                         <div class="storage__body">
                             <ul class="storage__features">
@@ -226,9 +229,9 @@
                                 </li>
                             </ul>
 
-                            <figure class="storage__media">
-                                <img src="@img/sections/storage/phone.png" class="storage__media-img" width="480" height="720" alt="Просмотр камер видеонаблюдения в приложении на телефоне">
-                            </figure>
+                            <div class="storage__media">
+                                <img src="@img/sections/storage/warehouse.png" class="storage__media-img" width="480" height="720" alt="Просмотр камер видеонаблюдения в приложении на телефоне">
+                            </div>
                         </div>
                     </div>
                 </section>

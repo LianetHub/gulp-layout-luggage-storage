@@ -611,6 +611,9 @@ body {
   opacity: 1;
   color: #575757;
 }
+.form__control:focus-visible {
+  outline: none;
+}
 .form__control:hover, .form__control:focus {
   border-color: #1dbbfe;
 }
@@ -1269,7 +1272,7 @@ body {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 1.625rem;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 @media (min-width: 767.98px) {
   .section-head__title {
@@ -1318,23 +1321,6 @@ body {
 :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
   outline: 0.1875rem solid #1dbbfe;
   outline-offset: 0.125rem;
-}
-
-.skip-link {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  z-index: 100;
-  padding: 0.75rem 1rem;
-  border-radius: 0.375rem;
-  background: #000000;
-  color: #ffffff;
-  font-weight: 600;
-  transform: translateY(-7.5rem);
-  transition: transform 0.2s ease;
-}
-.skip-link:focus-visible {
-  transform: translateY(0);
 }
 
 .visually-hidden {
@@ -1741,6 +1727,7 @@ body {
   position: relative;
   padding-top: 1.5rem;
   margin-bottom: 5.5rem;
+  padding-inline: 2.25rem;
 }
 
 .booking__time-slider {
@@ -1824,6 +1811,7 @@ body {
   font-size: 1.5rem;
   line-height: 1.2;
   color: #000000;
+  background: #fff;
 }
 
 .booking__time-prefix {
@@ -2133,6 +2121,7 @@ body {
 .booking__item-footer {
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
 }
 .booking__item-controls {
@@ -2145,27 +2134,44 @@ body {
   font-size: 0.8125rem;
   color: #acacac;
 }
+.booking__counter-controls {
+  gap: 0;
+  min-width: 4.75rem;
+  height: 2.625rem;
+  padding: 0.625rem 0.25rem;
+  background: #ebebeb;
+  border-radius: 0.5rem;
+}
 .booking__counter-btn {
-  width: 1.75rem;
-  height: 1.75rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
   border: none;
-  border-radius: 0.375rem;
-  background: rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  background: transparent;
+  color: #000000;
   font-size: 1.125rem;
+  font-weight: 400;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: opacity 0.2s;
 }
 @media (any-hover: hover) {
   .booking__counter-btn:hover {
-    background: rgba(29, 187, 254, 0.15);
-    color: #1dbbfe;
+    opacity: 0.55;
   }
 }
 .booking__counter-value {
+  flex: 1 1 auto;
   min-width: 1.25rem;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1rem;
+  line-height: 1;
+  text-align: center;
 }
 .booking__summary {
   margin-top: 1.675rem;
@@ -2659,77 +2665,79 @@ body {
 }
 
 .storage__head {
+  position: relative;
+  z-index: 1;
   margin-bottom: 2.5rem;
+}
+.storage__head .section-head__lead {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  max-width: none;
+}
+.storage__head .section-head__title {
+  text-transform: uppercase;
 }
 @media (min-width: 767.98px) {
   .storage__head {
     margin-bottom: 3rem;
   }
 }
-.storage__eyebrow {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #000000;
-}
-.storage__title {
+.storage__accent {
+  margin-top: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  gap: 0.5rem;
+  padding: 0.35em 0.85em;
+  border-radius: 1rem;
+  transform: rotate(2deg);
+  background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
+  box-shadow: 0 0 0.875rem rgba(255, 45, 155, 0.65), 0 0 2rem rgba(255, 45, 155, 0.35), 0 0 3rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
-  font-weight: 900;
-  font-size: 1.375rem;
-  line-height: 1.1;
-  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: #ffffff;
 }
 @media (min-width: 767.98px) {
-  .storage__title {
+  .storage__accent {
+    margin-top: -0.5rem;
     font-size: 2rem;
+    padding: 0.35em 0.25em;
+    box-shadow: 0 0 1.125rem rgba(255, 45, 155, 0.65), 0 0 2.5rem rgba(255, 45, 155, 0.35), 0 0 3.75rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
   }
 }
 @media (min-width: 1199.98px) {
-  .storage__title {
-    font-size: 2.5rem;
+  .storage__accent {
+    font-size: 4rem;
   }
 }
-.storage__accent {
+.storage__accent-wrapper {
   position: relative;
-  display: inline-block;
-  margin-top: 0.75rem;
+  z-index: 1;
+  width: fit-content;
+  margin-inline: auto;
 }
 .storage__accent-text {
   display: inline-block;
-  padding: 0.15em 0.55em;
-  border-radius: 0.75rem;
-  background: #060606;
-  color: #ffffff;
-  font-family: "Geologica", "GolosText", sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  line-height: 1.2;
-}
-@media (min-width: 767.98px) {
-  .storage__accent-text {
-    font-size: 2rem;
-  }
-}
-@media (min-width: 1199.98px) {
-  .storage__accent-text {
-    font-size: 2.5rem;
-  }
+  position: relative;
+  z-index: 1;
 }
 .storage__accent-icon {
-  position: absolute;
-  top: -0.75rem;
-  right: -1.25rem;
-  width: 3rem;
-  height: 3rem;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
   object-fit: contain;
   pointer-events: none;
+  position: absolute;
+  bottom: calc(100% - 2.5rem);
+  left: calc(100% - 5rem);
+  z-index: -1;
 }
 @media (min-width: 767.98px) {
   .storage__accent-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-    top: -1rem;
-    right: -1.5rem;
+    width: 5.9375rem;
+    height: 6.875rem;
   }
 }
 .storage__body {
@@ -2739,23 +2747,25 @@ body {
 }
 @media (min-width: 1199.98px) {
   .storage__body {
-    grid-template-columns: 1fr minmax(16.25rem, 0.85fr);
-    gap: 2rem 3rem;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 51.25rem;
+    margin: 5rem auto 0;
   }
 }
 .storage__features {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2.5rem;
 }
 .storage__feature {
   display: grid;
   grid-template-columns: 4rem 1fr;
-  gap: 0 1.25rem;
+  gap: 2.5rem;
   align-items: start;
 }
 .storage__feature-icon {
@@ -2766,12 +2776,12 @@ body {
 .storage__feature-title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   margin-bottom: 0.35rem;
 }
 .storage__feature-text {
-  font-size: 0.9375rem;
-  line-height: 1.45;
+  font-size: 1rem;
+  line-height: 1.55;
   color: rgba(0, 0, 0, 0.75);
 }
 .storage__media {
