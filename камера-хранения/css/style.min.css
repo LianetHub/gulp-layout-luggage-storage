@@ -994,8 +994,7 @@ body {
 
 .footer {
   flex-shrink: 0;
-  background: #f6f9fc;
-  border-top: 0.0625rem solid rgba(0, 0, 0, 0.08);
+  background-color: rgb(246, 246, 246);
   color: rgba(0, 0, 0, 0.55);
 }
 .footer__bottom {
@@ -1029,11 +1028,12 @@ body {
   color: #1dbbfe;
   text-decoration: none;
   transition: color 0.3s ease;
+  text-decoration: underline;
 }
 @media (any-hover: hover) {
   .footer__policy:hover {
     color: #37c3ef;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 .footer__copy {

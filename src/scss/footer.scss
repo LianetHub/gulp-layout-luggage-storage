@@ -1,7 +1,7 @@
 .footer {
 	flex-shrink: 0;
-	background: $bg-light;
-	border-top: rem(1) solid rgba($text, 0.08);
+	background-color: rgb(246, 246, 246);
+
 	color: rgba($text, 0.55);
 
 	&__bottom {
@@ -35,11 +35,12 @@
 		color: $accent;
 		text-decoration: none;
 		transition: color 0.3s ease;
+		text-decoration: underline;
 
 		@media (any-hover: hover) {
 			&:hover {
 				color: $accent-hover;
-				text-decoration: underline;
+				text-decoration: none;
 			}
 		}
 	}
