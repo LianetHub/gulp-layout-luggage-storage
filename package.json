@@ -48,6 +48,7 @@
     "gulp-webp-html-nosvg": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
+    "nouislider": "^15.8.1",
     "sass": "^1.45.2",
     "swiper": "^6.8.4",
     "through2": "^4.0.2",

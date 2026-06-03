@@ -6,8 +6,8 @@
 	position: relative;
 	color: $text-inverse;
 	overflow: hidden;
+	min-height: rem(1040);
 	// min-height: 100svh;
-	min-height: rem(1200);
 
 	&::before {
 		content: '';
@@ -26,7 +26,7 @@
 
 	@media (min-width: $md4) {
 		padding-top: rem(120);
-		padding-bottom: rem(32);
+		padding-bottom: rem(0);
 	}
 
 	@media (min-width: $md2) {
@@ -39,6 +39,8 @@
 		text-align: center;
 		max-width: rem(920);
 		margin: 0 auto;
+		position: relative;
+		z-index: 3;
 	}
 
 	&__title {
@@ -231,20 +233,48 @@
 		pointer-events: none;
 	}
 
+	&--pending {
+		.promo__cloud--left {
+			transform: translate(-28vw, -50%) scale(0.55);
+			opacity: 0;
+		}
+
+		.promo__cloud--right {
+			transform: translate(22vw, -50%) scale(0.55);
+			opacity: 0;
+		}
+
+		.promo__plane {
+			transform: translate(58vw, 6vh) scale(0.1);
+			opacity: 0.55;
+		}
+	}
+
+	&--pending &__cloud,
+	&--pending &__plane {
+		will-change: transform, opacity;
+	}
+
 	// .promo__cloud
 	&__cloud {
 		position: absolute;
 		z-index: 1;
 		transform: translate(0, -50%);
 
+		& img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
 		&--left {
-			top: 33%;
+			top: 38%;
 			width: 44vw;
 			left: -14%;
 		}
 
 		&--right {
-			top: 47%;
+			top: 52%;
 			width: 46vw;
 			right: -10%;
 		}
@@ -254,9 +284,18 @@
 	// .promo__plane
 	&__plane {
 		position: absolute;
-		bottom: 17.5%;
-		right: 7.25%;
+		bottom: 4.5%;
+		right: 6%;
+		width: 50vw;
+		max-height: rem(370);
 		z-index: 2;
+		transform-origin: center center;
+
+		& img {
+			width: auto;
+			height: 100%;
+
+		}
 	}
 
 
@@ -308,122 +347,4 @@
 		}
 	}
 
-	&__ratings {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 1rem 1.5rem;
-	}
-
-	&__rating {
-		display: grid;
-		grid-template-columns: auto auto;
-		align-items: center;
-		column-gap: 0.5rem;
-		row-gap: 0.15rem;
-		text-decoration: none;
-		color: inherit;
-		transition: opacity 0.2s ease;
-
-		@media (any-hover: hover) {
-			&:hover {
-				opacity: 0.8;
-			}
-		}
-
-		&--yandex {
-			grid-template-areas:
-				"value stars"
-				"caption logo";
-
-			.promo__rating-value {
-				grid-area: value;
-			}
-
-			.promo__rating-stars {
-				grid-area: stars;
-			}
-
-			.promo__rating-caption {
-				grid-area: caption;
-			}
-
-			.promo__rating-logo {
-				grid-area: logo;
-			}
-		}
-
-		&--2gis {
-			grid-template-areas:
-				"lead lead"
-				"review logo"
-				"value stars";
-			column-gap: 0.65rem;
-
-			.promo__rating-caption--lead {
-				grid-area: lead;
-			}
-
-			.promo__rating-review {
-				grid-area: review;
-			}
-
-			.promo__rating-value {
-				grid-area: value;
-			}
-
-			.promo__rating-stars {
-				grid-area: stars;
-			}
-
-			.promo__rating-logo {
-				grid-area: logo;
-			}
-		}
-	}
-
-	&__rating-value {
-		font-family: $font-display;
-		font-weight: 800;
-		font-size: 1.75rem;
-		line-height: 1;
-
-		@media (min-width: $md4) {
-			font-size: 2rem;
-		}
-	}
-
-	&__rating-stars {
-		width: rem(88);
-		height: rem(16);
-		background: url("@img/star.svg") left center / rem(16) rem(16) repeat-x;
-		filter: sepia(1) saturate(4) hue-rotate(5deg);
-	}
-
-	&__rating-caption {
-		font-size: 0.75rem;
-		line-height: 1.25;
-		color: rgba($text, 0.75);
-		max-width: rem(140);
-
-		&--lead {
-			grid-area: lead;
-			font-weight: 600;
-			color: $text;
-			font-size: 0.8125rem;
-		}
-	}
-
-	&__rating-review {
-		font-size: 0.75rem;
-		color: $accent;
-		text-decoration: underline;
-	}
-
-	&__rating-logo {
-		height: rem(22);
-		width: auto;
-		justify-self: end;
-		align-self: center;
-	}
 }

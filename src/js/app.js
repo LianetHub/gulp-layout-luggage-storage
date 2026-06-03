@@ -1,5 +1,8 @@
 "use strict";
 
+import { initPromoAnimation } from './modules/promo-animation.js';
+import { initBooking } from './modules/booking.js';
+
 // Инициализация Fancybox
 if (typeof Fancybox !== "undefined" && Fancybox !== null) {
     Fancybox.bind("[data-fancybox]", {
@@ -51,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     getNavigator();
 
+    initPromoAnimation();
 
     window.addEventListener('resize', () => {
         getNavigator()
@@ -316,204 +320,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Бронирование: калькулятор, даты, время
-    const bookingForm = document.getElementById('booking-form');
-    const bookingTotalEl = document.getElementById('booking-total');
-    const bookingCounters = document.getElementById('booking-counters');
-    const bookingSummaryQty = document.getElementById('booking-summary-qty');
-    const bookingSummaryList = document.getElementById('booking-summary-list');
-    const bookingSummaryCalc = document.getElementById('booking-summary-calc');
-    const bookingSummaryTime = document.getElementById('booking-summary-time');
-    const bookingSummaryDate = document.getElementById('booking-summary-date');
-    const bookingRangeFrom = document.getElementById('booking-range-from');
-    const bookingRangeTo = document.getElementById('booking-range-to');
-    const bookingTimeFromOut = document.getElementById('booking-time-from');
-    const bookingTimeToOut = document.getElementById('booking-time-to');
-    const bookingTimeFill = document.getElementById('booking-time-fill');
-    const bookingDefaultQty = [3, 1, 0];
-
-    function formatRub(value) {
-        return value.toLocaleString('ru-RU') + ' ₽';
-    }
-
-    function baggageUnitsLabel(count) {
-        const mod10 = count % 10;
-        const mod100 = count % 100;
-        if (mod100 >= 11 && mod100 <= 14) return `${count} единиц багажа`;
-        if (mod10 === 1) return `${count} единица багажа`;
-        if (mod10 >= 2 && mod10 <= 4) return `${count} единицы багажа`;
-        return `${count} единиц багажа`;
-    }
-
-    function minutesToTime(minutes) {
-        const h = Math.floor(minutes / 60) % 24;
-        const min = minutes % 60;
-        return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
-    }
-
-    function updateBookingSummaryDate(chip) {
-        if (!bookingSummaryDate || !chip) return;
-        const label = chip.querySelector('.booking__date-card-label')?.textContent?.trim();
-        const date = chip.querySelector('.booking__date-card-value')?.textContent?.trim();
-        if (label && date) {
-            bookingSummaryDate.innerHTML = `${label} <span>${date}</span>`;
-            return;
-        }
-        if (chip.dataset.value === 'other') {
-            bookingSummaryDate.textContent = 'Другая дата';
-        }
-    }
-
-    function syncDateCardMarks(group) {
-        group.querySelectorAll('.booking__date-card').forEach((card) => {
-            const mark = card.querySelector('.booking__date-card-mark');
-            if (!mark) return;
-            mark.classList.toggle('booking__date-card-mark--check', card.classList.contains('is-active'));
-        });
-    }
-
-    function updateBookingTimeRange(changedInput) {
-        if (!bookingRangeFrom || !bookingRangeTo) return;
-
-        let fromVal = Number(bookingRangeFrom.value);
-        let toVal = Number(bookingRangeTo.value);
-        const min = Number(bookingRangeFrom.min);
-        const max = Number(bookingRangeFrom.max);
-        const step = Number(bookingRangeFrom.step) || 15;
-
-        if (fromVal >= toVal) {
-            if (changedInput === bookingRangeFrom) {
-                toVal = Math.min(fromVal + step, max);
-                bookingRangeTo.value = String(toVal);
-            } else {
-                fromVal = Math.max(toVal - step, min);
-                bookingRangeFrom.value = String(fromVal);
-            }
-        }
-
-        const fromTime = minutesToTime(fromVal);
-        const toTime = minutesToTime(toVal);
-
-        if (bookingTimeFromOut) bookingTimeFromOut.textContent = fromTime;
-        if (bookingTimeToOut) bookingTimeToOut.textContent = toTime;
-        if (bookingSummaryTime) {
-            bookingSummaryTime.textContent = `С ${fromTime} до ${toTime}`;
-        }
-
-        const fromPct = ((fromVal - min) / (max - min)) * 100;
-        const toPct = ((toVal - min) / (max - min)) * 100;
-        const thumbFrom = bookingRangeFrom.closest('.booking__time-thumb');
-        const thumbTo = bookingRangeTo.closest('.booking__time-thumb');
-
-        if (thumbFrom) thumbFrom.style.left = `${fromPct}%`;
-        if (thumbTo) thumbTo.style.left = `${toPct}%`;
-        if (bookingTimeFill) {
-            bookingTimeFill.style.left = `${fromPct}%`;
-            bookingTimeFill.style.width = `${toPct - fromPct}%`;
-        }
-
-        bookingRangeFrom.setAttribute('aria-valuenow', String(fromVal));
-        bookingRangeTo.setAttribute('aria-valuenow', String(toVal));
-    }
-
-    function updateBookingTotal() {
-        if (!bookingCounters || !bookingTotalEl) return;
-
-        let total = 0;
-        let totalQty = 0;
-        const lines = [];
-
-        bookingCounters.querySelectorAll('.booking__counter').forEach((row) => {
-            const price = Number(row.dataset.price) || 0;
-            const name = row.dataset.name || row.querySelector('.booking__counter-name')?.textContent?.trim() || '';
-            const qtyEl = row.querySelector('[data-qty]');
-            const qty = Number(qtyEl?.textContent) || 0;
-            total += price * qty;
-            totalQty += qty;
-            if (qty > 0) {
-                lines.push({ name, qty, price });
-            }
-        });
-
-        bookingTotalEl.textContent = formatRub(total);
-
-        if (bookingSummaryQty) {
-            bookingSummaryQty.textContent = totalQty ? baggageUnitsLabel(totalQty) : '0 единиц багажа';
-        }
-
-        if (bookingSummaryList) {
-            bookingSummaryList.innerHTML = lines
-                .map(({ name, qty, price }) => `<li>${name} ${qty}шт. ${price} ₽/шт.</li>`)
-                .join('');
-        }
-
-        if (bookingSummaryCalc) {
-            const priced = lines.filter((item) => item.qty > 0);
-            const samePrice = priced.length > 0 && priced.every((item) => item.price === priced[0].price);
-            bookingSummaryCalc.textContent =
-                samePrice && totalQty > 0 ? `${totalQty}шт. × ${priced[0].price} ₽` : '';
-        }
-    }
-
-    if (bookingCounters) {
-        bookingCounters.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-action]');
-            if (!btn) return;
-            const row = btn.closest('.booking__counter');
-            const qtyEl = row?.querySelector('[data-qty]');
-            if (!qtyEl) return;
-            let qty = Number(qtyEl.textContent) || 0;
-            if (btn.dataset.action === 'inc') qty += 1;
-            if (btn.dataset.action === 'dec') qty = Math.max(0, qty - 1);
-            qtyEl.textContent = String(qty);
-            updateBookingTotal();
-        });
-        updateBookingTotal();
-    }
-
-    document.querySelectorAll('[data-booking-chips="date"]').forEach((group) => {
-        syncDateCardMarks(group);
-        group.addEventListener('click', (e) => {
-            const chip = e.target.closest('.booking__chip');
-            if (!chip) return;
-            group.querySelectorAll('.booking__chip').forEach((el) => el.classList.remove('is-active'));
-            chip.classList.add('is-active');
-            syncDateCardMarks(group);
-            updateBookingSummaryDate(chip);
-        });
+    initBooking({
+        validateForm: validateBookingForm,
+        showStatus: showFormStatus,
     });
-
-    if (bookingRangeFrom && bookingRangeTo) {
-        const onTimeRangeInput = (e) => updateBookingTimeRange(e.target);
-        bookingRangeFrom.addEventListener('input', onTimeRangeInput);
-        bookingRangeTo.addEventListener('input', onTimeRangeInput);
-        updateBookingTimeRange();
-    }
-
-    if (bookingForm) {
-        const bookingStatus = document.getElementById('booking-status');
-        bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (!validateBookingForm(bookingForm)) {
-                showFormStatus(bookingStatus, 'Укажите имя и корректный номер телефона (+7).', true);
-                bookingForm.querySelector('._error')?.focus();
-                return;
-            }
-            showFormStatus(bookingStatus, 'Заявка отправлена. Мы свяжемся с вами для подтверждения.', false);
-            bookingForm.reset();
-            if (bookingCounters) {
-                bookingCounters.querySelectorAll('[data-qty]').forEach((el, i) => {
-                    el.textContent = String(bookingDefaultQty[i] ?? 0);
-                });
-                updateBookingTotal();
-            }
-            if (bookingRangeFrom && bookingRangeTo) {
-                bookingRangeFrom.value = '585';
-                bookingRangeTo.value = '1050';
-                updateBookingTimeRange();
-            }
-        });
-    }
 
     document.querySelectorAll('.popup__form').forEach((form) => {
         form.addEventListener('submit', (e) => {

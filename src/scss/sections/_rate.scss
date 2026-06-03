@@ -1,0 +1,70 @@
+.rate {
+
+	position: relative;
+	z-index: 3;
+
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		padding: 1.25rem rem(19) 1.5rem;
+		max-width: $maxWidthContainer;
+		margin: 0 auto;
+
+		@media (min-width: $md3) {
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 2rem;
+			padding-top: 1.5rem;
+			padding-bottom: 1.75rem;
+		}
+	}
+
+	&__title {
+		font-family: $font-display;
+		font-weight: 800;
+		font-size: 1.125rem;
+		line-height: 1.35;
+		flex-shrink: 0;
+		width: 10rem;
+
+
+		@media (min-width: $md4) {
+			font-size: 1.5rem;
+		}
+
+
+	}
+
+	&__ratings {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem 1.5rem;
+	}
+
+	&__item {
+		display: grid;
+		grid-template-columns: auto auto;
+		align-items: center;
+		column-gap: 0.5rem;
+		row-gap: 0.15rem;
+		text-decoration: none;
+		color: inherit;
+		transition: opacity 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+
+	}
+
+
+
+	&__logo {}
+}

@@ -1355,7 +1355,7 @@ body {
   position: relative;
   color: #ffffff;
   overflow: hidden;
-  min-height: 75rem;
+  min-height: 65rem;
   background: linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 90.71%, #FFF 100%);
   padding: 6.25rem 0rem 1.5rem;
 }
@@ -1372,7 +1372,7 @@ body {
 @media (min-width: 767.98px) {
   .promo {
     padding-top: 7.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 0rem;
   }
 }
 @media (min-width: 1199.98px) {
@@ -1384,6 +1384,8 @@ body {
   text-align: center;
   max-width: 57.5rem;
   margin: 0 auto;
+  position: relative;
+  z-index: 3;
 }
 .promo__title {
   font-family: "Geologica", "GolosText", sans-serif;
@@ -1548,26 +1550,53 @@ body {
   right: 0;
   pointer-events: none;
 }
+.promo--pending .promo__cloud--left {
+  transform: translate(-28vw, -50%) scale(0.55);
+  opacity: 0;
+}
+.promo--pending .promo__cloud--right {
+  transform: translate(22vw, -50%) scale(0.55);
+  opacity: 0;
+}
+.promo--pending .promo__plane {
+  transform: translate(58vw, 6vh) scale(0.1);
+  opacity: 0.55;
+}
+.promo--pending .promo__cloud, .promo--pending .promo__plane {
+  will-change: transform, opacity;
+}
 .promo__cloud {
   position: absolute;
   z-index: 1;
   transform: translate(0, -50%);
 }
+.promo__cloud img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .promo__cloud--left {
-  top: 33%;
+  top: 38%;
   width: 44vw;
   left: -14%;
 }
 .promo__cloud--right {
-  top: 47%;
+  top: 52%;
   width: 46vw;
   right: -10%;
 }
 .promo__plane {
   position: absolute;
-  bottom: 17.5%;
-  right: 7.25%;
+  bottom: 4.5%;
+  right: 6%;
+  width: 50vw;
+  max-height: 23.125rem;
   z-index: 2;
+  transform-origin: center center;
+}
+.promo__plane img {
+  width: auto;
+  height: 100%;
 }
 .promo__bar {
   position: relative;
@@ -1617,13 +1646,49 @@ body {
     font-size: 1.75rem;
   }
 }
-.promo__ratings {
+
+.rate {
+  position: relative;
+  z-index: 3;
+}
+.rate__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem 1.1875rem 1.5rem;
+  max-width: 77.5rem;
+  margin: 0 auto;
+}
+@media (min-width: 991.98px) {
+  .rate__container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.75rem;
+  }
+}
+.rate__title {
+  font-family: "Geologica", "GolosText", sans-serif;
+  font-weight: 800;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  flex-shrink: 0;
+  width: 10rem;
+}
+@media (min-width: 767.98px) {
+  .rate__title {
+    font-size: 1.5rem;
+  }
+}
+.rate__ratings {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem 1.5rem;
 }
-.promo__rating {
+.rate__item {
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
@@ -1634,83 +1699,71 @@ body {
   transition: opacity 0.2s ease;
 }
 @media (any-hover: hover) {
-  .promo__rating:hover {
+  .rate__item:hover {
     opacity: 0.8;
   }
 }
-.promo__rating--yandex {
-  grid-template-areas: "value stars" "caption logo";
+.booking__time-slider {
+  height: 3rem;
+  padding: 0 1.25rem;
 }
-.promo__rating--yandex .promo__rating-value {
-  grid-area: value;
+.booking__time-slider.noUi-target {
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
-.promo__rating--yandex .promo__rating-stars {
-  grid-area: stars;
+.booking__time-slider .noUi-base {
+  height: 100%;
 }
-.promo__rating--yandex .promo__rating-caption {
-  grid-area: caption;
+.booking__time-slider .noUi-connects {
+  top: 50%;
+  transform: translateY(-50%);
+  height: 0.25rem;
+  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.12);
 }
-.promo__rating--yandex .promo__rating-logo {
-  grid-area: logo;
+.booking__time-slider .noUi-connect {
+  background: #ff2d9b;
 }
-.promo__rating--2gis {
-  grid-template-areas: "lead lead" "review logo" "value stars";
-  column-gap: 0.65rem;
+.booking__time-slider .noUi-origin {
+  height: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
-.promo__rating--2gis .promo__rating-caption--lead {
-  grid-area: lead;
+.booking__time-slider .noUi-horizontal .noUi-handle {
+  width: 2.5rem;
+  height: 2.5rem;
+  right: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background: #ff2d9b;
+  box-shadow: none;
+  cursor: grab;
 }
-.promo__rating--2gis .promo__rating-review {
-  grid-area: review;
+.booking__time-slider .noUi-horizontal .noUi-handle::before, .booking__time-slider .noUi-horizontal .noUi-handle::after {
+  display: none;
 }
-.promo__rating--2gis .promo__rating-value {
-  grid-area: value;
+.booking__time-slider .noUi-horizontal .noUi-handle:active {
+  cursor: grabbing;
 }
-.promo__rating--2gis .promo__rating-stars {
-  grid-area: stars;
+.booking__time-slider .noUi-handle:focus-visible {
+  outline: 0.125rem solid #1dbbfe;
+  outline-offset: 0.125rem;
 }
-.promo__rating--2gis .promo__rating-logo {
-  grid-area: logo;
-}
-.promo__rating-value {
-  font-family: "Geologica", "GolosText", sans-serif;
-  font-weight: 800;
-  font-size: 1.75rem;
-  line-height: 1;
-}
-@media (min-width: 767.98px) {
-  .promo__rating-value {
-    font-size: 2rem;
-  }
-}
-.promo__rating-stars {
-  width: 5.5rem;
-  height: 1rem;
-  background: url("../img/star.svg") left center/1rem 1rem repeat-x;
-  filter: sepia(1) saturate(4) hue-rotate(5deg);
-}
-.promo__rating-caption {
+
+.booking__time-handle-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
   font-size: 0.75rem;
-  line-height: 1.25;
-  color: rgba(0, 0, 0, 0.75);
-  max-width: 8.75rem;
-}
-.promo__rating-caption--lead {
-  grid-area: lead;
-  font-weight: 600;
-  color: #000000;
-  font-size: 0.8125rem;
-}
-.promo__rating-review {
-  font-size: 0.75rem;
-  color: #1dbbfe;
-  text-decoration: underline;
-}
-.promo__rating-logo {
-  height: 1.375rem;
-  width: auto;
-  justify-self: end;
-  align-self: center;
+  font-weight: 700;
+  text-transform: lowercase;
+  pointer-events: none;
 }
 
 .booking {
@@ -1933,71 +1986,6 @@ body {
   margin-bottom: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
-}
-.booking__time-slider {
-  position: relative;
-  height: 3rem;
-}
-.booking__time-track {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 0.25rem;
-  border-radius: 0.25rem;
-  background: rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-}
-.booking__time-track-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: #ff2d9b;
-  border-radius: inherit;
-  pointer-events: none;
-}
-.booking__time-thumb {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 2.5rem;
-  height: 2.5rem;
-  margin: 0;
-  pointer-events: none;
-}
-.booking__time-thumb--from {
-  left: 0;
-}
-.booking__time-thumb--to {
-  left: 100%;
-}
-.booking__time-thumb-letter {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #ff2d9b;
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: lowercase;
-  pointer-events: none;
-  z-index: 1;
-}
-.booking__time-input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 2;
 }
 .booking__items {
   display: grid;

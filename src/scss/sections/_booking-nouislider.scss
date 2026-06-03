@@ -1,0 +1,72 @@
+.booking__time-slider {
+	height: rem(48);
+	padding: 0 rem(20);
+
+	&.noUi-target {
+		border: none;
+		box-shadow: none;
+		background: transparent;
+	}
+
+	.noUi-base {
+		height: 100%;
+	}
+
+	.noUi-connects {
+		top: 50%;
+		transform: translateY(-50%);
+		height: rem(4);
+		border-radius: rem(4);
+		background: rgba($text, 0.12);
+	}
+
+	.noUi-connect {
+		background: $booking-pink;
+	}
+
+	.noUi-origin {
+		height: rem(4);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.noUi-horizontal .noUi-handle {
+		width: rem(40);
+		height: rem(40);
+		right: rem(-20);
+		top: 50%;
+		transform: translateY(-50%);
+		border: none;
+		border-radius: 50%;
+		background: $booking-pink;
+		box-shadow: none;
+		cursor: grab;
+
+		&::before,
+		&::after {
+			display: none;
+		}
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+
+	.noUi-handle:focus-visible {
+		outline: rem(2) solid $accent;
+		outline-offset: rem(2);
+	}
+}
+
+.booking__time-handle-label {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $text-inverse;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: lowercase;
+	pointer-events: none;
+}
