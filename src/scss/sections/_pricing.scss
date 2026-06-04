@@ -5,7 +5,11 @@
 		position: relative;
 		z-index: 1;
 		margin-bottom: 0;
-		padding-bottom: 5rem;
+		padding-bottom: 2rem;
+
+		@media (min-width: $md4) {
+			padding-bottom: 5rem;
+		}
 
 		.section-head__lead {
 			margin-top: 0;
@@ -80,28 +84,60 @@
 		}
 	}
 
-
-
 	&__unit-note {
-		max-width: rem(140);
-		font-size: 1.75rem;
 		font-weight: 600;
 		line-height: 1.375;
 		transform: rotate(-12deg);
-		transform-origin: left bottom;
 		color: rgba(0, 0, 0, 0.1);
-		position: absolute;
-		bottom: 0;
-		right: calc(100% - 3.5rem);
 
 		& span {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 
+		&--in-intro {
+			max-width: rem(140);
+			transform-origin: left bottom;
+			position: absolute;
+			bottom: 0;
+			right: calc(100% - 3.5rem);
+			font-size: 1.75rem;
+
+			& span {
+				font-size: 2rem;
+			}
+
+			@media (max-width: $md4) {
+				display: none;
+			}
+		}
+	}
+
+	&__unit-card {
+		display: none;
+
+		@media (max-width: $md4) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: rem(200);
+			padding: 1rem;
+			border-radius: rem(16);
+			background-color: $bg-white;
+			border: rem(1) solid rgba($text, 0.08);
+			box-shadow: 0 rem(4) rem(24) rgba($secondary, 0.06);
+		}
+
+		.pricing__unit-note {
+			max-width: rem(120);
+			margin: 0;
+			font-size: 1.125rem;
+			text-align: center;
+			transform: rotate(-12deg);
+		}
 	}
 
 	&__record {
-		display: flex;
+		display: none;
 		align-items: center;
 		flex-direction: column;
 		gap: 0.25rem;
@@ -110,13 +146,16 @@
 		position: absolute;
 		bottom: -3rem;
 		left: calc(100% - 7.5rem);
+
+		@media (min-width: $md4) {
+			display: flex;
+		}
 	}
 
 	&__record-img {
 		flex-shrink: 0;
 		margin-right: -4rem;
 		margin-bottom: -0.25rem;
-
 	}
 
 	&__record-value {
@@ -135,42 +174,65 @@
 	}
 
 	&__rates {
-		margin-top: 2.25rem;
+		margin-top: 1.5rem;
+
+		@media (min-width: $md4) {
+			margin-top: 2.25rem;
+		}
 	}
 
 	&__rates-title {
-		margin-bottom: 2.25rem;
+		margin-bottom: 1.25rem;
 		font-family: $font-display;
 		font-weight: 800;
 		font-size: 1.125rem;
 		line-height: 1.2;
 
 		@media (min-width: $md4) {
+			margin-bottom: 2.25rem;
 			font-size: 1.5rem;
 		}
 	}
 
 	&__grid {
 		display: grid;
-		gap: 1.25rem;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.75rem;
 		list-style: none;
 		margin: 0;
 		padding: 0;
 
-		&--top {
-			@media (min-width: $md5) {
-				grid-template-columns: repeat(2, 1fr);
-			}
+		@media (min-width: $md4) {
+			gap: 1rem;
+		}
 
-			@media (min-width: $md2) {
-				grid-template-columns: repeat(4, 1fr);
+		@media (min-width: $md2) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1.25rem;
+		}
+
+		&--top {
+			@media (max-width: $md4) {
+				.pricing__tagline-item {
+					order: 7;
+					grid-column: 1 / -1;
+				}
+
+				.pricing__card--wide {
+					order: 6;
+					grid-column: span 1;
+				}
 			}
 		}
 	}
 
 	&__tagline-item {
-		grid-column: span 2;
+		grid-column: 1 / -1;
 		align-self: center;
+
+		@media (min-width: $md2) {
+			grid-column: span 2;
+		}
 	}
 
 	&__tagline {
@@ -179,12 +241,13 @@
 		margin: 0;
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.375rem;
-		line-height: 1.5;
+		font-size: 1.125rem;
+		line-height: 1.45;
 		text-transform: uppercase;
 
 		@media (min-width: $md4) {
 			font-size: 1.75rem;
+			line-height: 1.5;
 		}
 
 		@media (min-width: $md2) {
@@ -198,8 +261,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		min-height: rem(290);
-		padding: 1rem 1.375rem;
+		min-height: rem(200);
+		padding: 0.875rem 1rem;
 		border-radius: rem(16);
 		background-color: $bg-white;
 		background-size: cover;
@@ -210,8 +273,19 @@
 		overflow: hidden;
 		transition: transform 0.2s, box-shadow 0.2s;
 
+		@media (min-width: $md4) {
+			min-height: rem(240);
+			padding: 1rem 1.375rem;
+		}
+
+		@media (min-width: $md2) {
+			min-height: rem(290);
+		}
+
 		&.pricing__card--wide {
-			grid-column: span 2;
+			@media (min-width: $md2) {
+				grid-column: span 2;
+			}
 		}
 
 		@media (any-hover: hover) {
@@ -220,21 +294,22 @@
 				box-shadow: 0 rem(12) rem(32) rgba($secondary, 0.1);
 			}
 		}
-
-
 	}
-
 
 	&__card-price {
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.5rem;
+		font-size: 1.375rem;
 		color: $text;
 		line-height: 1.1;
 		display: flex;
 		flex-direction: column;
 
 		@media (min-width: $md4) {
+			font-size: 2.5rem;
+		}
+
+		@media (min-width: $md2) {
 			font-size: 4.75rem;
 		}
 
@@ -253,28 +328,45 @@
 		color: $text-inverse;
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 2rem;
+		font-size: 1.125rem;
 		line-height: 1.2;
 		text-transform: uppercase;
 		position: absolute;
-		bottom: 1rem;
-		right: 1rem;
+		bottom: 0.625rem;
+		right: 0.625rem;
 		background: #8f2fff;
 		transform: rotate(-6deg);
 		z-index: 2;
 
+		@media (min-width: $md4) {
+			font-size: 2rem;
+			bottom: 1rem;
+			right: 1rem;
+		}
 	}
 
 	&__card-desc {
-		margin-top: 0.875rem;
-		font-size: 1rem;
-		line-height: 1.5;
-		padding-left: 0.25rem;
-		max-width: rem(190);
+		margin-top: 0.625rem;
+		font-size: 0.8125rem;
+		line-height: 1.45;
+		padding-left: 0.125rem;
+		max-width: rem(130);
 		color: #000;
 
+		@media (min-width: $md4) {
+			margin-top: 0.875rem;
+			font-size: 1rem;
+			line-height: 1.5;
+			padding-left: 0.25rem;
+			max-width: rem(190);
+		}
+
 		&.pricing__card-desc--wide {
-			max-width: rem(240);
+			max-width: rem(150);
+
+			@media (min-width: $md4) {
+				max-width: rem(240);
+			}
 		}
 	}
 

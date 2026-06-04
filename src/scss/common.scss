@@ -8,6 +8,10 @@ body {
 	color: $text;
 	margin-right: 0 !important;
 
+	@media (max-width: $md3) {
+		padding-bottom: rem(72);
+	}
+
 
 
 	&.lock {
@@ -41,8 +45,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow-x: clip;
-	background: $bg-page url("@img/decor/page-bg.png") center top / cover no-repeat;
-	background-attachment: fixed;
 }
 
 .page {

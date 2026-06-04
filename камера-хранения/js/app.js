@@ -413,6 +413,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
+    if (document.querySelector('.benefits__slider')) {
+        new MobileSwiper('.benefits__slider', {
+            slidesPerView: 1.08,
+            spaceBetween: 12,
+            watchOverflow: true,
+        })
+    }
+
     if (document.querySelector('.tariffs__slider')) {
 
 

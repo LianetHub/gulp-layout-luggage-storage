@@ -7,6 +7,10 @@
 
             <main class="page" id="main-content">
                 <section class="promo promo--pending" id="promo">
+                    <a href="/" class="promo__logo">
+                        <img src="@img/logo.svg" alt="Камера хранения — логотип">
+                    </a>
+
                     <div class="promo__decor" aria-hidden="true">
                         <div class="promo__cloud promo__cloud--left">
                             <img src="@img/hero/cloud-1.png" alt="Облако">
@@ -95,7 +99,7 @@
                                     <use href="@img/icons/sprite.svg#clock"></use>
                                 </svg>
                             </p>
-                            <p class="pricing__unit-note"><span>шт.</span> — чемодан, сумка, рюкзак</p>
+                            <p class="pricing__unit-note pricing__unit-note--in-intro"><span>шт.</span> — чемодан, сумка, рюкзак</p>
                             <div class="pricing__record">
                                 <img class="pricing__record-img" src="@img/sections/pricing/record-badge.png" alt="">
                                 <p class="pricing__record-text">
@@ -125,6 +129,9 @@
                                     <p class="pricing__card-desc pricing__card-desc--wide">Хранение багажа после&nbsp;19:00 оплачивается дополнительно</p>
                                     <span class="pricing__card-badge">в час</span>
                                 </li>
+                                <li class="pricing__unit-card">
+                                    <p class="pricing__unit-note"><span>шт.</span> — чемодан, сумка, рюкзак</p>
+                                </li>
                                 <li class="pricing__card" style="background-image: url('@img/sections/pricing/card-4.png');">
                                     <p class="pricing__card-price">600 <small>₽/шт.</small></p>
                                     <p class="pricing__card-desc">Суточное хранение. Сдать багаж сегодня, забрать завтра</p>
@@ -144,41 +151,43 @@
 
                 <div class="benefits" id="benefits">
                     <div class="benefits__container">
-                        <ul class="benefits__grid">
-                            <li class="benefits__card benefits__card--wide" style="--benefits-card-bg: url('../@img/sections/benefits/card-1.png');">
+                        <div class="benefits__slider swiper">
+                        <ul class="benefits__grid swiper-wrapper">
+                            <li class="benefits__card benefits__card--wide swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-1.png');">
                                 <span class="benefits__badge">Бесплатно</span>
                                 <h3 class="benefits__card-title">Продукты питания и&nbsp;медикаменты храним в&nbsp;холодильнике</h3>
                                 <p class="benefits__card-text">Копчёный угорь, сыр, марципан и&nbsp;конфеты не&nbsp;испортятся по&nbsp;дороге&nbsp;домой.</p>
                             </li>
-                            <li class="benefits__card" style="--benefits-card-bg: url('../@img/sections/benefits/card-2.png');">
+                            <li class="benefits__card swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-2.png');">
                                 <span class="benefits__badge">Бесплатно</span>
                                 <h3 class="benefits__card-title">Распечатаем посадочные талоны</h3>
                                 <p class="benefits__card-text">Пока вы наслаждаетесь прогулкой, распечатаем ваши посадочные талоны и&nbsp;приложим к&nbsp;багажу.</p>
 
                             </li>
-                            <li class="benefits__card" style="--benefits-card-bg: url('../@img/sections/benefits/card-3.png');">
+                            <li class="benefits__card swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-3.png');">
                                 <span class="benefits__badge">Бесплатно</span>
                                 <h3 class="benefits__card-title">Взвесим ваш багаж перед вылетом</h3>
                                 <p class="benefits__card-text">Вы точно будете знать, сколько весит ваш багаж, и&nbsp;сможете переложить вещи у&nbsp;нас.</p>
 
                             </li>
-                            <li class="benefits__card" style="--benefits-card-bg: url('../@img/sections/benefits/card-4.png');">
+                            <li class="benefits__card swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-4.png');">
                                 <span class="benefits__badge">Бесплатно</span>
                                 <h3 class="benefits__card-title">Вы сможете помыть руки и&nbsp;сходить на&nbsp;дорожку</h3>
                                 <p class="benefits__card-text">В нашем ТЦ бесплатный туалет, где вы сможете привести себя в&nbsp;порядок перед вылетом.</p>
 
                             </li>
-                            <li class="benefits__card" style="--benefits-card-bg: url('../@img/sections/benefits/card-5.png');">
+                            <li class="benefits__card swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-5.png');">
                                 <span class="benefits__badge">Бесплатно</span>
                                 <h3 class="benefits__card-title">Предоставим стрейч-плёнку</h3>
                                 <p class="benefits__card-text">Бесплатно предоставим плёнку для обёртывания — не&nbsp;крахоборим на&nbsp;этом, всё за&nbsp;наш счёт.</p>
                             </li>
-                            <li class="benefits__card benefits__card--wide benefits__card--paid" style="--benefits-card-bg: url('../@img/sections/benefits/card-6.png');">
+                            <li class="benefits__card benefits__card--wide benefits__card--paid swiper-slide" style="--benefits-card-bg: url('../@img/sections/benefits/card-6.png');">
                                 <span class="benefits__badge">Уже за деньги =)</span>
                                 <h3 class="benefits__card-title">Вы можете приобрести все&nbsp;любимые и&nbsp;популярные товары из&nbsp;IKEA</h3>
                                 <p class="benefits__card-text">В соседнем магазине.</p>
                             </li>
                         </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -314,13 +323,15 @@
                             <p class="contacts__highlight">
                                 <span class="contacts__highlight-text">центр города</span>
                             </p>
-                            <div class="contacts__decor contacts__decor--sea" aria-hidden="true">
-                                <img class="contacts__decor-img" src="@img/sections/contacts/sea-decoration.png" alt="">
-                                <p class="contacts__decor-text">5 минут <br> до моря</p>
-                            </div>
-                            <div class="contacts__decor contacts__decor--taxi" aria-hidden="true">
-                                <img class="contacts__decor-img" src="@img/sections/contacts/taxi-decoration.png" alt="">
-                                <p class="contacts__decor-text">Подача такси 3 минуты</p>
+                            <div class="contacts__decors" aria-hidden="true">
+                                <div class="contacts__decor contacts__decor--sea">
+                                    <img class="contacts__decor-img" src="@img/sections/contacts/sea-decoration.png" alt="">
+                                    <p class="contacts__decor-text">5 минут <br> до моря</p>
+                                </div>
+                                <div class="contacts__decor contacts__decor--taxi">
+                                    <img class="contacts__decor-img" src="@img/sections/contacts/taxi-decoration.png" alt="">
+                                    <p class="contacts__decor-text">Подача такси 3 минуты</p>
+                                </div>
                             </div>
                         </div>
 
@@ -383,6 +394,7 @@
                 </section>
             </main>
             @@include('html/_footer.html', {})
+            @@include('html/_mobile-bar.html', {})
             @@include('html/_modal.html', {})
             @@include('html/_js.html', {})
         </div>

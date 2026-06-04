@@ -1,14 +1,13 @@
 .footer {
 	flex-shrink: 0;
 	background-color: rgb(246, 246, 246);
-
 	color: rgba($text, 0.55);
 
 	&__bottom {
-		padding: 1.125rem 0;
+		padding: 1.25rem 0 7.5rem;
 
-		@media (min-width: $md4) {
-			padding: 1.25rem 0;
+		@media (min-width: $md3) {
+			padding: 1.375rem 0;
 		}
 	}
 
@@ -16,10 +15,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.625rem;
+		gap: 0.75rem;
 		text-align: center;
 
-		@media (min-width: $md4) {
+		@media (min-width: $md3) {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
@@ -33,9 +32,8 @@
 		font-size: 0.875rem;
 		line-height: 1.4;
 		color: $accent;
-		text-decoration: none;
-		transition: color 0.3s ease;
 		text-decoration: underline;
+		transition: color 0.3s ease;
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -47,13 +45,26 @@
 
 	&__copy {
 		margin: 0;
+		max-width: rem(280);
 		font-size: 0.8125rem;
 		line-height: 1.45;
 		color: rgba($text, 0.5);
 
-		@media (min-width: $md4) {
+		@media (min-width: $md5) {
+			max-width: rem(320);
+		}
+
+		@media (min-width: $md3) {
+			max-width: none;
+			flex: 1 1 auto;
 			font-size: 0.875rem;
 			text-align: right;
+		}
+	}
+
+	&__copy-br {
+		@media (min-width: $md3) {
+			display: none;
 		}
 	}
 }

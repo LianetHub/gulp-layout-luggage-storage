@@ -1,25 +1,27 @@
 .booking__time-range {
 	position: relative;
-	padding-top: rem(24);
-	margin-bottom: 5.5rem;
-	padding-inline: rem(36);
+	padding-top: rem(16);
+	margin-bottom: 3rem;
+	padding-inline: rem(16);
 
+
+	@media (min-width: $md4) {
+		padding-top: rem(24);
+		margin-bottom: 5.5rem;
+		padding-inline: rem(32);
+	}
 }
 
 $booking-track-height: rem(2);
 $booking-track-active-height: rem(4);
-$booking-dot-size: rem(10);
-$booking-dot-radius: rem(5);
-$booking-pin-size: rem(56);
-$booking-pin-gap: rem(20);
-$booking-pin-top: calc(#{$booking-track-height} + #{$booking-dot-radius} + #{$booking-pin-gap});
-$booking-handle-width: $booking-pin-size;
-$booking-handle-height: calc(#{$booking-pin-top} + #{$booking-pin-size});
-$booking-handle-offset: calc(#{$booking-handle-width} / -2);
 
 .booking__time-slider {
 	height: $booking-track-height;
-	margin: rem(32) 0 rem(44);
+	margin: rem(24) 0 rem(32);
+
+	@media (min-width: $md4) {
+		margin: rem(32) 0 rem(44);
+	}
 
 	&.noUi-target {
 		border: none;
@@ -64,11 +66,17 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 	}
 
 	&.noUi-horizontal .noUi-handle {
-		width: $booking-handle-width;
-		height: $booking-handle-height;
-		right: $booking-handle-offset;
+		width: rem(44);
+		height: calc(#{rem(2)} + #{rem(4)} + #{rem(14)} + #{rem(44)});
+		right: calc(#{rem(44)} / -2);
 		top: 0;
 		cursor: grab;
+
+		@media (min-width: $md4) {
+			width: rem(56);
+			height: calc(#{rem(2)} + #{rem(5)} + #{rem(20)} + #{rem(56)});
+			right: calc(#{rem(56)} / -2);
+		}
 
 		&:active {
 			cursor: grabbing;
@@ -105,13 +113,20 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 .booking__time-handle-time {
 	position: absolute;
 	left: 50%;
-	top: calc(#{$booking-track-height} - #{$booking-dot-radius});
-	transform: translate(-50%, calc(-100% - rem(8)));
+	top: calc(#{rem(2)} - #{rem(4)});
+	transform: translate(-50%, calc(-100% - rem(6)));
 	white-space: nowrap;
-	font-size: rem(24);
+	font-size: rem(18);
 	line-height: 1.2;
 	color: $text;
 	background: #fff;
+
+
+	@media (min-width: $md4) {
+		top: calc(#{rem(2)} - #{rem(5)});
+		transform: translate(-50%, calc(-100% - rem(8)));
+		font-size: rem(24);
+	}
 }
 
 .booking__time-prefix {
@@ -122,7 +137,6 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 
 .booking__time-output {
 	display: inline-block;
-
 	font-weight: 700;
 
 }
@@ -130,28 +144,40 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 .booking__time-handle-dot {
 	position: absolute;
 	left: 50%;
-	top: calc(#{$booking-track-height} - #{$booking-dot-radius});
+	top: calc(#{rem(2)} - #{rem(4)});
 	z-index: 2;
 	transform: translateX(-50%);
-	width: $booking-dot-size;
-	height: $booking-dot-size;
+	width: rem(8);
+	height: rem(8);
 	border: none;
 	border-radius: 50%;
 	background: $booking-pink;
 	box-shadow: none;
+
+	@media (min-width: $md4) {
+		top: calc(#{rem(2)} - #{rem(5)});
+		width: rem(10);
+		height: rem(10);
+	}
 }
 
 .booking__time-handle-pin {
 	position: absolute;
 	left: 50%;
-	top: $booking-pin-top;
-	width: $booking-pin-size;
-	height: $booking-pin-size;
+	top: calc(#{rem(2)} + #{rem(4)} + #{rem(14)});
+	width: rem(44);
+	height: rem(44);
 	background: $booking-pink;
 	border-radius: 50% 50% 50% 0;
 	transform: translateX(-50%) rotate(135deg);
 	transform-origin: center center;
 	color: $text-inverse;
+
+	@media (min-width: $md4) {
+		top: calc(#{rem(2)} + #{rem(5)} + #{rem(20)});
+		width: rem(56);
+		height: rem(56);
+	}
 }
 
 .booking__time-handle-pin-text {
@@ -161,8 +187,12 @@ $booking-handle-offset: calc(#{$booking-handle-width} / -2);
 	width: 100%;
 	height: 100%;
 	transform: rotate(-135deg);
-	font-size: rem(20);
+	font-size: rem(16);
 	font-weight: 700;
 	line-height: 1;
 	text-transform: lowercase;
+
+	@media (min-width: $md4) {
+		font-size: rem(20);
+	}
 }

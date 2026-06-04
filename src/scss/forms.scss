@@ -133,24 +133,7 @@
 		width: fit-content;
 	}
 
-	// .form__checkbox-input
-	&__checkbox-input {
-		&:checked {
-			&+.form__checkbox-text {
-				&::before {
-					@extend %ic, .icon-check;
-				}
-			}
-		}
 
-		&.error {
-			&+.form__checkbox-text {
-				&::before {
-					border: rem(1) solid red;
-				}
-			}
-		}
-	}
 
 	// .form__checkbox-text
 	&__checkbox-text {
