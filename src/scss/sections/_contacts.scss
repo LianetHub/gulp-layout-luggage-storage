@@ -1,6 +1,10 @@
 .contacts {
 	@extend .section-padding;
 
+	@media (max-width:$md5) {
+		padding-bottom: 0 !important;
+	}
+
 	&__intro {
 		position: relative;
 		z-index: 1;
@@ -401,8 +405,8 @@
 		background: $bg-light;
 
 		@media (max-width:$md5) {
-			margin-inline: -1rem;
-			width: calc(100% + 2rem);
+			margin-inline: -1.1875rem;
+			width: calc(100% + rem(38));
 		}
 
 		@media (min-width: $md5) {

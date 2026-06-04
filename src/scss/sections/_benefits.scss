@@ -2,6 +2,8 @@
 	@extend .section-padding;
 
 	&__slider {
+		overflow: visible;
+
 		@media (max-width: $md4) {
 			margin-left: rem(-19);
 			margin-right: rem(-19);

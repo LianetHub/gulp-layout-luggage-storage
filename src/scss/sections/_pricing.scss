@@ -121,10 +121,7 @@
 			justify-content: center;
 			min-height: rem(200);
 			padding: 1rem;
-			border-radius: rem(16);
-			background-color: $bg-white;
-			border: rem(1) solid rgba($text, 0.08);
-			box-shadow: 0 rem(4) rem(24) rgba($secondary, 0.06);
+
 		}
 
 		.pricing__unit-note {
@@ -274,6 +271,7 @@
 		transition: transform 0.2s, box-shadow 0.2s;
 
 		@media (min-width: $md4) {
+
 			min-height: rem(240);
 			padding: 1rem 1.375rem;
 		}
@@ -283,6 +281,11 @@
 		}
 
 		&.pricing__card--wide {
+			@media (max-width:$md4) {
+				background-size: 75%;
+				background-position: right 0%;
+			}
+
 			@media (min-width: $md2) {
 				grid-column: span 2;
 			}
@@ -299,7 +302,7 @@
 	&__card-price {
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.375rem;
+		font-size: 2rem;
 		color: $text;
 		line-height: 1.1;
 		display: flex;

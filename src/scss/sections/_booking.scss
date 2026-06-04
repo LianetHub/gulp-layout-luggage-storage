@@ -482,9 +482,8 @@ $booking-purple: #8f2fff;
 
 	&__summary-figure {
 		display: flex;
-		flex-direction: column-reverse;
 		align-items: center;
-		width: 50%;
+		width: 56%;
 		margin: 0;
 
 		@media (min-width: $md3) {
@@ -494,14 +493,14 @@ $booking-purple: #8f2fff;
 
 	&__summary-figure-img {
 		display: block;
-		width: 100%;
 		height: auto;
 		object-fit: contain;
+		width: 50%;
 	}
 
 	&__summary-figure-caption {
 		margin-top: 0.35rem;
-		font-size: 0.625rem;
+		font-size: 1rem;
 		line-height: 1.2;
 		color: rgba($text, 0.1);
 		transform: rotate(6deg);
