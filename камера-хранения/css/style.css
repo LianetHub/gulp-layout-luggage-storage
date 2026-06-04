@@ -1901,6 +1901,222 @@ summary,
   text-transform: lowercase;
 }
 
+.booking__date-picker {
+  display: none;
+  width: 100%;
+  margin-top: 0.625rem;
+  padding: 0;
+  border: 0.125rem solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.booking__date-picker.is-open {
+  display: block;
+}
+
+.booking__date-picker[hidden] {
+  display: none !important;
+}
+
+.booking__date-picker-inner {
+  width: 100%;
+}
+
+.booking__date-picker [data-vc=calendar] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 1.125rem 0.875rem 0.875rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Geologica", "GolosText", sans-serif;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: #000000;
+}
+
+.booking__date-picker [data-vc=month],
+.booking__date-picker [data-vc=year],
+.booking__date-picker .vc-month,
+.booking__date-picker .vc-year {
+  font-family: "Geologica", "GolosText", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8f2fff;
+}
+
+.booking__date-picker [data-vc=week],
+.booking__date-picker [data-vc-dates=row],
+.booking__date-picker [data-vc=dates] {
+  width: 100%;
+}
+
+.booking__date-picker [data-vc-week-day],
+.booking__date-picker .vc-week__day {
+  font-family: "Geologica", "GolosText", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #000000;
+  width: 100%;
+}
+
+.booking__date-picker [data-vc-date],
+.booking__date-picker .vc-date {
+  width: 100%;
+}
+
+.booking__date-picker .vc-week__day[data-vc-week-day-off],
+.booking__date-picker button.vc-week__day[data-vc-week-day-off] {
+  color: #ff2d9b;
+}
+
+.booking__date-picker [data-vc-date-btn],
+.booking__date-picker .vc-date__btn {
+  font-family: "Geologica", "GolosText", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000000;
+  width: 100%;
+  min-height: 3.25rem;
+  min-width: 0;
+  border-radius: 0.625rem;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.booking__date-picker .vc-date[data-vc-date-today] .vc-date__btn,
+.booking__date-picker [data-vc-date][data-vc-date-today] [data-vc-date-btn] {
+  background: #ebf8ff;
+  color: #1dbbfe;
+  font-weight: 700;
+}
+
+.booking__date-picker .vc-date[data-vc-date-selected] .vc-date__btn,
+.booking__date-picker [data-vc-date][data-vc-date-selected] [data-vc-date-btn] {
+  background: #1dbbfe;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.booking__date-picker .vc-date[data-vc-date-disabled] .vc-date__btn,
+.booking__date-picker [data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
+  color: #acacac;
+  opacity: 0.45;
+}
+
+.booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn {
+  color: #ff2d9b;
+}
+
+.booking__date-picker .vc-arrow::before {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.booking__date-picker .vc-week__day[data-vc-week-day-off],
+.booking__date-picker button.vc-week__day[data-vc-week-day-off],
+[data-vc-theme=light] .booking__date-picker .vc-week__day[data-vc-week-day-off],
+[data-vc-theme=light] .booking__date-picker button.vc-week__day[data-vc-week-day-off] {
+  color: #ff2d9b !important;
+}
+
+.booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn,
+.booking__date-picker [data-vc-date][data-vc-date-weekend] [data-vc-date-btn],
+.booking__date-picker [data-vc-date][data-vc-date-holiday] [data-vc-date-btn],
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker [data-vc-date][data-vc-date-weekend] [data-vc-date-btn],
+[data-vc-theme=light] .booking__date-picker [data-vc-date][data-vc-date-holiday] [data-vc-date-btn] {
+  color: #ff2d9b !important;
+}
+
+.booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn {
+  background: #fff0f8 !important;
+  color: #ff2d9b !important;
+}
+
+.booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
+  background: #ff2d9b !important;
+  color: #ffffff !important;
+}
+
+.booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-weekend] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-holiday] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+.booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-weekend] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-holiday] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected=middle][data-vc-date-weekend][data-vc-date-selected] .vc-date__btn {
+  background: rgba(255, 45, 155, 0.7) !important;
+  color: #ffffff !important;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc,
+[data-vc-theme=light] .booking__date-picker [data-vc=calendar] {
+  background: #ffffff;
+  color: #000000;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-month,
+[data-vc-theme=light] .booking__date-picker .vc-year,
+[data-vc-theme=light] .booking__date-picker .vc-header__content {
+  color: #8f2fff;
+  font-size: 1.5rem;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-week__day {
+  font-size: 1.125rem;
+  color: #000000;
+}
+
+[data-vc-theme=light] .booking__date-picker button.vc-week__day[data-vc-week-day-off] {
+  color: #ff2d9b;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-date__btn {
+  font-size: 1.25rem;
+  background: #ffffff;
+  color: #000000;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-today] .vc-date__btn {
+  background: #ebf8ff;
+  color: #1dbbfe;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected] .vc-date__btn {
+  background: #1dbbfe;
+  color: #ffffff;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-disabled] .vc-date__btn {
+  color: #acacac;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn,
+[data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn {
+  color: #ff2d9b;
+}
+
+[data-vc-theme=light] .booking__date-picker .vc-arrow::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f2fff' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E");
+}
+
 .booking {
   padding: 2rem 0 1.5rem;
   background: #fff;
@@ -3720,6 +3936,10 @@ summary,
     max-width: 17.625rem;
   }
 
+  .booking__date-picker {
+    margin-top: 1rem;
+  }
+
   .booking__panel {
     padding: 1.5rem;
     border-radius: 1.25rem;
@@ -5150,6 +5370,59 @@ summary,
 
   .rate__item:hover {
     opacity: 0.8;
+  }
+
+  .booking__date-picker .vc-date__btn:hover,
+  .booking__date-picker [data-vc-date-btn]:hover:not(:disabled) {
+    background: rgba(29, 187, 254, 0.16);
+    color: #000000;
+  }
+
+  .booking__date-picker .vc-date[data-vc-date-selected] .vc-date__btn:hover,
+  .booking__date-picker [data-vc-date][data-vc-date-selected] [data-vc-date-btn]:hover {
+    background: #37c3ef;
+    color: #ffffff;
+  }
+
+  .booking__date-picker button.vc-week__day[data-vc-week-day-off]:hover,
+  [data-vc-theme=light] .booking__date-picker button.vc-week__day[data-vc-week-day-off]:hover {
+    color: #ff4dad !important;
+  }
+
+  .booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
+  .booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn:hover,
+  .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-hover] .vc-date__btn,
+  .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-hover] .vc-date__btn,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday] .vc-date__btn:hover,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-hover] .vc-date__btn,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-hover] .vc-date__btn {
+    background: #fff0f8 !important;
+    color: #ff2d9b !important;
+  }
+
+  .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+  .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
+    background: #ff4dad !important;
+    color: #ffffff !important;
+  }
+
+  [data-vc-theme=light] .booking__date-picker .vc-month:hover,
+  [data-vc-theme=light] .booking__date-picker .vc-year:hover {
+    color: #8f2fff;
+    opacity: 0.85;
+  }
+
+  [data-vc-theme=light] .booking__date-picker .vc-date__btn:hover {
+    background: rgba(29, 187, 254, 0.16);
+    color: #000000;
+  }
+
+  [data-vc-theme=light] .booking__date-picker .vc-date[data-vc-date-selected] .vc-date__btn:hover {
+    background: #37c3ef;
+    color: #ffffff;
   }
 
   .booking__date-other:hover {

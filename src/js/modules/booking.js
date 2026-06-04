@@ -1,3 +1,12 @@
+import {
+    initBookingCalendar,
+    showBookingCalendar,
+    hideBookingCalendar,
+    resetBookingCalendar,
+    getOtherDateLabel,
+    isOtherDatePicked,
+} from './booking-calendar.js';
+
 const BOOKING_TIME_MIN = 585;
 const BOOKING_TIME_MAX = 1440;
 const BOOKING_TIME_STEP = 15;
@@ -98,7 +107,11 @@ export function initBooking({ validateForm, showStatus } = {}) {
             return;
         }
         if (chip.dataset.value === 'other') {
-            bookingSummaryDate.textContent = 'Другая дата';
+            if (isOtherDatePicked()) {
+                bookingSummaryDate.innerHTML = `<span>${getOtherDateLabel()}</span>`;
+            } else {
+                bookingSummaryDate.textContent = getOtherDateLabel();
+            }
         }
     }
 
@@ -224,6 +237,13 @@ export function initBooking({ validateForm, showStatus } = {}) {
         updateBookingTotal();
     }
 
+    initBookingCalendar({
+        onDatePick: () => {
+            const otherChip = document.querySelector('[data-booking-chips="date"] [data-value="other"]');
+            if (otherChip) updateBookingSummaryDate(otherChip);
+        },
+    });
+
     document.querySelectorAll('[data-booking-chips="date"]').forEach((group) => {
         syncDateCardMarks(group);
         group.addEventListener('click', (e) => {
@@ -232,6 +252,14 @@ export function initBooking({ validateForm, showStatus } = {}) {
             group.querySelectorAll('.booking__chip').forEach((el) => el.classList.remove('is-active'));
             chip.classList.add('is-active');
             syncDateCardMarks(group);
+
+            if (chip.dataset.value === 'other') {
+                showBookingCalendar();
+            } else {
+                resetBookingCalendar();
+                hideBookingCalendar();
+            }
+
             updateBookingSummaryDate(chip);
         });
     });
@@ -247,6 +275,17 @@ export function initBooking({ validateForm, showStatus } = {}) {
         }
         showStatus?.(bookingStatus, 'Заявка отправлена. Мы свяжемся с вами для подтверждения.', false);
         bookingForm.reset();
+        resetBookingCalendar();
+        hideBookingCalendar();
+        const todayChip = document.querySelector('[data-booking-chips="date"] [data-value="today"]');
+        if (todayChip) {
+            document.querySelectorAll('[data-booking-chips="date"] .booking__chip').forEach((el) => {
+                el.classList.remove('is-active');
+            });
+            todayChip.classList.add('is-active');
+            syncDateCardMarks(document.querySelector('[data-booking-chips="date"]'));
+            updateBookingSummaryDate(todayChip);
+        }
         resetBookingCounters();
         resetBookingTimeRange();
     });

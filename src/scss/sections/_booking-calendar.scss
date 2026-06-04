@@ -1,0 +1,283 @@
+$booking-calendar-blue: #1dbbfe;
+$booking-calendar-blue-hover: #37c3ef;
+$booking-calendar-blue-soft: #ebf8ff;
+$booking-calendar-pink: #ff2d9b;
+$booking-calendar-pink-hover: #ff4dad;
+$booking-calendar-pink-soft: #fff0f8;
+$booking-calendar-purple: #8f2fff;
+
+// Внешняя обёртка: видимость (init календаря не трогает display)
+.booking__date-picker {
+	display: none;
+	width: 100%;
+	margin-top: 0.625rem;
+	padding: 0;
+	border: rem(2) solid rgba($text, 0.12);
+	border-radius: rem(12);
+	background: $bg-white;
+	overflow: hidden;
+	box-sizing: border-box;
+
+	@media (min-width: $md5) {
+		margin-top: 1rem;
+	}
+
+	&.is-open {
+		display: block;
+	}
+
+	&[hidden] {
+		display: none !important;
+	}
+}
+
+.booking__date-picker-inner {
+	width: 100%;
+}
+
+.booking__date-picker {
+	[data-vc="calendar"] {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		padding: 1.125rem 0.875rem 0.875rem;
+		box-sizing: border-box;
+		font-family: $fontfamily;
+		border-radius: rem(12);
+		background: $bg-white;
+		color: $text;
+	}
+
+	[data-vc="month"],
+	[data-vc="year"],
+	.vc-month,
+	.vc-year {
+		font-family: $fontfamily;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: $booking-calendar-purple;
+	}
+
+	[data-vc="week"],
+	[data-vc-dates="row"],
+	[data-vc="dates"] {
+		width: 100%;
+	}
+
+	[data-vc-week-day],
+	.vc-week__day {
+		font-family: $fontfamily;
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: $text;
+		width: 100%;
+	}
+
+	[data-vc-date],
+	.vc-date {
+		width: 100%;
+	}
+
+	.vc-week__day[data-vc-week-day-off],
+	button.vc-week__day[data-vc-week-day-off] {
+		color: $booking-calendar-pink;
+	}
+
+	[data-vc-date-btn],
+	.vc-date__btn {
+		font-family: $fontfamily;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: $text;
+		width: 100%;
+		min-height: rem(52);
+		min-width: 0;
+		border-radius: rem(10);
+		transition: background-color 0.2s, color 0.2s;
+	}
+
+	@media (any-hover: hover) {
+
+		.vc-date__btn:hover,
+		[data-vc-date-btn]:hover:not(:disabled) {
+			background: rgba($booking-calendar-blue, 0.16);
+			color: $text;
+		}
+	}
+
+	.vc-date[data-vc-date-today] .vc-date__btn,
+	[data-vc-date][data-vc-date-today] [data-vc-date-btn] {
+		background: $booking-calendar-blue-soft;
+		color: $booking-calendar-blue;
+		font-weight: 700;
+	}
+
+	.vc-date[data-vc-date-selected] .vc-date__btn,
+	[data-vc-date][data-vc-date-selected] [data-vc-date-btn] {
+		background: $booking-calendar-blue;
+		color: $text-inverse;
+		font-weight: 700;
+	}
+
+	@media (any-hover: hover) {
+
+		.vc-date[data-vc-date-selected] .vc-date__btn:hover,
+		[data-vc-date][data-vc-date-selected] [data-vc-date-btn]:hover {
+			background: $booking-calendar-blue-hover;
+			color: $text-inverse;
+		}
+	}
+
+	.vc-date[data-vc-date-disabled] .vc-date__btn,
+	[data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
+		color: $muted;
+		opacity: 0.45;
+	}
+
+	.vc-date[data-vc-date-weekend] .vc-date__btn,
+	.vc-date[data-vc-date-holiday] .vc-date__btn {
+		color: $booking-calendar-pink;
+	}
+
+	.vc-arrow::before {
+		filter: none;
+	}
+}
+
+// Перебиваем красные стили vanilla-calendar (weekend / holiday)
+.booking__date-picker,
+[data-vc-theme="light"] .booking__date-picker {
+	.vc-week__day[data-vc-week-day-off],
+	button.vc-week__day[data-vc-week-day-off] {
+		color: $booking-calendar-pink !important;
+	}
+
+	@media (any-hover: hover) {
+		button.vc-week__day[data-vc-week-day-off]:hover {
+			color: $booking-calendar-pink-hover !important;
+		}
+	}
+
+	.vc-date[data-vc-date-weekend] .vc-date__btn,
+	.vc-date[data-vc-date-holiday] .vc-date__btn,
+	[data-vc-date][data-vc-date-weekend] [data-vc-date-btn],
+	[data-vc-date][data-vc-date-holiday] [data-vc-date-btn] {
+		color: $booking-calendar-pink !important;
+	}
+
+	@media (any-hover: hover) {
+		.vc-date[data-vc-date-weekend] .vc-date__btn:hover,
+		.vc-date[data-vc-date-holiday] .vc-date__btn:hover,
+		.vc-date[data-vc-date-weekend][data-vc-date-hover] .vc-date__btn,
+		.vc-date[data-vc-date-holiday][data-vc-date-hover] .vc-date__btn {
+			background: $booking-calendar-pink-soft !important;
+			color: $booking-calendar-pink !important;
+		}
+	}
+
+	.vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn,
+	.vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn {
+		background: $booking-calendar-pink-soft !important;
+		color: $booking-calendar-pink !important;
+	}
+
+	.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+	.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+	.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
+		background: $booking-calendar-pink !important;
+		color: $text-inverse !important;
+	}
+
+	@media (any-hover: hover) {
+		.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+		.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
+			background: $booking-calendar-pink-hover !important;
+			color: $text-inverse !important;
+		}
+	}
+
+	.vc-date[data-vc-date-selected=middle][data-vc-date-weekend] .vc-date__btn,
+	.vc-date[data-vc-date-selected=middle][data-vc-date-holiday] .vc-date__btn,
+	.vc-date[data-vc-date-selected=middle][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+	.vc-date[data-vc-date-selected=middle][data-vc-date-weekend][data-vc-date-selected] .vc-date__btn {
+		background: rgba($booking-calendar-pink, 0.7) !important;
+		color: $text-inverse !important;
+	}
+}
+
+[data-vc-theme="light"] .booking__date-picker .vc,
+[data-vc-theme="light"] .booking__date-picker [data-vc="calendar"] {
+	background: $bg-white;
+	color: $text;
+}
+
+[data-vc-theme="light"] .booking__date-picker {
+
+	.vc-month,
+	.vc-year,
+	.vc-header__content {
+		color: $booking-calendar-purple;
+		font-size: 1.5rem;
+	}
+
+	@media (any-hover: hover) {
+
+		.vc-month:hover,
+		.vc-year:hover {
+			color: $booking-calendar-purple;
+			opacity: 0.85;
+		}
+	}
+
+	.vc-week__day {
+		font-size: 1.125rem;
+		color: $text;
+	}
+
+	button.vc-week__day[data-vc-week-day-off] {
+		color: $booking-calendar-pink;
+	}
+
+	.vc-date__btn {
+		font-size: 1.25rem;
+		background: $bg-white;
+		color: $text;
+	}
+
+	@media (any-hover: hover) {
+		.vc-date__btn:hover {
+			background: rgba($booking-calendar-blue, 0.16);
+			color: $text;
+		}
+	}
+
+	.vc-date[data-vc-date-today] .vc-date__btn {
+		background: $booking-calendar-blue-soft;
+		color: $booking-calendar-blue;
+	}
+
+	.vc-date[data-vc-date-selected] .vc-date__btn {
+		background: $booking-calendar-blue;
+		color: $text-inverse;
+	}
+
+	@media (any-hover: hover) {
+		.vc-date[data-vc-date-selected] .vc-date__btn:hover {
+			background: $booking-calendar-blue-hover;
+			color: $text-inverse;
+		}
+	}
+
+	.vc-date[data-vc-date-disabled] .vc-date__btn {
+		color: $muted;
+	}
+
+	.vc-date[data-vc-date-weekend] .vc-date__btn,
+	.vc-date[data-vc-date-holiday] .vc-date__btn {
+		color: $booking-calendar-pink;
+	}
+
+	.vc-arrow::before {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f2fff' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E");
+	}
+}

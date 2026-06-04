@@ -24,14 +24,15 @@
 	<link rel="apple-touch-icon" href="favicon.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap&_v=20260604151404" rel="stylesheet">
 	<!-- plugins -->
-	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
-	<link rel="stylesheet" href="css/libs/nouislider.min.css">
-	<link rel="stylesheet" href="css/libs/fancybox.min.css">
+	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20260604151404">
+	<link rel="stylesheet" href="css/libs/nouislider.min.css?_v=20260604151404">
+	<link rel="stylesheet" href="css/libs/fancybox.min.css?_v=20260604151404">
+	<link rel="stylesheet" href="css/libs/vanilla-calendar.css?_v=20260604151404">
 	<!-- plugins -->
-	<link rel="stylesheet" href="css/reset.min.css">
-	<link rel="stylesheet" href="css/style.min.css">
+	<link rel="stylesheet" href="css/reset.min.css?_v=20260604151404">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260604151404">
 </head>
 
 <body>
@@ -151,15 +152,19 @@
 										<span class="booking__date-card-label">Завтра</span>
 										<time class="booking__date-card-value" datetime="2026-05-23">23.05.26</time>
 									</button>
-									<button type="button" class="booking__date-other booking__chip" data-value="other">
+									<button type="button" class="booking__date-other booking__chip" data-value="other" aria-expanded="false" aria-controls="booking-date-picker">
 										<span class="booking__date-other-icon" aria-hidden="true">
 											<svg width="20" height="20" aria-hidden="true">
 												<use href="img/icons/sprite.svg#calendar"></use>
 											</svg>
 										</span>
-										<span class="booking__date-other-label">Другая дата</span>
+										<span class="booking__date-other-label" data-default-label="Другая дата">Другая дата</span>
 									</button>
 								</div>
+								<div class="booking__date-picker" id="booking-date-picker" hidden>
+									<div class="booking__date-picker-inner" id="booking-date-picker-inner"></div>
+								</div>
+								<input type="hidden" name="storage_date" id="booking-date-value" value="">
 							</fieldset>
 							<fieldset class="booking__group booking__group--time">
 								<div class="booking__group-head">
@@ -658,11 +663,11 @@
 			<button type="button" class="form__btn btn btn-primary" data-fancybox-close>Хорошо</button>
 		</div>
 		<!-- plugins -->
-		<script src="js/libs/fancybox.umd.js"></script>
-		<script src="js/libs/swiper-bundle.min.js"></script>
-		<script src="js/libs/nouislider.min.js"></script>
+		<script src="js/libs/fancybox.umd.js?_v=20260604151404"></script>
+		<script src="js/libs/swiper-bundle.min.js?_v=20260604151404"></script>
+		<script src="js/libs/nouislider.min.js?_v=20260604151404"></script>
 		<!-- plugins -->
-		<script src="js/app.min.js"></script>
+		<script src="js/app.min.js?_v=20260604151404"></script>
 	</div>
 </body>
 

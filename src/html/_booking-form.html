@@ -12,15 +12,19 @@
                 <span class="booking__date-card-label">Завтра</span>
                 <time class="booking__date-card-value" datetime="2026-05-23">23.05.26</time>
             </button>
-            <button type="button" class="booking__date-other booking__chip" data-value="other">
+            <button type="button" class="booking__date-other booking__chip" data-value="other" aria-expanded="false" aria-controls="booking-date-picker">
                 <span class="booking__date-other-icon" aria-hidden="true">
                     <svg width="20" height="20" aria-hidden="true">
                         <use href="@img/icons/sprite.svg#calendar"></use>
                     </svg>
                 </span>
-                <span class="booking__date-other-label">Другая дата</span>
+                <span class="booking__date-other-label" data-default-label="Другая дата">Другая дата</span>
             </button>
         </div>
+        <div class="booking__date-picker" id="booking-date-picker" hidden>
+            <div class="booking__date-picker-inner" id="booking-date-picker-inner"></div>
+        </div>
+        <input type="hidden" name="storage_date" id="booking-date-value" value="">
     </fieldset>
 
     <fieldset class="booking__group booking__group--time">
