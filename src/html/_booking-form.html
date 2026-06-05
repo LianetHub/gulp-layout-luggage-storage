@@ -101,18 +101,24 @@
         <h3 class="booking__summary-title">Итого:</h3>
         <div class="booking__summary-row">
             <div class="booking__summary-col booking__summary-col--time">
-                <p class="booking__summary-main" id="booking-summary-time">С 09:45 до 17:30</p>
+                <div class="booking__summary-main">
+                    <p id="booking-summary-time">С 09:45 до 17:30</p>
+                    <span class="booking__summary-sep" aria-hidden="true">×</span>
+                </div>
                 <p class="booking__summary-sub" id="booking-summary-date">Сегодня <span>22.05.26</span></p>
             </div>
-            <span class="booking__summary-sep" aria-hidden="true">×</span>
+            <span class="booking__summary-sep booking__summary-sep--vertical" aria-hidden="true">×</span>
             <div class="booking__summary-col booking__summary-col--items">
-                <p class="booking__summary-main" id="booking-summary-qty">4 единицы багажа</p>
+                <div class="booking__summary-main">
+                    <p class="booking__summary-main" id="booking-summary-qty">4 единицы багажа</p>
+                    <span class="booking__summary-sep booking__summary-sep--eq" aria-hidden="true">=</span>
+                </div>
                 <ul class="booking__summary-list" id="booking-summary-list">
                     <li>Ручная кладь 3шт. 300 ₽/шт.</li>
                     <li>Чемодан 1шт. 300 ₽/шт.</li>
                 </ul>
             </div>
-            <span class="booking__summary-sep booking__summary-sep--eq" aria-hidden="true">=</span>
+            <span class="booking__summary-sep booking__summary-sep--vertical" aria-hidden="true">=</span>
             <div class="booking__summary-col booking__summary-col--total">
                 <div class="booking__summary-total">
                     <div class="booking__summary-total-text">
