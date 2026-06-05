@@ -197,13 +197,13 @@ $booking-purple: #8f2fff;
 		gap: 0.25rem;
 		min-height: rem(72);
 		padding: 0.5rem 0.5rem;
-		border: rem(1) solid rgba($text, 0.12);
+		border: rem(1) solid rgba($text, 0.1);
 		border-radius: rem(12);
 		background: $bg-white;
 		font: inherit;
 		color: inherit;
 		cursor: pointer;
-		transition: border-color 0.2s, box-shadow 0.2s;
+		transition: border-color 0.2s;
 
 		@media (min-width: $md5) {
 			min-height: rem(80);
@@ -211,7 +211,6 @@ $booking-purple: #8f2fff;
 
 		&.is-active {
 			border-color: $accent;
-			box-shadow: 0 0 0 rem(1) rgba($accent, 0.15);
 		}
 	}
 
@@ -226,8 +225,8 @@ $booking-purple: #8f2fff;
 		box-sizing: border-box;
 
 		&--check {
-			border: none;
-			background: url("@img/tick.svg") center / contain no-repeat;
+			border-color: $accent;
+			background: url("@img/tick.svg") center / rem(10) no-repeat;
 		}
 	}
 

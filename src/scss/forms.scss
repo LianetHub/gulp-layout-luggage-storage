@@ -392,8 +392,7 @@
 
 	&__input {
 		&:checked+.checkbox__text::before {
-			border: none;
-			background: url("@img/tick.svg") center / contain no-repeat;
+			background: url("@img/tick.svg") center / rem(8) no-repeat;
 		}
 
 		&._error+.checkbox__text::before {
