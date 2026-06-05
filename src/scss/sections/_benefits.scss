@@ -41,14 +41,16 @@
 		padding: 2rem 1.5rem;
 		border-radius: rem(16);
 		color: $text-inverse;
-		background-image:
-			var(--benefits-card-bg, none),
+
+
+		background:
+			var(--benefits-card-bg, none) right bottom / cover no-repeat,
 			linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
-		background-position: right bottom, center;
-		background-size: contain, auto;
-		background-repeat: no-repeat, no-repeat;
 
 		@media (max-width: $md4) {
+			background:
+				var(--benefits-card-bg, none) right bottom / 100% auto no-repeat,
+				linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
 			min-height: rem(360);
 			height: auto;
 		}
@@ -113,12 +115,9 @@
 		font-size: 1rem;
 		line-height: 1.45;
 		opacity: 0.9;
-		max-width: rem(320);
+		max-width: rem(200);
 		z-index: 1;
 
-		@media (max-width: $md4) {
-			max-width: rem(260);
-		}
 
 		.benefits__card--paid & {
 			opacity: 0.75;

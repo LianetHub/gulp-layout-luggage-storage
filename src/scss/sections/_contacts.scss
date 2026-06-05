@@ -26,16 +26,16 @@
 		display: inline-flex;
 		align-items: center;
 		padding: 0.35em 0.85em;
-		border-radius: rem(16);
+		border-radius: 0.35em;
 		transform: rotate(-2deg);
 		background: linear-gradient(165deg,
 				$promo-pink-light 0%,
 				$promo-pink 42%,
 				$promo-pink-dark 100%);
 		box-shadow:
-			0 0 rem(14) $promo-pink-glow,
-			0 0 rem(32) $promo-pink-glow-soft,
-			0 0 rem(48) $promo-pink-glow-soft,
+			0 0 rem(7) $promo-pink-glow,
+			0 0 rem(16) $promo-pink-glow-soft,
+			0 0 rem(24) $promo-pink-glow-soft,
 			inset rem(2) rem(2) rem(8) rgba(#fff, 0.55),
 			inset rem(-2) rem(-4) rem(10) rgba($promo-pink-dark, 0.55),
 			inset 0 rem(1) rem(0) rgba(#fff, 0.35);
@@ -50,9 +50,9 @@
 			font-size: 2rem;
 			padding: 0.35em 0.2em;
 			box-shadow:
-				0 0 rem(18) $promo-pink-glow,
-				0 0 rem(40) $promo-pink-glow-soft,
-				0 0 rem(60) $promo-pink-glow-soft,
+				0 0 rem(9) $promo-pink-glow,
+				0 0 rem(20) $promo-pink-glow-soft,
+				0 0 rem(30) $promo-pink-glow-soft,
 				inset rem(3) rem(3) rem(12) rgba(#fff, 0.55),
 				inset rem(-3) rem(-5) rem(14) rgba($promo-pink-dark, 0.55),
 				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
@@ -295,7 +295,7 @@
 
 			@media (any-hover: hover) {
 				&:hover {
-					color: $promo-pink;
+					color: $muted;
 				}
 			}
 		}
@@ -337,7 +337,7 @@
 
 		@media (any-hover: hover) {
 			&:hover {
-				color: $promo-pink;
+				color: $muted;
 			}
 		}
 	}
@@ -383,16 +383,11 @@
 	&__route-note {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
-		font-size: 0.875rem;
-		font-weight: 400;
-		opacity: 0.92;
 
 		img {
 			flex-shrink: 0;
-			width: rem(14);
+			width: auto;
 			height: rem(14);
-			filter: brightness(0) invert(1);
 		}
 	}
 

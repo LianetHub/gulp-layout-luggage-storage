@@ -7,7 +7,7 @@ import {
     isOtherDatePicked,
 } from './booking-calendar.js';
 
-const BOOKING_TIME_MIN = 585;
+const BOOKING_TIME_MIN = 540;
 const BOOKING_TIME_MAX = 1440;
 const BOOKING_TIME_STEP = 15;
 const BOOKING_TIME_DEFAULT = [BOOKING_TIME_MIN, 1050];
@@ -17,19 +17,33 @@ function formatRub(value) {
     return value.toLocaleString('ru-RU') + ' ₽';
 }
 
-function baggageUnitsLabel(count) {
+function baggageUnitWord(count) {
     const mod10 = count % 10;
     const mod100 = count % 100;
-    if (mod100 >= 11 && mod100 <= 14) return `${count} единиц багажа`;
-    if (mod10 === 1) return `${count} единица багажа`;
-    if (mod10 >= 2 && mod10 <= 4) return `${count} единицы багажа`;
-    return `${count} единиц багажа`;
+    if (mod100 >= 11 && mod100 <= 14) return 'единиц';
+    if (mod10 === 1) return 'единица';
+    if (mod10 >= 2 && mod10 <= 4) return 'единицы';
+    return 'единиц';
 }
 
 function minutesToTime(minutes) {
     const h = Math.floor(minutes / 60) % 24;
     const min = minutes % 60;
     return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
+}
+
+function getTimeHandleWidth(sliderEl) {
+    const handle = sliderEl.querySelector('.noUi-handle');
+    return handle ? handle.getBoundingClientRect().width : 44;
+}
+
+function syncTimeHandleProximity(sliderEl, fromVal, toVal) {
+    const sliderWidth = sliderEl.getBoundingClientRect().width;
+    const handleWidth = getTimeHandleWidth(sliderEl);
+    const range = BOOKING_TIME_MAX - BOOKING_TIME_MIN;
+    const pixelDist = ((toVal - fromVal) / range) * sliderWidth;
+
+    sliderEl.classList.toggle('booking__time-slider--close', pixelDist < handleWidth);
 }
 
 function decorateTimeHandles(sliderEl) {
@@ -130,7 +144,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
         if (bookingTimeFromOut) bookingTimeFromOut.textContent = fromTime;
         if (bookingTimeToOut) bookingTimeToOut.textContent = toTime;
         if (bookingSummaryTime) {
-            bookingSummaryTime.textContent = `С ${fromTime} до ${toTime}`;
+            bookingSummaryTime.textContent = `С\u00A0${fromTime} до\u00A0${toTime}`;
         }
         if (bookingTimeFromInput) bookingTimeFromInput.value = String(fromVal);
         if (bookingTimeToInput) bookingTimeToInput.value = String(toVal);
@@ -158,7 +172,12 @@ export function initBooking({ validateForm, showStatus } = {}) {
         bookingTotalEl.textContent = formatRub(total);
 
         if (bookingSummaryQty) {
-            bookingSummaryQty.textContent = totalQty ? baggageUnitsLabel(totalQty) : '0 единиц багажа';
+            const countEl = bookingSummaryQty.querySelector('[data-qty-count]');
+            const unitEl = bookingSummaryQty.querySelector('[data-qty-unit]');
+            if (countEl && unitEl) {
+                countEl.textContent = String(totalQty);
+                unitEl.textContent = totalQty ? baggageUnitWord(totalQty) : 'единиц';
+            }
         }
 
         if (bookingSummaryList) {
@@ -215,10 +234,20 @@ export function initBooking({ validateForm, showStatus } = {}) {
         if (timeOutputs[1]) bookingTimeToOut = timeOutputs[1];
 
         timeSlider.on('update', (values) => {
-            updateBookingTimeRange(Number(values[0]), Number(values[1]));
+            const fromVal = Number(values[0]);
+            const toVal = Number(values[1]);
+            updateBookingTimeRange(fromVal, toVal);
+            syncTimeHandleProximity(bookingTimeSlider, fromVal, toVal);
         });
 
+        const syncProximity = () => {
+            const [fromVal, toVal] = timeSlider.get().map(Number);
+            syncTimeHandleProximity(bookingTimeSlider, fromVal, toVal);
+        };
+
+        window.addEventListener('resize', syncProximity);
         updateBookingTimeRange(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
+        syncTimeHandleProximity(bookingTimeSlider, BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
     }
 
     if (bookingCounters) {
@@ -269,11 +298,11 @@ export function initBooking({ validateForm, showStatus } = {}) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (validateForm && !validateForm(bookingForm)) {
-            showStatus?.(bookingStatus, 'Проверьте поля формы, номер телефона (+7) и согласие на обработку данных.', true);
+            showStatus?.(bookingStatus, 'Проверьте поля формы, номер телефона (+7) и\u00A0согласие на\u00A0обработку данных.', true);
             bookingForm.querySelector('._error')?.focus();
             return;
         }
-        showStatus?.(bookingStatus, 'Заявка отправлена. Мы свяжемся с вами для подтверждения.', false);
+        showStatus?.(bookingStatus, 'Заявка отправлена. Мы свяжемся с\u00A0вами для\u00A0подтверждения.', false);
         bookingForm.reset();
         resetBookingCalendar();
         hideBookingCalendar();

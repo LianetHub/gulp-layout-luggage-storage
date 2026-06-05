@@ -31,20 +31,20 @@
         <div class="booking__group-head">
             <div class="booking__group-head-text">
                 <legend class="booking__group-title">В какое время?</legend>
-                <p class="booking__note booking__note--inline">Работаем с 09:00 до 00:00</p>
+                <p class="booking__note booking__note--inline">Работаем с&nbsp;09:00 до&nbsp;00:00</p>
             </div>
             <span class="booking__badge">200 ₽/шт.</span>
         </div>
         <div class="booking__time-range" data-booking-time-range>
             <div class="booking__time-slider" id="booking-time-slider" aria-label="Интервал времени хранения"></div>
-            <input type="hidden" name="time_from" id="booking-time-from-value" value="585">
+            <input type="hidden" name="time_from" id="booking-time-from-value" value="540">
             <input type="hidden" name="time_to" id="booking-time-to-value" value="1050">
         </div>
     </fieldset>
 
     <fieldset class="booking__group booking__group--items">
         <legend class="booking__group-title">Сколько вещей?</legend>
-        <p class="booking__note booking__note--inline">Мы берём деньги за единицу багажа</p>
+        <p class="booking__note booking__note--inline">Мы берём деньги за&nbsp;единицу багажа</p>
         <div class="booking__items" id="booking-counters">
             <div class="booking__item booking__counter" data-price="300" data-name="Ручная кладь">
                 <div class="booking__item-image">
@@ -102,7 +102,7 @@
         <div class="booking__summary-row">
             <div class="booking__summary-col booking__summary-col--time">
                 <div class="booking__summary-main">
-                    <p id="booking-summary-time">С 09:45 до 17:30</p>
+                    <p id="booking-summary-time">С&nbsp;09:00 до&nbsp;17:30</p>
                     <span class="booking__summary-sep" aria-hidden="true">×</span>
                 </div>
                 <p class="booking__summary-sub" id="booking-summary-date">Сегодня <span>22.05.26</span></p>
@@ -110,7 +110,7 @@
             <span class="booking__summary-sep booking__summary-sep--vertical" aria-hidden="true">×</span>
             <div class="booking__summary-col booking__summary-col--items">
                 <div class="booking__summary-main">
-                    <p class="booking__summary-main" id="booking-summary-qty">4 единицы багажа</p>
+                    <p class="booking__summary-qty" id="booking-summary-qty"><span class="booking__summary-qty-count" data-qty-count>4</span> <span class="booking__summary-qty-unit"><span data-qty-unit>единицы</span></span> багажа</p>
                     <span class="booking__summary-sep booking__summary-sep--eq" aria-hidden="true">=</span>
                 </div>
                 <ul class="booking__summary-list" id="booking-summary-list">
@@ -140,14 +140,14 @@
             <div class="booking__field">
                 <label class="visually-hidden" for="booking_name">Ваше имя</label>
                 <input type="text" name="name" id="booking_name" class="form__control booking__input" placeholder="Ваше имя" autocomplete="name" required>
-                <svg class="booking__field-icon" width="20" height="20" aria-hidden="true">
+                <svg class="booking__field-icon" width="14" height="14" aria-hidden="true">
                     <use href="@img/icons/sprite.svg#man"></use>
                 </svg>
             </div>
             <div class="booking__field">
                 <label class="visually-hidden" for="booking_phone">Номер телефона</label>
                 <input type="tel" name="phone" id="booking_phone" class="form__control booking__input" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
-                <svg class="booking__field-icon" width="20" height="20" aria-hidden="true">
+                <svg class="booking__field-icon" width="14" height="14" aria-hidden="true">
                     <use href="@img/icons/sprite.svg#phone-handset"></use>
                 </svg>
             </div>
@@ -155,12 +155,12 @@
         <div class="booking__footer-col">
             <button type="submit" class="booking__submit">
                 <span class="booking__submit-title">Бронировать</span>
-                <span class="booking__submit-note">Оплата при оформлении багажа</span>
+                <span class="booking__submit-note">Оплата при&nbsp;оформлении багажа</span>
             </button>
 
             <label class="checkbox">
                 <input type="checkbox" name="agree" class="checkbox__input hidden" id="booking_agree" required>
-                <span class="checkbox__text"><span>Нажимая кнопку, я подтверждаю своё согласие на <a href="#">обработку персональных данных</a></span></span>
+                <span class="checkbox__text"><span>Нажимая кнопку, я подтверждаю своё согласие на&nbsp;<a href="#">обработку персональных данных</a></span></span>
             </label>
         </div>
     </div>

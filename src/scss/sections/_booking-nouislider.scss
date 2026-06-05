@@ -1,19 +1,21 @@
+$booking-track-height: rem(2);
+$booking-track-active-height: rem(4);
+$booking-handle-size: rem(44);
+$booking-handle-size-md: rem(56);
+$booking-handle-gap: rem(6);
+
 .booking__time-range {
 	position: relative;
 	padding-top: rem(16);
 	margin-bottom: 3rem;
-	padding-inline: rem(16);
-
+	padding-inline: calc(#{$booking-handle-size} / 2);
 
 	@media (min-width: $md4) {
 		padding-top: rem(24);
 		margin-bottom: 5.5rem;
-		padding-inline: rem(32);
+		padding-inline: calc(#{$booking-handle-size-md} / 2);
 	}
 }
-
-$booking-track-height: rem(2);
-$booking-track-active-height: rem(4);
 
 .booking__time-slider {
 	height: $booking-track-height;
@@ -66,20 +68,30 @@ $booking-track-active-height: rem(4);
 	}
 
 	&.noUi-horizontal .noUi-handle {
-		width: rem(44);
-		height: calc(#{rem(2)} + #{rem(4)} + #{rem(14)} + #{rem(44)});
-		right: calc(#{rem(44)} / -2);
+		width: $booking-handle-size;
+		height: calc(#{rem(2)} + #{rem(4)} + #{rem(14)} + #{$booking-handle-size});
+		right: calc(#{$booking-handle-size} / -2);
 		top: 0;
 		cursor: grab;
 
 		@media (min-width: $md4) {
-			width: rem(56);
-			height: calc(#{rem(2)} + #{rem(5)} + #{rem(20)} + #{rem(56)});
-			right: calc(#{rem(56)} / -2);
+			width: $booking-handle-size-md;
+			height: calc(#{rem(2)} + #{rem(5)} + #{rem(20)} + #{$booking-handle-size-md});
+			right: calc(#{$booking-handle-size-md} / -2);
 		}
 
 		&:active {
 			cursor: grabbing;
+		}
+	}
+
+	&--close {
+		.noUi-handle-lower .booking__time-handle-visual {
+			transform: translateX(calc(#{$booking-handle-gap} / -2));
+		}
+
+		.noUi-handle-upper .booking__time-handle-visual {
+			transform: translateX(calc(#{$booking-handle-gap} / 2));
 		}
 	}
 
@@ -102,6 +114,42 @@ $booking-track-active-height: rem(4);
 			box-shadow: 0 0 0 rem(2) $accent;
 		}
 	}
+
+	.noUi-handle-lower {
+		.booking__time-handle-time {
+			left: 0;
+			right: auto;
+			transform: translate(0, calc(-100% - rem(6)));
+
+			@media (min-width: $md4) {
+				transform: translate(0, calc(-100% - rem(8)));
+			}
+		}
+
+		.booking__time-handle-pin {
+			left: 0;
+			right: auto;
+			transform: rotate(135deg);
+		}
+	}
+
+	.noUi-handle-upper {
+		.booking__time-handle-time {
+			left: auto;
+			right: 0;
+			transform: translate(0, calc(-100% - rem(6)));
+
+			@media (min-width: $md4) {
+				transform: translate(0, calc(-100% - rem(8)));
+			}
+		}
+
+		.booking__time-handle-pin {
+			left: auto;
+			right: 0;
+			transform: rotate(135deg);
+		}
+	}
 }
 
 .booking__time-handle-visual {
@@ -112,19 +160,15 @@ $booking-track-active-height: rem(4);
 
 .booking__time-handle-time {
 	position: absolute;
-	left: 50%;
 	top: calc(#{rem(2)} - #{rem(4)});
-	transform: translate(-50%, calc(-100% - rem(6)));
 	white-space: nowrap;
 	font-size: rem(18);
 	line-height: 1.2;
 	color: $text;
 	background: #fff;
 
-
 	@media (min-width: $md4) {
 		top: calc(#{rem(2)} - #{rem(5)});
-		transform: translate(-50%, calc(-100% - rem(8)));
 		font-size: rem(24);
 	}
 }
@@ -163,20 +207,18 @@ $booking-track-active-height: rem(4);
 
 .booking__time-handle-pin {
 	position: absolute;
-	left: 50%;
 	top: calc(#{rem(2)} + #{rem(4)} + #{rem(14)});
-	width: rem(44);
-	height: rem(44);
+	width: $booking-handle-size;
+	height: $booking-handle-size;
 	background: $booking-pink;
 	border-radius: 50% 50% 50% 0;
-	transform: translateX(-50%) rotate(135deg);
 	transform-origin: center center;
 	color: $text-inverse;
 
 	@media (min-width: $md4) {
 		top: calc(#{rem(2)} + #{rem(5)} + #{rem(20)});
-		width: rem(56);
-		height: rem(56);
+		width: $booking-handle-size-md;
+		height: $booking-handle-size-md;
 	}
 }
 

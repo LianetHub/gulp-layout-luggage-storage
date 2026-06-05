@@ -392,7 +392,12 @@
 
 	&__input {
 		&:checked+.checkbox__text::before {
-			background: url("@img/tick.svg") center / rem(8) no-repeat;
+			border: rem(1) solid $muted-light;
+			background-color: transparent;
+			background-image: url("@img/tick.svg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: rem(8);
 		}
 
 		&._error+.checkbox__text::before {
@@ -417,7 +422,7 @@
 			width: rem(14);
 			height: rem(14);
 			margin-top: rem(2);
-			border: rem(1) solid currentColor;
+			border: rem(1) solid $muted-light;
 			border-radius: rem(2);
 			box-sizing: border-box;
 		}

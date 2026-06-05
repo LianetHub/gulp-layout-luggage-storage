@@ -48,17 +48,11 @@ $mobile-bar-height: rem(72);
 	&__route-note {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.3rem;
-		font-size: 0.6875rem;
-		font-weight: 500;
-		line-height: 1.2;
-		opacity: 0.95;
 
 		img {
 			flex-shrink: 0;
-			width: rem(14);
-			height: rem(14);
-			filter: brightness(0) invert(1);
+			width: auto;
+			height: rem(11);
 		}
 	}
 

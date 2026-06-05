@@ -779,7 +779,12 @@ body {
   cursor: pointer;
 }
 .checkbox__input:checked + .checkbox__text::before {
-  background: url("../img/tick.svg") center/0.5rem no-repeat;
+  border: 0.0625rem solid #a3a3a3;
+  background-color: transparent;
+  background-image: url("../img/tick.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0.5rem;
 }
 .checkbox__input._error + .checkbox__text::before {
   border-color: #e53935;
@@ -799,7 +804,7 @@ body {
   width: 0.875rem;
   height: 0.875rem;
   margin-top: 0.125rem;
-  border: 0.0625rem solid currentColor;
+  border: 0.0625rem solid #a3a3a3;
   border-radius: 0.125rem;
   box-sizing: border-box;
 }
@@ -978,17 +983,11 @@ body {
 .mobile-bar__route-note {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  line-height: 1.2;
-  opacity: 0.95;
 }
 .mobile-bar__route-note img {
   flex-shrink: 0;
-  width: 0.875rem;
-  height: 0.875rem;
-  filter: brightness(0) invert(1);
+  width: auto;
+  height: 0.6875rem;
 }
 .mobile-bar__action {
   flex: 0 0 4.5rem;
@@ -1755,13 +1754,13 @@ body {
   position: relative;
   padding-top: 1rem;
   margin-bottom: 3rem;
-  padding-inline: 1rem;
+  padding-inline: calc(2.75rem / 2);
 }
 @media (min-width: 767.98px) {
   .booking__time-range {
     padding-top: 1.5rem;
     margin-bottom: 5.5rem;
-    padding-inline: 2rem;
+    padding-inline: calc(3.5rem / 2);
   }
 }
 
@@ -1825,6 +1824,12 @@ body {
 .booking__time-slider.noUi-horizontal .noUi-handle:active {
   cursor: grabbing;
 }
+.booking__time-slider--close .noUi-handle-lower .booking__time-handle-visual {
+  transform: translateX(calc(0.375rem / -2));
+}
+.booking__time-slider--close .noUi-handle-upper .booking__time-handle-visual {
+  transform: translateX(calc(0.375rem / 2));
+}
 .booking__time-slider .noUi-touch-area {
   position: absolute;
   inset: 0;
@@ -1842,6 +1847,36 @@ body {
 .booking__time-slider .noUi-handle:focus-visible .booking__time-handle-dot {
   box-shadow: 0 0 0 0.125rem #1dbbfe;
 }
+.booking__time-slider .noUi-handle-lower .booking__time-handle-time {
+  left: 0;
+  right: auto;
+  transform: translate(0, calc(-100% - 0.375rem));
+}
+@media (min-width: 767.98px) {
+  .booking__time-slider .noUi-handle-lower .booking__time-handle-time {
+    transform: translate(0, calc(-100% - 0.5rem));
+  }
+}
+.booking__time-slider .noUi-handle-lower .booking__time-handle-pin {
+  left: 0;
+  right: auto;
+  transform: rotate(135deg);
+}
+.booking__time-slider .noUi-handle-upper .booking__time-handle-time {
+  left: auto;
+  right: 0;
+  transform: translate(0, calc(-100% - 0.375rem));
+}
+@media (min-width: 767.98px) {
+  .booking__time-slider .noUi-handle-upper .booking__time-handle-time {
+    transform: translate(0, calc(-100% - 0.5rem));
+  }
+}
+.booking__time-slider .noUi-handle-upper .booking__time-handle-pin {
+  left: auto;
+  right: 0;
+  transform: rotate(135deg);
+}
 
 .booking__time-handle-visual {
   position: absolute;
@@ -1851,9 +1886,7 @@ body {
 
 .booking__time-handle-time {
   position: absolute;
-  left: 50%;
   top: calc(0.125rem - 0.25rem);
-  transform: translate(-50%, calc(-100% - 0.375rem));
   white-space: nowrap;
   font-size: 1.125rem;
   line-height: 1.2;
@@ -1863,7 +1896,6 @@ body {
 @media (min-width: 767.98px) {
   .booking__time-handle-time {
     top: calc(0.125rem - 0.3125rem);
-    transform: translate(-50%, calc(-100% - 0.5rem));
     font-size: 1.5rem;
   }
 }
@@ -1902,13 +1934,11 @@ body {
 
 .booking__time-handle-pin {
   position: absolute;
-  left: 50%;
   top: calc(0.125rem + 0.25rem + 0.875rem);
   width: 2.75rem;
   height: 2.75rem;
   background: #ff2d9b;
   border-radius: 50% 50% 50% 0;
-  transform: translateX(-50%) rotate(135deg);
   transform-origin: center center;
   color: #ffffff;
 }
@@ -1983,7 +2013,7 @@ body {
   font-family: "Geologica", "GolosText", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #8f2fff;
+  color: #000000;
 }
 .booking__date-picker [data-vc=week],
 .booking__date-picker [data-vc-dates=row],
@@ -2138,13 +2168,13 @@ body {
 [data-vc-theme=light] .booking__date-picker .vc-month,
 [data-vc-theme=light] .booking__date-picker .vc-year,
 [data-vc-theme=light] .booking__date-picker .vc-header__content {
-  color: #8f2fff;
+  color: #000000;
   font-size: 1.5rem;
 }
 @media (any-hover: hover) {
   [data-vc-theme=light] .booking__date-picker .vc-month:hover,
   [data-vc-theme=light] .booking__date-picker .vc-year:hover {
-    color: #8f2fff;
+    color: #000000;
     opacity: 0.85;
   }
 }
@@ -2612,13 +2642,13 @@ body {
 @media (min-width: 767.98px) {
   .booking__summary-col--total {
     flex: 0 1 auto;
-    min-width: 6.25rem;
+    min-width: 8.75rem;
   }
 }
 .booking__summary-total {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.5rem;
 }
 .booking__summary-total-text {
@@ -2676,6 +2706,15 @@ body {
     justify-content: space-between;
     font-size: 1.55rem;
   }
+}
+.booking__summary-qty {
+  margin: 0;
+  white-space: nowrap;
+  width: 100%;
+}
+.booking__summary-qty-count {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
 }
 .booking__summary-sub {
   font-size: 0.875rem;
@@ -2783,6 +2822,7 @@ body {
 }
 .booking__field .form__control {
   font-size: 1.125rem;
+  padding-right: 1.375rem;
 }
 @media (min-width: 767.98px) {
   .booking__field .form__control {
@@ -2792,14 +2832,16 @@ body {
 .booking__field-icon {
   position: absolute;
   right: 0;
-  bottom: 0.875rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  opacity: 0.45;
+  bottom: 0.75rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.45);
   pointer-events: none;
+  transition: color 0.3s ease;
 }
 .booking__field:focus-within .booking__field-icon {
-  opacity: 1;
+  color: #1dbbfe;
 }
 .booking__submit {
   display: flex;
@@ -2872,10 +2914,10 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35em 0.85em;
-  border-radius: 1rem;
+  border-radius: 0.35em;
   transform: rotate(-3deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
-  box-shadow: 0 0 0.875rem rgba(255, 45, 155, 0.65), 0 0 2rem rgba(255, 45, 155, 0.35), 0 0 3rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0.4375rem rgba(255, 45, 155, 0.65), 0 0 1rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 1.25rem;
@@ -2887,7 +2929,7 @@ body {
     margin-top: -0.5rem;
     font-size: 2rem;
     padding: 0.3em 0.4em;
-    box-shadow: 0 0 1.125rem rgba(255, 45, 155, 0.65), 0 0 2.5rem rgba(255, 45, 155, 0.35), 0 0 3.75rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0.5625rem rgba(255, 45, 155, 0.65), 0 0 1.25rem rgba(255, 45, 155, 0.35), 0 0 1.875rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
   }
 }
 @media (min-width: 1199.98px) {
@@ -2986,7 +3028,7 @@ body {
 .pricing__record-text {
   font-size: 0.875rem;
   line-height: 1.35;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   transform: rotate(8deg);
@@ -3243,13 +3285,11 @@ body {
   padding: 2rem 1.5rem;
   border-radius: 1rem;
   color: #ffffff;
-  background-image: var(--benefits-card-bg, none), linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
-  background-position: right bottom, center;
-  background-size: contain, auto;
-  background-repeat: no-repeat, no-repeat;
+  background: var(--benefits-card-bg, none) right bottom/cover no-repeat, linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
 }
 @media (max-width: 767.98px) {
   .benefits__card {
+    background: var(--benefits-card-bg, none) right bottom/100% auto no-repeat, linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
     min-height: 22.5rem;
     height: auto;
   }
@@ -3307,13 +3347,8 @@ body {
   font-size: 1rem;
   line-height: 1.45;
   opacity: 0.9;
-  max-width: 20rem;
+  max-width: 12.5rem;
   z-index: 1;
-}
-@media (max-width: 767.98px) {
-  .benefits__card-text {
-    max-width: 16.25rem;
-  }
 }
 .benefits__card--paid .benefits__card-text {
   opacity: 0.75;
@@ -3338,12 +3373,10 @@ body {
   margin-top: 0;
   margin-bottom: 0.5rem;
   max-width: none;
-  font-size: 0.9375rem;
 }
 @media (min-width: 767.98px) {
   .storage__head .section-head__lead {
     margin-bottom: 0.75rem;
-    font-size: inherit;
   }
 }
 .storage__head .section-head__title {
@@ -3374,15 +3407,13 @@ body {
 }
 .storage__accent {
   margin-top: 0.25rem;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   position: relative;
-  gap: 0.5rem;
-  padding: 0.5em 0.85em;
-  border-radius: 0.5rem;
+  padding: 0.45em 0.85em;
+  border-radius: 0.35em;
   transform: rotate(2deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
-  box-shadow: 0 0 0.875rem rgba(255, 45, 155, 0.65), 0 0 2rem rgba(255, 45, 155, 0.35), 0 0 3rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0.625rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.18), 0 0 2.25rem rgba(255, 45, 155, 0.1), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 1.5rem;
@@ -3392,17 +3423,15 @@ body {
 @media (min-width: 575.98px) {
   .storage__accent {
     margin-top: 0.75rem;
-    border-radius: 1rem;
-    padding: 0.35em 0.85em;
     font-size: 1.25rem;
   }
 }
 @media (min-width: 767.98px) {
   .storage__accent {
     margin-top: -0.5rem;
+    padding: 0.4em 0.2em;
     font-size: 2rem;
-    padding: 0.35em 0.25em;
-    box-shadow: 0 0 1.125rem rgba(255, 45, 155, 0.65), 0 0 2.5rem rgba(255, 45, 155, 0.35), 0 0 3.75rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0.4375rem rgba(255, 45, 155, 0.35), 0 0 1rem rgba(255, 45, 155, 0.18), 0 0 1.5rem rgba(255, 45, 155, 0.1), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
   }
 }
 @media (min-width: 1199.98px) {
@@ -3449,8 +3478,7 @@ body {
   .storage__accent-icon {
     width: 5.9375rem;
     height: 6.875rem;
-    bottom: calc(100% - 2.5rem);
-    left: calc(100% - 5rem);
+    bottom: calc(100% - 3.25rem);
   }
 }
 .storage__body {
@@ -4005,10 +4033,10 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.35em 0.85em;
-  border-radius: 1rem;
+  border-radius: 0.35em;
   transform: rotate(-2deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
-  box-shadow: 0 0 0.875rem rgba(255, 45, 155, 0.65), 0 0 2rem rgba(255, 45, 155, 0.35), 0 0 3rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0.4375rem rgba(255, 45, 155, 0.65), 0 0 1rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 1.25rem;
@@ -4020,7 +4048,7 @@ body {
     margin-top: -0.5rem;
     font-size: 2rem;
     padding: 0.35em 0.2em;
-    box-shadow: 0 0 1.125rem rgba(255, 45, 155, 0.65), 0 0 2.5rem rgba(255, 45, 155, 0.35), 0 0 3.75rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0.5625rem rgba(255, 45, 155, 0.65), 0 0 1.25rem rgba(255, 45, 155, 0.35), 0 0 1.875rem rgba(255, 45, 155, 0.35), inset 0.1875rem 0.1875rem 0.75rem rgba(255, 255, 255, 0.55), inset -0.1875rem -0.3125rem 0.875rem rgba(212, 20, 111, 0.55), inset 0 0.125rem 0rem rgba(255, 255, 255, 0.35);
   }
 }
 @media (min-width: 1199.98px) {
@@ -4253,7 +4281,7 @@ body {
 }
 @media (any-hover: hover) {
   .contacts__phones a:hover {
-    color: #ff2d9b;
+    color: #acacac;
   }
 }
 .contacts__messengers-lead {
@@ -4293,7 +4321,7 @@ body {
 }
 @media (any-hover: hover) {
   .contacts__messenger:hover {
-    color: #ff2d9b;
+    color: #acacac;
   }
 }
 .contacts__route {
@@ -4334,16 +4362,11 @@ body {
 .contacts__route-note {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  opacity: 0.92;
 }
 .contacts__route-note img {
   flex-shrink: 0;
-  width: 0.875rem;
+  width: auto;
   height: 0.875rem;
-  filter: brightness(0) invert(1);
 }
 .contacts__map {
   border-radius: 1rem;

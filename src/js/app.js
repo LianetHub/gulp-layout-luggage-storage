@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!valid) {
-            showFormStatus(statusEl, 'Проверьте поля формы и номер телефона.', true);
+            showFormStatus(statusEl, 'Проверьте поля формы и\u00A0номер телефона.', true);
         }
 
         return valid;
