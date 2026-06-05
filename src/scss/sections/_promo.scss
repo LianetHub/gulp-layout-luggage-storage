@@ -108,7 +108,7 @@
 		margin-top: 0.75rem;
 		display: inline-block;
 		padding: 0.45em 0.85em;
-		border-radius: rem(16);
+		border-radius: 0.35em;
 		transform: rotate(-3deg);
 		background: linear-gradient(165deg,
 				$promo-pink-light 0%,
@@ -131,7 +131,6 @@
 
 		@media (min-width: $md4) {
 			margin-top: -0.5rem;
-
 			padding: 0.3em 0.4em;
 
 			box-shadow:
@@ -228,8 +227,8 @@
 			position: absolute;
 			left: 50%;
 			bottom: rem(9);
-			width: rem(7);
-			height: rem(7);
+			width: rem(12);
+			height: rem(12);
 			border-radius: 50%;
 			background: #8f2fff;
 			transform: translateX(-50%);
@@ -269,7 +268,7 @@
 			font-size: 2.5rem;
 		}
 
-		@media (min-width: $md4) {
+		@media (min-width: $md2) {
 			font-size: 4.875rem;
 		}
 	}
@@ -288,7 +287,7 @@
 			font-size: 0.9375rem;
 		}
 
-		@media (min-width: $md4) {
+		@media (min-width: $md2) {
 			font-size: 1.5rem;
 			padding-left: 0.75rem;
 		}
