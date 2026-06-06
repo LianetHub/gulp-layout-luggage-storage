@@ -3270,6 +3270,7 @@ body {
   .benefits__grid {
     display: grid;
     gap: 1.25rem;
+    row-gap: 2.75rem;
   }
   .benefits__grid.swiper-wrapper {
     display: grid;
@@ -3347,7 +3348,7 @@ body {
   font-size: 1rem;
   line-height: 1.45;
   opacity: 0.9;
-  max-width: 12.5rem;
+  max-width: 12.8125rem;
   z-index: 1;
 }
 .benefits__card--paid .benefits__card-text {

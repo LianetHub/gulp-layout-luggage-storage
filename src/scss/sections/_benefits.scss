@@ -24,6 +24,7 @@
 		@media (min-width: $md4) {
 			display: grid;
 			gap: 1.25rem;
+			row-gap: 2.75rem;
 
 			&.swiper-wrapper {
 				display: grid;
@@ -115,7 +116,7 @@
 		font-size: 1rem;
 		line-height: 1.45;
 		opacity: 0.9;
-		max-width: rem(200);
+		max-width: rem(205);
 		z-index: 1;
 
 
