@@ -24,7 +24,7 @@
 	<link rel="apple-touch-icon" href="favicon.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap&_v=20260608104043" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap&_v=20260608105059" rel="stylesheet">
 	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="shortcut icon" href="/favicon.ico" />
@@ -32,13 +32,13 @@
 	<meta name="apple-mobile-web-app-title" content="Камера хранения" />
 	<link rel="manifest" href="/site.webmanifest" />
 	<!-- plugins -->
-	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20260608104043">
-	<link rel="stylesheet" href="css/libs/nouislider.min.css?_v=20260608104043">
-	<link rel="stylesheet" href="css/libs/fancybox.min.css?_v=20260608104043">
-	<link rel="stylesheet" href="css/libs/vanilla-calendar.css?_v=20260608104043">
+	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20260608105059">
+	<link rel="stylesheet" href="css/libs/nouislider.min.css?_v=20260608105059">
+	<link rel="stylesheet" href="css/libs/fancybox.min.css?_v=20260608105059">
+	<link rel="stylesheet" href="css/libs/vanilla-calendar.css?_v=20260608105059">
 	<!-- plugins -->
-	<link rel="stylesheet" href="css/reset.min.css?_v=20260608104043">
-	<link rel="stylesheet" href="css/style.min.css?_v=20260608104043">
+	<link rel="stylesheet" href="css/reset.min.css?_v=20260608105059">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260608105059">
 </head>
 
 <body>
@@ -310,7 +310,7 @@
 									</button>
 									<label class="checkbox">
 										<input type="checkbox" name="agree" class="checkbox__input hidden" id="booking_agree" required>
-										<span class="checkbox__text"><span>Нажимая кнопку, я подтверждаю своё согласие на&nbsp;<a href="#">обработку персональных данных</a></span></span>
+										<span class="checkbox__text"><span>Нажимая кнопку, я подтверждаю своё согласие на&nbsp;<a href="#privacy-policy" data-fancybox>обработку персональных данных</a></span></span>
 									</label>
 								</div>
 							</div>
@@ -638,7 +638,7 @@
 		<footer class="footer">
 			<div class="footer__bottom">
 				<div class="footer__container">
-					<a href="#" class="footer__policy">Политика конфиденциальности</a>
+					<a href="#privacy-policy" data-fancybox class="footer__policy">Политика конфиденциальности</a>
 					<p class="footer__copy"> Первая туристическая камера хранения<br class="footer__copy-br"> в&nbsp;Зеленоградске © Все права защищены,&nbsp;2019–2026&nbsp;г. </p>
 				</div>
 			</div>
@@ -662,40 +662,79 @@
 				<img class="mobile-bar__icon-img" src="img/telegram.svg" alt="" width="28" height="28" aria-hidden="true">
 			</a>
 		</nav>
-		<div id="callback" class="popup" role="dialog" aria-modal="true" aria-labelledby="callback-title" aria-hidden="true">
-			<button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
-			<h2 id="callback-title" class="popup__title title-md-desktop title-sm">Быстрое бронирование</h2>
-			<form action="#" class="popup__form form" novalidate>
-				<div class="form__field">
-					<label for="callback_name" class="form__label">Имя:</label>
-					<input type="text" name="name" id="callback_name" class="form__control" placeholder="Ваше имя" autocomplete="name" required>
-				</div>
-				<div class="form__field">
-					<label for="callback_phone" class="form__label">Номер телефона:</label>
-					<input type="tel" name="phone" id="callback_phone" class="form__control" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" required>
-				</div>
-				<div class="form__field">
-					<label class="form__checkbox">
-						<input type="checkbox" name="agree" class="form__checkbox-input hidden" id="callback_agree" required>
-						<span class="form__checkbox-text">Даю согласие на&nbsp;<a href="#" target="_blank" rel="noopener noreferrer">обработку персональных данных</a></span>
-					</label>
-				</div>
-				<p class="form__status" role="status" aria-live="polite" hidden></p>
-				<button type="submit" class="form__btn btn btn-secondary">Бронировать</button>
-			</form>
+		<div id="privacy-policy" class="popup popup--policy" role="dialog" aria-modal="true" aria-labelledby="privacy-policy-title" aria-hidden="true">
+			<h2 id="privacy-policy-title" class="popup__title title-md-desktop title-sm">Политика конфиденциальности</h2>
+			<div class="popup__body">
+				<h3 class="popup__heading">1. Общие положения</h3>
+				<p>Настоящая Политика конфиденциальности (далее&nbsp;— Политика) определяет порядок обработки и&nbsp;защиты персональных данных пользователей сайта камеры хранения в&nbsp;г.&nbsp;Зеленоградск (далее&nbsp;— Сайт, Оператор).</p>
+				<p>Используя Сайт и&nbsp;оставляя заявку на&nbsp;бронирование, вы&nbsp;подтверждаете, что ознакомились с&nbsp;настоящей Политикой и&nbsp;даёте согласие на&nbsp;обработку персональных данных в&nbsp;указанных в&nbsp;ней целях.</p>
+				<p>Оператор обрабатывает персональные данные в&nbsp;соответствии с&nbsp;Федеральным законом от&nbsp;27.07.2006 №&nbsp;152-ФЗ «О&nbsp;персональных данных».</p>
+				<h3 class="popup__heading">2. Оператор персональных данных</h3>
+				<p>Оператор: камера хранения в&nbsp;г.&nbsp;Зеленоградск.</p>
+				<p>Адрес: г.&nbsp;Зеленоградск, ул.&nbsp;Ленина&nbsp;3, ТЦ&nbsp;Пегас, этаж&nbsp;3.</p>
+				<p>Телефоны: <a href="tel:+79112943404">+7&nbsp;911&nbsp;294-34-04</a>, <a href="tel:+79219002192">+7&nbsp;921&nbsp;900-21-92</a>.</p>
+				<h3 class="popup__heading">3. Какие данные мы&nbsp;собираем</h3>
+				<p>Оператор может обрабатывать следующие персональные данные, которые вы&nbsp;указываете при заполнении форм на&nbsp;Сайте:</p>
+				<ul class="popup__list">
+					<li>имя;</li>
+					<li>номер телефона;</li>
+					<li>сведения о&nbsp;бронировании: даты хранения, количество и&nbsp;тип багажа, расчётная стоимость услуги.</li>
+				</ul>
+				<p>Также автоматически могут собираться технические данные: IP-адрес, тип браузера и&nbsp;устройства, время посещения страниц, файлы cookie и&nbsp;иные обезличенные сведения, необходимые для корректной работы Сайта и&nbsp;аналитики.</p>
+				<h3 class="popup__heading">4. Цели обработки персональных данных</h3>
+				<p>Персональные данные обрабатываются в&nbsp;следующих целях:</p>
+				<ul class="popup__list">
+					<li>приём и&nbsp;обработка заявок на&nbsp;бронирование камеры хранения;</li>
+					<li>связь с&nbsp;вами для подтверждения, уточнения или отмены бронирования;</li>
+					<li>оказание услуг по&nbsp;хранению багажа и&nbsp;сопутствующих услуг;</li>
+					<li>улучшение работы Сайта и&nbsp;качества обслуживания;</li>
+					<li>исполнение требований законодательства&nbsp;РФ.</li>
+				</ul>
+				<h3 class="popup__heading">5. Правовые основания обработки</h3>
+				<p>Обработка персональных данных осуществляется на&nbsp;основании:</p>
+				<ul class="popup__list">
+					<li>вашего согласия, выраженного при отправке формы на&nbsp;Сайте;</li>
+					<li>необходимости исполнения договора или заключения договора по&nbsp;вашему инициативе;</li>
+					<li>законных интересов Оператора при условии, что ваши права не&nbsp;нарушаются.</li>
+				</ul>
+				<h3 class="popup__heading">6. Порядок и&nbsp;условия обработки</h3>
+				<p>Обработка персональных данных включает сбор, запись, систематизацию, накопление, хранение, уточнение, использование, передачу (предоставление, доступ), обезличивание, блокирование и&nbsp;уничтожение данных.</p>
+				<p>Оператор принимает необходимые организационные и&nbsp;технические меры для защиты персональных данных от&nbsp;неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения, а&nbsp;также от&nbsp;иных неправомерных действий.</p>
+				<h3 class="popup__heading">7. Передача данных третьим лицам</h3>
+				<p>Оператор не&nbsp;передаёт персональные данные третьим лицам, за&nbsp;исключением случаев, когда это необходимо для оказания услуг (например, хостинг-провайдер, сервисы связи), предусмотрено законом либо осуществляется с&nbsp;вашего согласия.</p>
+				<p>При передаче данных третьим лицам Оператор требует соблюдения ими конфиденциальности и&nbsp;мер по&nbsp;защите персональных данных.</p>
+				<h3 class="popup__heading">8. Срок хранения данных</h3>
+				<p>Персональные данные хранятся не&nbsp;дольше, чем это необходимо для достижения целей обработки, если иной срок не&nbsp;установлен законодательством&nbsp;РФ или договором.</p>
+				<p>После достижения целей обработки или отзыва согласия данные подлежат уничтожению либо обезличиванию, если их&nbsp;дальнейшее хранение не&nbsp;требуется по&nbsp;закону.</p>
+				<h3 class="popup__heading">9. Ваши права</h3>
+				<p>Вы&nbsp;имеете право:</p>
+				<ul class="popup__list">
+					<li>получать информацию об&nbsp;обработке ваших персональных данных;</li>
+					<li>требовать уточнения, блокирования или уничтожения данных, если они неполные, устаревшие или обрабатываются незаконно;</li>
+					<li>отозвать согласие на&nbsp;обработку персональных данных;</li>
+					<li>обжаловать действия Оператора в&nbsp;уполномоченный орган или в&nbsp;суд.</li>
+				</ul>
+				<p>Для реализации своих прав обратитесь по&nbsp;телефонам, указанным в&nbsp;разделе&nbsp;2 настоящей Политики.</p>
+				<h3 class="popup__heading">10. Файлы cookie</h3>
+				<p>Сайт может использовать файлы cookie для обеспечения корректной работы, сохранения настроек и&nbsp;сбора обезличенной статистики посещений. Вы&nbsp;можете ограничить или отключить использование cookie в&nbsp;настройках браузера; при этом отдельные функции Сайта могут работать некорректно.</p>
+				<h3 class="popup__heading">11. Изменение Политики</h3>
+				<p>Оператор вправе вносить изменения в&nbsp;настоящую Политику. Актуальная версия всегда доступна на&nbsp;Сайте. Продолжая пользоваться Сайтом после публикации изменений, вы&nbsp;соглашаетесь с&nbsp;обновлённой редакцией Политики.</p>
+				<h3 class="popup__heading">12. Контакты</h3>
+				<p>По&nbsp;вопросам обработки персональных данных и&nbsp;реализации ваших прав обращайтесь:</p>
+				<p>г.&nbsp;Зеленоградск, ул.&nbsp;Ленина&nbsp;3, ТЦ&nbsp;Пегас, этаж&nbsp;3<br> тел.: <a href="tel:+79112943404">+7&nbsp;911&nbsp;294-34-04</a>, <a href="tel:+79219002192">+7&nbsp;921&nbsp;900-21-92</a>.</p>
+			</div>
 		</div>
 		<div id="form-success" class="popup popup--success" role="dialog" aria-modal="true" aria-labelledby="form-success-title" aria-hidden="true">
 			<button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
 			<h2 id="form-success-title" class="popup__title title-md-desktop title-sm">Заявка принята</h2>
 			<p class="popup__text">Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время для&nbsp;подтверждения бронирования.</p>
 			<button type="button" class="form__btn btn btn-primary" data-fancybox-close>Хорошо</button>
-		</div>
+		</div> <!-- plugins -->
+		<script src="js/libs/fancybox.umd.js?_v=20260608105059"></script>
+		<script src="js/libs/swiper-bundle.min.js?_v=20260608105059"></script>
+		<script src="js/libs/nouislider.min.js?_v=20260608105059"></script>
 		<!-- plugins -->
-		<script src="js/libs/fancybox.umd.js?_v=20260608104043"></script>
-		<script src="js/libs/swiper-bundle.min.js?_v=20260608104043"></script>
-		<script src="js/libs/nouislider.min.js?_v=20260608104043"></script>
-		<!-- plugins -->
-		<script src="js/app.min.js?_v=20260608104043"></script>
+		<script src="js/app.min.js?_v=20260608105059"></script>
 	</div>
 </body>
 
