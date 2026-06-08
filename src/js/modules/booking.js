@@ -15,9 +15,11 @@ const BOOKING_TIME_MIN_INTERVAL = 60;
 const BOOKING_TIME_EVENING = 1140;
 const BOOKING_TARIFF_SHORT_MAX = 180;
 const BOOKING_TIME_LABEL_FREEZE_PX = 200;
+const BOOKING_TIME_LABEL_CENTER_EDGE = 0.1;
 const BOOKING_TIME_DEFAULT = [BOOKING_TIME_MIN, 1050];
 const BOOKING_DEFAULT_QTY = [3, 1, 0];
 const BOOKING_OVERSIZED_PRICE = 800;
+const BOOKING_DAILY_PRICE = 600;
 
 let todayISO = "";
 let tomorrowISO = "";
@@ -59,7 +61,7 @@ export function getTariff(fromMin, toMin) {
 	if (endAfter7) {
 		const extraHours = Math.ceil((toMin - BOOKING_TIME_EVENING) / 60);
 		const price = 300 + 100 * extraHours;
-		return { theme: "purple", price, badge: `${price} ₽/шт.` };
+		return { theme: "purple", price, badge: `${price} ₽/шт.`, isHourly: false, isDaily: false };
 	}
 
 	if (duration === 60) {
@@ -68,14 +70,58 @@ export function getTariff(fromMin, toMin) {
 			price: 100,
 			badge: '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.',
 			badgeHtml: true,
+			isHourly: true,
+			isDaily: false,
 		};
 	}
 
 	if (duration <= BOOKING_TARIFF_SHORT_MAX) {
-		return { theme: "pink", price: 200, badge: "200 ₽/шт." };
+		return { theme: "pink", price: 200, badge: "200 ₽/шт.", isHourly: false, isDaily: false };
 	}
 
-	return { theme: "blue", price: 300, badge: "300 ₽/шт." };
+	return { theme: "blue", price: 300, badge: "300 ₽/шт.", isHourly: false, isDaily: false };
+}
+
+function getDailyTariff() {
+	return {
+		theme: "blue",
+		price: BOOKING_DAILY_PRICE,
+		badge: `${BOOKING_DAILY_PRICE} ₽/шт.`,
+		isHourly: false,
+		isDaily: true,
+	};
+}
+
+function hasOversizedSelected() {
+	const counters = document.getElementById("booking-counters");
+	if (!counters) return false;
+
+	return Array.from(counters.querySelectorAll("[data-oversized]")).some((row) => {
+		return (Number(row.querySelector("[data-qty]")?.textContent) || 0) > 0;
+	});
+}
+
+function buildTariffBadge(tariff) {
+	if (tariff.isHourly && hasOversizedSelected()) {
+		return {
+			badgeHtml: true,
+			badge: `<span class="booking__badge-hour">НА ЧАС</span> ${BOOKING_OVERSIZED_PRICE} ₽/шт.`,
+		};
+	}
+
+	return { badge: tariff.badge, badgeHtml: tariff.badgeHtml };
+}
+
+function getActiveDateMode() {
+	const activeChip = document.querySelector('[data-booking-chips="date"] .booking__chip.is-active');
+	return activeChip?.dataset.value || "today";
+}
+
+function resolveTariff(fromMin, toMin, dateMode) {
+	if (dateMode === "tomorrow") {
+		return getDailyTariff();
+	}
+	return getTariff(fromMin, toMin);
 }
 
 function getTimeHandleWidth(sliderEl) {
@@ -113,6 +159,18 @@ function getHandleCollapseSide(sliderEl) {
 	return midpoint - sliderRect.left >= sliderRect.width / 2 ? "right" : "left";
 }
 
+function getHandleCollapseZone(sliderEl) {
+	const centers = getHandleCenters(sliderEl);
+	if (!centers) return "right";
+
+	const sliderRect = sliderEl.getBoundingClientRect();
+	const relativeMid = ((centers.lower + centers.upper) / 2 - sliderRect.left) / sliderRect.width;
+
+	if (relativeMid < BOOKING_TIME_LABEL_CENTER_EDGE) return "left";
+	if (relativeMid > 1 - BOOKING_TIME_LABEL_CENTER_EDGE) return "right";
+	return "center";
+}
+
 function syncTimeHandleProximity(sliderEl, fromVal, toVal) {
 	const sliderWidth = sliderEl.getBoundingClientRect().width;
 	const handleWidth = getTimeHandleWidth(sliderEl);
@@ -130,16 +188,35 @@ function syncTimeHandleLabels(sliderEl, fromVal, toVal) {
 	if (!lowerTime || !upperTime) return;
 
 	const isCollapsed = getHandlePixelDistance(sliderEl) <= BOOKING_TIME_LABEL_FREEZE_PX;
-	const collapseSide = isCollapsed ? getHandleCollapseSide(sliderEl) : null;
+	const collapseZone = isCollapsed ? getHandleCollapseZone(sliderEl) : null;
+	const collapseSide =
+		isCollapsed && collapseZone !== "center" ? collapseZone : isCollapsed ? getHandleCollapseSide(sliderEl) : null;
 	const collapseRight = collapseSide === "right";
 	const collapseLeft = collapseSide === "left";
+	const isCenterZone = collapseZone === "center";
 	const fromTime = minutesToTime(fromVal);
 	const toTime = minutesToTime(toVal);
 
 	lowerTime.classList.toggle("booking__time-handle-time--hidden", collapseRight);
 	lowerTime.classList.toggle("booking__time-handle-time--combined", collapseLeft);
+	lowerTime.classList.toggle("booking__time-handle-time--center", isCenterZone && collapseLeft);
 	upperTime.classList.toggle("booking__time-handle-time--hidden", collapseLeft);
 	upperTime.classList.toggle("booking__time-handle-time--combined", collapseRight);
+	upperTime.classList.toggle("booking__time-handle-time--center", isCenterZone && collapseRight);
+
+	if (isCenterZone) {
+		const centers = getHandleCenters(sliderEl);
+		const rangeMid = (centers.lower + centers.upper) / 2;
+		const anchorCenter = collapseRight ? centers.upper : centers.lower;
+		const offset = rangeMid - anchorCenter;
+		const activeTime = collapseRight ? upperTime : lowerTime;
+
+		activeTime.style.setProperty("--time-label-offset", `${offset}px`);
+		(collapseRight ? lowerTime : upperTime).style.removeProperty("--time-label-offset");
+	} else {
+		lowerTime.style.removeProperty("--time-label-offset");
+		upperTime.style.removeProperty("--time-label-offset");
+	}
 
 	if (collapseRight) {
 		const fromOutput = upperTime.querySelector(".booking__time-output--from");
@@ -244,7 +321,9 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	const bookingStatus = document.getElementById("booking-status");
 
 	let timeSlider = null;
-	let currentTariff = getTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
+	let currentFromVal = BOOKING_TIME_DEFAULT[0];
+	let currentToVal = BOOKING_TIME_DEFAULT[1];
+	let currentTariff = resolveTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1], "today");
 
 	function initBookingDates() {
 		const today = new Date();
@@ -287,6 +366,15 @@ export function initBooking({ validateForm, showStatus } = {}) {
 
 	function updateBookingSummaryDate(chip) {
 		if (!bookingSummaryDate || !chip) return;
+
+		if (chip.dataset.value === "tomorrow") {
+			const date = chip.querySelector(".booking__date-card-value")?.textContent?.trim();
+			bookingSummaryDate.innerHTML = date
+				? `Забрать завтра <span>${date}</span>`
+				: "Сдать сегодня — забрать завтра";
+			return;
+		}
+
 		const label = chip.querySelector(".booking__date-card-label")?.textContent?.trim();
 		const date = chip.querySelector(".booking__date-card-value")?.textContent?.trim();
 		if (label && date) {
@@ -295,9 +383,9 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		}
 		if (chip.dataset.value === "other") {
 			if (isOtherDatePicked()) {
-				bookingSummaryDate.innerHTML = `<span>${getOtherDateLabel()}</span>`;
+				bookingSummaryDate.innerHTML = `Другая дата <span>${getOtherDateLabel()}</span>`;
 			} else {
-				bookingSummaryDate.textContent = getOtherDateLabel();
+				bookingSummaryDate.textContent = "Другая дата";
 			}
 		}
 	}
@@ -313,37 +401,60 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	function updateBookingTimeRange(fromVal, toVal) {
 		const fromTime = minutesToTime(fromVal);
 		const toTime = minutesToTime(toVal);
+		const isDaily = getActiveDateMode() === "tomorrow";
 
 		if (bookingTimeFromOut) bookingTimeFromOut.textContent = fromTime;
 		if (bookingTimeToOut) bookingTimeToOut.textContent = toTime;
 		if (bookingSummaryTime) {
-			bookingSummaryTime.textContent = `С\u00A0${fromTime} до\u00A0${toTime}`;
+			bookingSummaryTime.textContent = isDaily
+				? "Суточное хранение"
+				: `С\u00A0${fromTime} до\u00A0${toTime}`;
 		}
 		if (bookingTimeFromInput) bookingTimeFromInput.value = String(fromVal);
 		if (bookingTimeToInput) bookingTimeToInput.value = String(toVal);
+		if (bookingTimeGroup) {
+			bookingTimeGroup.classList.toggle("booking__group--daily", isDaily);
+		}
+	}
+
+	function renderTariffBadge(tariff, tariffChanged) {
+		if (!bookingTariffBadge) return;
+
+		const badgeView = buildTariffBadge(tariff);
+		if (badgeView.badgeHtml) {
+			bookingTariffBadge.innerHTML = badgeView.badge;
+		} else {
+			bookingTariffBadge.textContent = badgeView.badge;
+		}
+
+		if (tariffChanged) {
+			bookingTariffBadge.classList.remove("booking__badge--pulse");
+			void bookingTariffBadge.offsetWidth;
+			bookingTariffBadge.classList.add("booking__badge--pulse");
+		}
 	}
 
 	function updateBookingTariff(fromVal, toVal) {
-		const tariff = getTariff(fromVal, toVal);
+		currentFromVal = fromVal;
+		currentToVal = toVal;
+
+		const tariff = resolveTariff(fromVal, toVal, getActiveDateMode());
 		const tariffChanged =
-			!currentTariff || currentTariff.theme !== tariff.theme || currentTariff.price !== tariff.price;
+			!currentTariff ||
+			currentTariff.theme !== tariff.theme ||
+			currentTariff.price !== tariff.price ||
+			currentTariff.isDaily !== tariff.isDaily ||
+			currentTariff.isHourly !== tariff.isHourly;
 
 		if (bookingTimeGroup) bookingTimeGroup.dataset.tariff = tariff.theme;
-		if (bookingTariffBadge) {
-			if (tariff.badgeHtml) {
-				bookingTariffBadge.innerHTML = tariff.badge;
-			} else {
-				bookingTariffBadge.textContent = tariff.badge;
-			}
-			if (tariffChanged) {
-				bookingTariffBadge.classList.remove("booking__badge--pulse");
-				void bookingTariffBadge.offsetWidth;
-				bookingTariffBadge.classList.add("booking__badge--pulse");
-			}
-		}
+		renderTariffBadge(tariff, tariffChanged);
 
 		currentTariff = tariff;
 		updateBookingTotal();
+	}
+
+	function refreshBookingTariff() {
+		updateBookingTariff(currentFromVal, currentToVal);
 	}
 
 	function updateBookingTotal() {
@@ -481,6 +592,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			if (btn.dataset.action === "dec") qty = Math.max(0, qty - 1);
 			qtyEl.textContent = String(qty);
 			updateBookingTotal();
+			renderTariffBadge(currentTariff, false);
 		});
 		updateBookingTotal();
 	}
@@ -489,6 +601,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		onDatePick: () => {
 			const otherChip = document.querySelector('[data-booking-chips="date"] [data-value="other"]');
 			if (otherChip) updateBookingSummaryDate(otherChip);
+			refreshBookingTariff();
 		},
 	});
 
@@ -510,6 +623,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			}
 
 			updateBookingSummaryDate(chip);
+			refreshBookingTariff();
 		});
 	});
 

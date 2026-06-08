@@ -141,6 +141,16 @@ $booking-handle-gap: rem(6);
 					margin-right: 0.25rem;
 				}
 			}
+
+			&--center {
+				left: 50%;
+				right: auto;
+				transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - rem(6)));
+
+				@media (min-width: $md4) {
+					transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - rem(8)));
+				}
+			}
 		}
 
 		.booking__time-handle-pin {
@@ -173,6 +183,16 @@ $booking-handle-gap: rem(6);
 
 				.booking__time-output--from {
 					margin-right: 0.25rem;
+				}
+			}
+
+			&--center {
+				left: 50%;
+				right: auto;
+				transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - rem(6)));
+
+				@media (min-width: $md4) {
+					transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - rem(8)));
 				}
 			}
 		}

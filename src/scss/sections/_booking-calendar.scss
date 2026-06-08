@@ -179,6 +179,27 @@ $booking-calendar-purple: #8f2fff;
 		color: $booking-calendar-pink;
 	}
 
+	.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+	.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+	.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+	[data-vc-date][data-vc-date-weekend][data-vc-date-selected] [data-vc-date-btn],
+	[data-vc-date][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn],
+	[data-vc-date][data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn] {
+		color: $text-inverse;
+	}
+
+	@media (any-hover: hover) {
+
+		.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+		.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover,
+		.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover,
+		[data-vc-date][data-vc-date-weekend][data-vc-date-selected] [data-vc-date-btn]:hover,
+		[data-vc-date][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn]:hover,
+		[data-vc-date][data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn]:hover {
+			color: $text-inverse;
+		}
+	}
+
 	.vc-arrow::before {
 		filter: none;
 	}
@@ -186,7 +207,9 @@ $booking-calendar-purple: #8f2fff;
 
 // Перебиваем красные стили vanilla-calendar (weekend / holiday)
 .booking__date-picker,
-[data-vc-theme="light"] .booking__date-picker {
+#booking-date-popup,
+[data-vc-theme="light"] .booking__date-picker,
+#booking-date-popup [data-vc-theme="light"] {
 	.vc-week__day[data-vc-week-day-off],
 	button.vc-week__day[data-vc-week-day-off] {
 		color: $booking-calendar-pink !important;
@@ -223,15 +246,22 @@ $booking-calendar-purple: #8f2fff;
 
 	.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
 	.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
-	.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
-		background: $booking-calendar-pink !important;
+	.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn,
+	[data-vc-date][data-vc-date-weekend][data-vc-date-selected] [data-vc-date-btn],
+	[data-vc-date][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn],
+	[data-vc-date][data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn] {
+		background: $booking-calendar-blue !important;
 		color: $text-inverse !important;
 	}
 
 	@media (any-hover: hover) {
 		.vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
-		.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
-			background: $booking-calendar-pink-hover !important;
+		.vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover,
+		.vc-date[data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover,
+		[data-vc-date][data-vc-date-weekend][data-vc-date-selected] [data-vc-date-btn]:hover,
+		[data-vc-date][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn]:hover,
+		[data-vc-date][data-vc-date-weekend][data-vc-date-holiday][data-vc-date-selected] [data-vc-date-btn]:hover {
+			background: $booking-calendar-blue-hover !important;
 			color: $text-inverse !important;
 		}
 	}

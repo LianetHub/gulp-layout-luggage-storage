@@ -211,6 +211,13 @@ $booking-purple: #8f2fff;
 		&[data-tariff="purple"] .booking__badge {
 			background: $booking-purple;
 		}
+
+		&.booking__group--daily {
+			.booking__time-range {
+				opacity: 0.45;
+				pointer-events: none;
+			}
+		}
 	}
 
 	&__dates {
@@ -409,9 +416,9 @@ $booking-purple: #8f2fff;
 
 	&__item-footer {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		align-items: flex-start;
 		gap: 0.5rem;
-		justify-content: space-between;
 	}
 
 	&__item-controls {
