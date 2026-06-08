@@ -16,8 +16,8 @@
 		}
 
 		@media (min-width: $md4) {
-			margin-bottom: 3rem;
-			padding-bottom: 4.5rem;
+			margin-bottom: 3.25rem;
+
 		}
 	}
 
@@ -113,42 +113,43 @@
 
 	&__decor--sea {
 		transform: rotate(-20deg);
+		gap: 1rem;
 
 		img {
-			transform: rotate(20deg);
+			border-radius: 50%;
+			aspect-ratio: 1/1;
+			width: 7rem;
 		}
 
 		@media (min-width: $md4) {
-			bottom: 2rem;
+			bottom: 0rem;
 			right: calc(100% - 0rem);
 			max-width: rem(120);
 		}
 	}
 
 	&__decor--taxi {
-		transform: rotate(10deg);
-
-		img {
-			transform: rotate(-10deg);
-		}
+		transform: rotate(10.5deg);
 
 		@media (min-width: $md4) {
-			bottom: 3rem;
+			bottom: 3.75rem;
 			left: calc(100% - 2rem);
 		}
 	}
 
 	&__decor-img {
 		flex-shrink: 0;
+		margin-bottom: -0.75rem;
+		margin-left: 1.25rem;
 	}
 
 	&__decor-text {
 		font-size: 0.8125rem;
 		line-height: 1.35;
-		color: rgba(0, 0, 0, 0.2);
+		color: rgba(0, 0, 0, 0.1);
 
 		@media (min-width: $md4) {
-			font-size: 0.875rem;
+			font-size: 1.1rem;
 		}
 	}
 
@@ -387,7 +388,7 @@
 		img {
 			flex-shrink: 0;
 			width: auto;
-			height: rem(14);
+			height: rem(22);
 		}
 	}
 

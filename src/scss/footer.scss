@@ -7,7 +7,7 @@
 		padding: 1.25rem 0 7.5rem;
 
 		@media (min-width: $md3) {
-			padding: 1.375rem 0;
+			padding: 1.75rem 0;
 		}
 	}
 
@@ -29,7 +29,7 @@
 
 	&__policy {
 		flex-shrink: 0;
-		font-size: 0.875rem;
+		font-size: 1rem;
 		line-height: 1.4;
 		color: $accent;
 		text-decoration: underline;
@@ -57,7 +57,7 @@
 		@media (min-width: $md3) {
 			max-width: none;
 			flex: 1 1 auto;
-			font-size: 0.875rem;
+			font-size: 1rem;
 			text-align: right;
 		}
 	}

@@ -315,9 +315,22 @@ $booking-purple: #8f2fff;
 		width: rem(48);
 		height: rem(48);
 
+		&.booking__item-image--large {
+			margin-left: rem(-12);
+			width: rem(68);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			& img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
 		@media (min-width: $md4) {
-			width: rem(56);
-			height: rem(56);
+			width: rem(60);
+			height: rem(70);
+
 		}
 
 		img {
@@ -372,9 +385,9 @@ $booking-purple: #8f2fff;
 
 	&__counter-controls {
 		gap: 0;
-		min-width: rem(76);
-		height: rem(42);
-		padding: rem(10) rem(4);
+		min-width: rem(68);
+		height: rem(32);
+		padding: rem(8) rem(4);
 		background: $bg-muted;
 		border-radius: rem(8);
 	}
@@ -406,11 +419,15 @@ $booking-purple: #8f2fff;
 
 	&__counter-value {
 		flex: 1 1 auto;
-		min-width: rem(20);
+		min-width: rem(12);
 		font-weight: 400;
 		font-size: 1rem;
-		line-height: 1;
+		line-height: 1.5;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		text-align: center;
+
 	}
 
 	&__summary {
@@ -684,7 +701,7 @@ $booking-purple: #8f2fff;
 	&__field-icon {
 		position: absolute;
 		right: 0;
-		bottom: rem(12);
+		bottom: rem(20);
 		width: rem(14);
 		height: rem(14);
 		flex-shrink: 0;
