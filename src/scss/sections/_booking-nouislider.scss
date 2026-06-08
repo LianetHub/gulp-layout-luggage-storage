@@ -8,12 +8,12 @@ $booking-handle-gap: rem(6);
 	position: relative;
 	padding-top: rem(16);
 	margin-bottom: 3rem;
-	padding-inline: calc(#{$booking-handle-size} / 2);
+
 
 	@media (min-width: $md4) {
 		padding-top: rem(24);
 		margin-bottom: 5.5rem;
-		padding-inline: calc(#{$booking-handle-size-md} / 2);
+
 	}
 }
 
@@ -117,12 +117,28 @@ $booking-handle-gap: rem(6);
 
 	.noUi-handle-lower {
 		.booking__time-handle-time {
-			left: 0;
+			left: 1.5rem;
 			right: auto;
 			transform: translate(0, calc(-100% - rem(6)));
 
 			@media (min-width: $md4) {
 				transform: translate(0, calc(-100% - rem(8)));
+			}
+
+			.booking__time-prefix--to,
+			.booking__time-output--to {
+				display: none;
+			}
+
+			&--combined {
+				.booking__time-prefix--to,
+				.booking__time-output--to {
+					display: inline-block;
+				}
+
+				.booking__time-output {
+					margin-right: 0.25rem;
+				}
 			}
 		}
 
@@ -136,11 +152,27 @@ $booking-handle-gap: rem(6);
 	.noUi-handle-upper {
 		.booking__time-handle-time {
 			left: auto;
-			right: 0;
+			right: 1.5rem;
 			transform: translate(0, calc(-100% - rem(6)));
 
 			@media (min-width: $md4) {
 				transform: translate(0, calc(-100% - rem(8)));
+			}
+
+			.booking__time-prefix--from,
+			.booking__time-output--from {
+				display: none;
+			}
+
+			&--combined {
+				.booking__time-prefix--from,
+				.booking__time-output--from {
+					display: inline-block;
+				}
+
+				.booking__time-output--from {
+					margin-right: 0.25rem;
+				}
 			}
 		}
 
@@ -170,6 +202,11 @@ $booking-handle-gap: rem(6);
 	@media (min-width: $md4) {
 		top: calc(#{rem(2)} - #{rem(5)});
 		font-size: rem(24);
+	}
+
+	&--hidden {
+		opacity: 0;
+		visibility: hidden;
 	}
 }
 
