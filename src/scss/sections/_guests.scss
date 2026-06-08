@@ -327,8 +327,15 @@
 			object-fit: cover;
 		}
 
-		&:nth-child(1) img {
-			aspect-ratio: 480 / 640;
+		&:nth-child(1) {
+			@media (max-width:$md2) {
+				max-height: 30rem;
+
+			}
+
+			img {
+				aspect-ratio: 480 / 640;
+			}
 		}
 
 		&:nth-child(2) img,

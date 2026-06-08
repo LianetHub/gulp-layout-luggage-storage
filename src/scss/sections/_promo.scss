@@ -41,7 +41,7 @@
 		padding-bottom: rem(0);
 	}
 
-	@media (min-width: $md2) {
+	@media (min-width: $md3) {
 		padding-top: rem(190);
 	}
 
@@ -91,15 +91,12 @@
 			font-size: 1.5rem;
 		}
 
-		@media (min-width: $md3) {
+		@media (min-width: $md4) {
 			font-size: 1.875rem;
 		}
 
-		@media (min-width: $md4) {
-			font-size: 2.75rem;
-		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 4.125rem;
 		}
 	}
@@ -142,7 +139,7 @@
 				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 4.5rem;
 		}
 	}
@@ -163,6 +160,10 @@
 		gap: 1rem;
 		padding-left: 0;
 
+		@media (min-width: $md4) {
+			gap: 1.75rem;
+			padding-bottom: rem(8);
+		}
 
 		@media (min-width: $md3) {
 			margin-top: 7rem;
@@ -173,16 +174,13 @@
 			text-align: left;
 		}
 
-		@media (min-width: $md4) {
-			gap: 1.75rem;
-			padding-bottom: rem(8);
-		}
+
 	}
 
 	&__scroll {
 		position: absolute;
 		z-index: 4;
-		right: 100%;
+
 		bottom: 25%;
 		display: none;
 		flex-direction: column;
@@ -192,8 +190,15 @@
 		text-decoration: none;
 		transition: opacity 0.2s ease;
 
+		left: 0;
+
 		@media (min-width: $md3) {
 			display: inline-flex;
+		}
+
+		@media (min-width:$md1) {
+			right: 100%;
+			left: auto;
 		}
 
 		@media (any-hover: hover) {
@@ -263,12 +268,12 @@
 		font-size: 2.875rem;
 		line-height: 1;
 
-		@media (min-width: $md3) {
+		@media (min-width: $md4) {
 			font-weight: 700;
 			font-size: 2.5rem;
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 4.875rem;
 		}
 	}
@@ -280,14 +285,14 @@
 		max-width: rem(200);
 		padding-left: 1.5rem;
 
-		@media (min-width: $md3) {
+		@media (min-width: $md4) {
 			padding-left: 0;
 			max-width: rem(250);
 			margin: 0;
 			font-size: 0.9375rem;
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 1.5rem;
 			padding-left: 0.75rem;
 		}
@@ -299,7 +304,7 @@
 		gap: 1.25rem;
 		padding-left: 0.75rem;
 
-		@media (min-width: $md3) {
+		@media (min-width: $md4) {
 			display: flex;
 		}
 	}
@@ -362,7 +367,7 @@
 			width: 44vw;
 			left: -14%;
 
-			@media (max-width: $md3) {
+			@media (max-width: $md4) {
 				top: 15%;
 				width: 100vw;
 				left: -66%;
@@ -374,7 +379,7 @@
 			width: 46vw;
 			right: -10%;
 
-			@media (max-width: $md3) {
+			@media (max-width: $md4) {
 				top: 60%;
 				width: 175vw;
 				right: -80%;
@@ -393,7 +398,7 @@
 		z-index: 2;
 		transform-origin: center center;
 
-		@media (max-width: $md3) {
+		@media (max-width: $md4) {
 			left: 0;
 			right: -39%;
 			margin-inline: auto;
@@ -432,7 +437,7 @@
 		max-width: $maxWidthContainer;
 		margin: 0 auto;
 
-		@media (min-width: $md3) {
+		@media (min-width: $md4) {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
@@ -449,11 +454,11 @@
 		line-height: 1.2;
 		flex-shrink: 0;
 
-		@media (min-width: $md4) {
+		@media (min-width: $md5) {
 			font-size: 1.5rem;
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 1.75rem;
 		}
 	}

@@ -60,7 +60,7 @@
 				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 4.5rem;
 		}
 	}
@@ -99,8 +99,14 @@
 			transform-origin: left bottom;
 			position: absolute;
 			bottom: 0;
-			right: calc(100% - 3.5rem);
 			font-size: 1.75rem;
+			left: 0;
+
+			@media (min-width:$md2) {
+				left: auto;
+				right: calc(100% - 3.5rem);
+
+			}
 
 			& span {
 				font-size: 2rem;
@@ -143,8 +149,13 @@
 		text-align: center;
 		position: absolute;
 		bottom: -3.25rem;
-		left: calc(100% - 8rem);
 		transform: rotate(11deg);
+		right: 0;
+
+		@media (min-width:$md2) {
+			left: calc(100% - 8rem);
+			right: auto;
+		}
 
 		@media (min-width: $md4) {
 			display: flex;
@@ -221,7 +232,7 @@
 		}
 
 		&--top {
-			@media (max-width: $md4) {
+			@media (max-width: $md2) {
 				.pricing__tagline-item {
 					order: 7;
 					grid-column: 1 / -1;
@@ -229,7 +240,11 @@
 
 				.pricing__card--wide {
 					order: 6;
-					grid-column: span 1;
+
+					@media (min-width:$md4) {
+						grid-column: span 2;
+
+					}
 				}
 			}
 		}

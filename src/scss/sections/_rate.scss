@@ -20,14 +20,15 @@
 			align-items: center;
 			justify-content: space-between;
 			gap: 2rem;
-			padding-top: 1.5rem;
-			padding-bottom: 1.75rem;
-			padding-left: em(405);
+
+
 		}
 
 		@media (min-width: $md2) {
 			gap: 2.5rem;
-
+			padding-top: 1.5rem;
+			padding-bottom: 1.75rem;
+			padding-left: em(405);
 			padding-right: rem(30);
 		}
 	}

@@ -58,7 +58,7 @@
 				inset 0 rem(2) rem(0) rgba(#fff, 0.35);
 		}
 
-		@media (min-width: $md2) {
+		@media (min-width: $md3) {
 			font-size: 4rem;
 		}
 	}
@@ -123,17 +123,27 @@
 
 		@media (min-width: $md4) {
 			bottom: 0rem;
-			right: calc(100% - 0rem);
+			left: 0;
 			max-width: rem(120);
+		}
+
+		@media (min-width:$md2) {
+			right: calc(100% - 0rem);
+			left: auto;
 		}
 	}
 
 	&__decor--taxi {
 		transform: rotate(10.5deg);
+		right: 0;
+		bottom: 0;
 
-		@media (min-width: $md4) {
+		@media (min-width: $md4) {}
+
+		@media (min-width:$md2) {
 			bottom: 3.75rem;
 			left: calc(100% - 2rem);
+			right: auto;
 		}
 	}
 

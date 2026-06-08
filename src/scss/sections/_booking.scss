@@ -340,7 +340,17 @@ $booking-purple: #8f2fff;
 			grid-template-columns: repeat(2, 1fr);
 		}
 
+		@media (min-width:$md4) {
+			grid-template-columns: repeat(3, 1fr);
+
+		}
+
 		@media (min-width:$md3) {
+			grid-template-columns: repeat(2, 1fr);
+
+		}
+
+		@media (min-width:$md2) {
 			grid-template-columns: repeat(3, 1fr);
 
 		}
@@ -416,8 +426,9 @@ $booking-purple: #8f2fff;
 
 	&__item-footer {
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.5rem;
 	}
 
