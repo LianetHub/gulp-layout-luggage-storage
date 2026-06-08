@@ -6,41 +6,81 @@ $booking-calendar-pink-hover: #ff4dad;
 $booking-calendar-pink-soft: #fff0f8;
 $booking-calendar-purple: #8f2fff;
 
-// Внешняя обёртка: видимость (init календаря не трогает display)
-.booking__date-picker {
-	display: none;
-	width: 100%;
-	margin-top: 0.625rem;
-	padding: 0;
-	border: rem(2) solid rgba($text, 0.12);
-	border-radius: rem(12);
-	background: $bg-white;
-	overflow: hidden;
-	box-sizing: border-box;
+.booking__date-picker-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 0.75rem;
+}
 
-	@media (min-width: $md5) {
-		margin-top: 1rem;
+.booking__date-picker-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+
+.booking__date-picker-month {
+	margin: 0;
+	font-family: $fontfamily;
+	font-size: 1.25rem;
+	font-weight: 700;
+	line-height: 1.2;
+	color: $text;
+	white-space: nowrap;
+
+	@media (min-width: $md4) {
+		font-size: 1.5rem;
+	}
+}
+
+.booking__date-picker-arrow {
+	flex-shrink: 0;
+	width: rem(36);
+	height: rem(36);
+	border: none;
+	border-radius: 50%;
+	background: rgba($booking-calendar-purple, 0.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f2fff' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E") center / rem(20) no-repeat;
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&--prev {
+		transform: rotate(90deg);
 	}
 
-	&.is-open {
-		display: block;
+	&--next {
+		transform: rotate(-90deg);
 	}
 
-	&[hidden] {
-		display: none !important;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: rgba($booking-calendar-purple, 0.2);
+		}
 	}
+}
+
+.booking__date-picker-close {
+	position: static;
+	flex-shrink: 0;
 }
 
 .booking__date-picker-inner {
 	width: 100%;
 }
 
+#booking-date-popup,
 .booking__date-picker {
+	.vc-header,
+	[data-vc="header"] {
+		display: none;
+	}
+
 	[data-vc="calendar"] {
 		width: 100%;
 		max-width: 100%;
 		min-width: 0;
-		padding: 1.125rem 0.875rem 0.875rem;
+		padding: 0 0 0.875rem;
 		box-sizing: border-box;
 		font-family: $fontfamily;
 		border-radius: rem(12);

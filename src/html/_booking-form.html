@@ -5,14 +5,14 @@
             <button type="button" class="booking__date-card booking__chip is-active" data-value="today">
                 <span class="booking__date-card-mark booking__date-card-mark--check" aria-hidden="true"></span>
                 <span class="booking__date-card-label">Сегодня</span>
-                <time class="booking__date-card-value" datetime="2026-05-22">22.05.26</time>
+                <time class="booking__date-card-value" datetime=""></time>
             </button>
             <button type="button" class="booking__date-card booking__chip" data-value="tomorrow">
                 <span class="booking__date-card-mark" aria-hidden="true"></span>
                 <span class="booking__date-card-label">Завтра</span>
-                <time class="booking__date-card-value" datetime="2026-05-23">23.05.26</time>
+                <time class="booking__date-card-value" datetime=""></time>
             </button>
-            <button type="button" class="booking__date-other booking__chip" data-value="other" aria-expanded="false" aria-controls="booking-date-picker">
+            <button type="button" class="booking__date-other booking__chip" data-value="other" aria-expanded="false" aria-controls="booking-date-popup">
                 <span class="booking__date-other-icon" aria-hidden="true">
                     <svg width="20" height="20" aria-hidden="true">
                         <use href="@img/icons/sprite.svg#calendar"></use>
@@ -21,19 +21,42 @@
                 <span class="booking__date-other-label" data-default-label="Другая дата">Другая дата</span>
             </button>
         </div>
-        <div class="booking__date-picker" id="booking-date-picker" hidden>
-            <div class="booking__date-picker-inner" id="booking-date-picker-inner"></div>
-        </div>
         <input type="hidden" name="storage_date" id="booking-date-value" value="">
+        <script>
+            (function () {
+                function pad(n) { return String(n).padStart(2, "0"); }
+                function toISODate(d) {
+                    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+                }
+                function toDisplayDate(d) {
+                    return pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "." + String(d.getFullYear()).slice(-2);
+                }
+                var today = new Date();
+                var tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                var todayEl = document.querySelector('[data-booking-chips="date"] [data-value="today"] .booking__date-card-value');
+                var tomorrowEl = document.querySelector('[data-booking-chips="date"] [data-value="tomorrow"] .booking__date-card-value');
+                var dateInput = document.getElementById("booking-date-value");
+                if (todayEl) {
+                    todayEl.dateTime = toISODate(today);
+                    todayEl.textContent = toDisplayDate(today);
+                }
+                if (tomorrowEl) {
+                    tomorrowEl.dateTime = toISODate(tomorrow);
+                    tomorrowEl.textContent = toDisplayDate(tomorrow);
+                }
+                if (dateInput) dateInput.value = toISODate(today);
+            })();
+        </script>
     </fieldset>
 
-    <fieldset class="booking__group booking__group--time">
+    <fieldset class="booking__group booking__group--time" data-tariff="pink">
         <div class="booking__group-head">
             <div class="booking__group-head-text">
                 <legend class="booking__group-title">В какое время?</legend>
                 <p class="booking__note booking__note--inline">Работаем с&nbsp;09:00 до&nbsp;00:00</p>
             </div>
-            <span class="booking__badge">200 ₽/шт.</span>
+            <span class="booking__badge" id="booking-tariff-badge">200 ₽/шт.</span>
         </div>
         <div class="booking__time-range" data-booking-time-range>
             <div class="booking__time-slider" id="booking-time-slider" aria-label="Интервал времени хранения"></div>
@@ -46,7 +69,7 @@
         <legend class="booking__group-title">Сколько вещей?</legend>
         <p class="booking__note booking__note--inline">Мы берём деньги за&nbsp;единицу багажа</p>
         <div class="booking__items" id="booking-counters">
-            <div class="booking__item booking__counter" data-price="300" data-name="Ручная кладь">
+            <div class="booking__item booking__counter" data-price="200" data-tariff-item data-name="Ручная кладь">
                 <div class="booking__item-image">
                     <img src="@img/sections/booking/carry-on-baggage.png" alt="Ручная кладь">
                 </div>
@@ -58,11 +81,11 @@
                             <span class="booking__counter-value" data-qty>1</span>
                             <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить ручную кладь">+</button>
                         </div>
-                        <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
+                        <p class="booking__item-price booking__counter-price">200 ₽/шт.</p>
                     </div>
                 </div>
             </div>
-            <div class="booking__item booking__counter" data-price="300" data-name="Чемодан">
+            <div class="booking__item booking__counter" data-price="200" data-tariff-item data-name="Чемодан">
                 <div class="booking__item-image">
                     <img src="@img/sections/booking/suitcase.png" alt="Чемодан">
                 </div>
@@ -74,11 +97,11 @@
                             <span class="booking__counter-value" data-qty>1</span>
                             <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить чемоданы">+</button>
                         </div>
-                        <p class="booking__item-price booking__counter-price">300 ₽/шт.</p>
+                        <p class="booking__item-price booking__counter-price">200 ₽/шт.</p>
                     </div>
                 </div>
             </div>
-            <div class="booking__item booking__counter" data-price="800" data-name="Негабарит">
+            <div class="booking__item booking__counter" data-price="800" data-oversized data-name="Негабарит">
                 <div class="booking__item-image booking__item-image--large">
                     <img src="@img/sections/booking/oversized.png" alt="Негабарит">
                 </div>
@@ -105,7 +128,7 @@
                     <p id="booking-summary-time" class="booking__summary-main-text">С&nbsp;09:00 до&nbsp;17:30</p>
                     <span class="booking__summary-sep" aria-hidden="true">×</span>
                 </div>
-                <p class="booking__summary-sub" id="booking-summary-date">Сегодня <span>22.05.26</span></p>
+                <p class="booking__summary-sub" id="booking-summary-date">Сегодня <span></span></p>
             </div>
             <span class="booking__summary-sep booking__summary-sep--vertical" aria-hidden="true">×</span>
             <div class="booking__summary-col booking__summary-col--items">

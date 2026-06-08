@@ -1,12 +1,26 @@
-import { initBookingCalendar, showBookingCalendar, hideBookingCalendar, resetBookingCalendar, getOtherDateLabel, isOtherDatePicked } from "./booking-calendar.js";
+import {
+	initBookingCalendar,
+	showBookingCalendar,
+	hideBookingCalendar,
+	resetBookingCalendar,
+	getOtherDateLabel,
+	isOtherDatePicked,
+	formatBookingDate,
+} from "./booking-calendar.js";
 
 const BOOKING_TIME_MIN = 540;
 const BOOKING_TIME_MAX = 1440;
-const BOOKING_TIME_STEP = 15;
+const BOOKING_TIME_STEP = 30;
 const BOOKING_TIME_MIN_INTERVAL = 60;
+const BOOKING_TIME_EVENING = 1140;
+const BOOKING_TARIFF_SHORT_MAX = 180;
 const BOOKING_TIME_LABEL_FREEZE_PX = 200;
 const BOOKING_TIME_DEFAULT = [BOOKING_TIME_MIN, 1050];
 const BOOKING_DEFAULT_QTY = [3, 1, 0];
+const BOOKING_OVERSIZED_PRICE = 800;
+
+let todayISO = "";
+let tomorrowISO = "";
 
 function formatRub(value) {
 	return value.toLocaleString("ru-RU") + " ₽";
@@ -25,6 +39,43 @@ function minutesToTime(minutes) {
 	const h = Math.floor(minutes / 60) % 24;
 	const min = minutes % 60;
 	return `${String(h).padStart(2, "0")}:${String(min).padStart(2, "0")}`;
+}
+
+function toISODate(date) {
+	const y = date.getFullYear();
+	const m = String(date.getMonth() + 1).padStart(2, "0");
+	const d = String(date.getDate()).padStart(2, "0");
+	return `${y}-${m}-${d}`;
+}
+
+function toDisplayDate(date) {
+	return formatBookingDate(toISODate(date));
+}
+
+export function getTariff(fromMin, toMin) {
+	const duration = toMin - fromMin;
+	const endAfter7 = toMin > BOOKING_TIME_EVENING;
+
+	if (endAfter7) {
+		const extraHours = Math.ceil((toMin - BOOKING_TIME_EVENING) / 60);
+		const price = 300 + 100 * extraHours;
+		return { theme: "purple", price, badge: `${price} ₽/шт.` };
+	}
+
+	if (duration === 60) {
+		return {
+			theme: "pink",
+			price: 100,
+			badge: '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.',
+			badgeHtml: true,
+		};
+	}
+
+	if (duration <= BOOKING_TARIFF_SHORT_MAX) {
+		return { theme: "pink", price: 200, badge: "200 ₽/шт." };
+	}
+
+	return { theme: "blue", price: 300, badge: "300 ₽/шт." };
 }
 
 function getTimeHandleWidth(sliderEl) {
@@ -182,6 +233,9 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	const bookingSummaryCalc = document.getElementById("booking-summary-calc");
 	const bookingSummaryTime = document.getElementById("booking-summary-time");
 	const bookingSummaryDate = document.getElementById("booking-summary-date");
+	const bookingTariffBadge = document.getElementById("booking-tariff-badge");
+	const bookingTimeGroup = bookingForm.querySelector(".booking__group--time");
+	const bookingDateValue = document.getElementById("booking-date-value");
 	let bookingTimeFromOut = document.getElementById("booking-time-from");
 	let bookingTimeToOut = document.getElementById("booking-time-to");
 	const bookingTimeFromInput = document.getElementById("booking-time-from-value");
@@ -190,6 +244,46 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	const bookingStatus = document.getElementById("booking-status");
 
 	let timeSlider = null;
+	let currentTariff = getTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
+
+	function initBookingDates() {
+		const today = new Date();
+		const tomorrow = new Date(today);
+		tomorrow.setDate(tomorrow.getDate() + 1);
+
+		todayISO = toISODate(today);
+		tomorrowISO = toISODate(tomorrow);
+
+		const todayChip = document.querySelector('[data-booking-chips="date"] [data-value="today"]');
+		const tomorrowChip = document.querySelector('[data-booking-chips="date"] [data-value="tomorrow"]');
+
+		[todayChip, tomorrowChip].forEach((chip, index) => {
+			const date = index === 0 ? today : tomorrow;
+			const timeEl = chip?.querySelector(".booking__date-card-value");
+			if (!timeEl) return;
+			timeEl.dateTime = toISODate(date);
+			timeEl.textContent = toDisplayDate(date);
+		});
+
+		const activeChip = document.querySelector('[data-booking-chips="date"] .booking__chip.is-active');
+		if (activeChip) {
+			syncStorageDate(activeChip);
+			updateBookingSummaryDate(activeChip);
+		}
+	}
+
+	function syncStorageDate(chip) {
+		if (!bookingDateValue || !chip) return;
+
+		if (chip.dataset.value === "today") {
+			bookingDateValue.value = todayISO;
+			return;
+		}
+
+		if (chip.dataset.value === "tomorrow") {
+			bookingDateValue.value = tomorrowISO;
+		}
+	}
 
 	function updateBookingSummaryDate(chip) {
 		if (!bookingSummaryDate || !chip) return;
@@ -229,6 +323,29 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		if (bookingTimeToInput) bookingTimeToInput.value = String(toVal);
 	}
 
+	function updateBookingTariff(fromVal, toVal) {
+		const tariff = getTariff(fromVal, toVal);
+		const tariffChanged =
+			!currentTariff || currentTariff.theme !== tariff.theme || currentTariff.price !== tariff.price;
+
+		if (bookingTimeGroup) bookingTimeGroup.dataset.tariff = tariff.theme;
+		if (bookingTariffBadge) {
+			if (tariff.badgeHtml) {
+				bookingTariffBadge.innerHTML = tariff.badge;
+			} else {
+				bookingTariffBadge.textContent = tariff.badge;
+			}
+			if (tariffChanged) {
+				bookingTariffBadge.classList.remove("booking__badge--pulse");
+				void bookingTariffBadge.offsetWidth;
+				bookingTariffBadge.classList.add("booking__badge--pulse");
+			}
+		}
+
+		currentTariff = tariff;
+		updateBookingTotal();
+	}
+
 	function updateBookingTotal() {
 		if (!bookingCounters || !bookingTotalEl) return;
 
@@ -237,10 +354,28 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		const lines = [];
 
 		bookingCounters.querySelectorAll(".booking__counter").forEach((row) => {
-			const price = Number(row.dataset.price) || 0;
+			const isOversized = row.hasAttribute("data-oversized");
+			const isTariffItem = row.hasAttribute("data-tariff-item");
+			const price = isOversized
+				? BOOKING_OVERSIZED_PRICE
+				: isTariffItem
+					? currentTariff.price
+					: Number(row.dataset.price) || 0;
 			const name = row.dataset.name || row.querySelector(".booking__counter-name")?.textContent?.trim() || "";
 			const qtyEl = row.querySelector("[data-qty]");
 			const qty = Number(qtyEl?.textContent) || 0;
+			const priceEl = row.querySelector(".booking__counter-price");
+
+			if (isTariffItem) {
+				row.dataset.price = String(price);
+				if (priceEl) priceEl.textContent = `${price} ₽/шт.`;
+			}
+
+			if (isOversized) {
+				row.dataset.price = String(BOOKING_OVERSIZED_PRICE);
+				if (priceEl) priceEl.textContent = `${BOOKING_OVERSIZED_PRICE} ₽/шт.`;
+			}
+
 			total += price * qty;
 			totalQty += qty;
 			if (qty > 0) {
@@ -284,6 +419,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			return;
 		}
 		updateBookingTimeRange(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
+		updateBookingTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
 	}
 
 	function initBookingTimeSlider() {
@@ -313,6 +449,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			const fromVal = Number(values[0]);
 			const toVal = Number(values[1]);
 			updateBookingTimeRange(fromVal, toVal);
+			updateBookingTariff(fromVal, toVal);
 			syncTimeHandleProximity(bookingTimeSlider, fromVal, toVal);
 			syncTimeHandleLabels(bookingTimeSlider, fromVal, toVal);
 		});
@@ -325,9 +462,12 @@ export function initBooking({ validateForm, showStatus } = {}) {
 
 		window.addEventListener("resize", syncHandleLayout);
 		updateBookingTimeRange(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
+		updateBookingTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
 		syncTimeHandleProximity(bookingTimeSlider, BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
 		syncTimeHandleLabels(bookingTimeSlider, BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
 	}
+
+	initBookingDates();
 
 	if (bookingCounters) {
 		bookingCounters.addEventListener("click", (e) => {
@@ -366,6 +506,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			} else {
 				resetBookingCalendar();
 				hideBookingCalendar();
+				syncStorageDate(chip);
 			}
 
 			updateBookingSummaryDate(chip);
@@ -385,6 +526,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		bookingForm.reset();
 		resetBookingCalendar();
 		hideBookingCalendar();
+		initBookingDates();
 		const todayChip = document.querySelector('[data-booking-chips="date"] [data-value="today"]');
 		if (todayChip) {
 			document.querySelectorAll('[data-booking-chips="date"] .booking__chip').forEach((el) => {

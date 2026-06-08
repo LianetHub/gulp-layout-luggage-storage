@@ -74,6 +74,18 @@
     </div>
 </div>
 
+<div id="booking-date-popup" class="popup popup--calendar" role="dialog" aria-modal="true" aria-labelledby="booking-date-popup-title" aria-hidden="true">
+    <div class="booking__date-picker-header">
+        <div class="booking__date-picker-nav">
+            <button type="button" class="booking__date-picker-arrow booking__date-picker-arrow--prev" data-calendar-prev aria-label="Предыдущий месяц"></button>
+            <p class="booking__date-picker-month" id="booking-date-popup-title" data-calendar-month></p>
+            <button type="button" class="booking__date-picker-arrow booking__date-picker-arrow--next" data-calendar-next aria-label="Следующий месяц"></button>
+        </div>
+        <button type="button" data-fancybox-close class="popup__close icon-close booking__date-picker-close" aria-label="Закрыть календарь"></button>
+    </div>
+    <div class="booking__date-picker-inner" id="booking-date-picker-inner"></div>
+</div>
+
 <div id="form-success" class="popup popup--success" role="dialog" aria-modal="true" aria-labelledby="form-success-title" aria-hidden="true">
     <button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
     <h2 id="form-success-title" class="popup__title title-md-desktop title-sm">Заявка принята</h2>
