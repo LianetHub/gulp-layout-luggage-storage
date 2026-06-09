@@ -42,11 +42,10 @@
 
 		@media (min-width: $md4) {
 			font-size: 1.5rem;
+			flex: 1 1 auto;
 		}
 
-		@media (min-width: $md3) {
-			max-width: 11rem;
-		}
+
 	}
 
 	&__ratings {
@@ -64,11 +63,10 @@
 		}
 
 		@media (min-width: $md3) {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
+			display: flex;
 			width: auto;
 			align-items: center;
-			flex: 1 1 auto;
+			justify-content: end;
 			gap: 1rem 1.5rem;
 		}
 
@@ -77,11 +75,15 @@
 	&__ratings-item {
 		flex-shrink: 0;
 		display: block;
-		width: rem(300);
 
-		& img {
-			width: 100%;
-			height: auto;
+		cursor: pointer;
+
+		& iframe {
+
+			image-rendering: -webkit-optimize-contrast;
+			image-rendering: crisp-edges;
+			display: block;
+			transform-origin: top left;
 		}
 	}
 
