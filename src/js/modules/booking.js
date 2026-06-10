@@ -14,6 +14,7 @@ const BOOKING_TIME_STEP = 30;
 const BOOKING_TIME_MIN_INTERVAL = 60;
 const BOOKING_TIME_EVENING = 1140;
 const BOOKING_TIME_HOURLY_START = 1080;
+const BOOKING_HOURLY_RATE = 100;
 const BOOKING_EVENING_SURCHARGE = 100;
 const BOOKING_TARIFF_SHORT_MAX = 180;
 const BOOKING_TIME_LABEL_FREEZE_PX = 200;
@@ -64,29 +65,33 @@ function getBaseTariff(duration) {
 	return { theme: "blue", price: 300, badge: "300 ₽/шт." };
 }
 
+function getHourlyTariff(fromMin, toMin) {
+	const duration = toMin - fromMin;
+	const hours = Math.ceil(duration / 60);
+	const price = BOOKING_HOURLY_RATE * hours;
+	const isExactlyOneHour = duration === 60;
+
+	return {
+		theme: "purple",
+		price,
+		badge: isExactlyOneHour
+			? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.'
+			: "100 ₽/шт.",
+		badgeHtml: isExactlyOneHour,
+		isHourly: isExactlyOneHour,
+		isDaily: false,
+	};
+}
+
 export function getTariff(fromMin, toMin) {
 	const duration = toMin - fromMin;
 
-	if (duration === 60) {
-		return {
-			theme: "pink",
-			price: 100,
-			badge: '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.',
-			badgeHtml: true,
-			isHourly: true,
-			isDaily: false,
-		};
+	if (fromMin >= BOOKING_TIME_HOURLY_START) {
+		return getHourlyTariff(fromMin, toMin);
 	}
 
-	if (fromMin >= BOOKING_TIME_HOURLY_START) {
-		const base = getBaseTariff(duration);
-		return {
-			theme: "purple",
-			price: base.price,
-			badge: base.badge,
-			isHourly: true,
-			isDaily: false,
-		};
+	if (duration === 60) {
+		return getHourlyTariff(fromMin, toMin);
 	}
 
 	const base = getBaseTariff(duration);
@@ -114,26 +119,6 @@ function getDailyTariff() {
 		isHourly: false,
 		isDaily: true,
 	};
-}
-
-function hasOversizedSelected() {
-	const counters = document.getElementById("booking-counters");
-	if (!counters) return false;
-
-	return Array.from(counters.querySelectorAll("[data-oversized]")).some((row) => {
-		return (Number(row.querySelector("[data-qty]")?.textContent) || 0) > 0;
-	});
-}
-
-function buildTariffBadge(tariff) {
-	if (tariff.isHourly && hasOversizedSelected()) {
-		return {
-			badgeHtml: true,
-			badge: `<span class="booking__badge-hour">НА ЧАС</span> ${BOOKING_OVERSIZED_PRICE} ₽/шт.`,
-		};
-	}
-
-	return { badge: tariff.badge, badgeHtml: tariff.badgeHtml };
 }
 
 function getActiveDateMode() {
@@ -436,11 +421,10 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	function renderTariffBadge(tariff, tariffChanged) {
 		if (!bookingTariffBadge) return;
 
-		const badgeView = buildTariffBadge(tariff);
-		if (badgeView.badgeHtml) {
-			bookingTariffBadge.innerHTML = badgeView.badge;
+		if (tariff.badgeHtml) {
+			bookingTariffBadge.innerHTML = tariff.badge;
 		} else {
-			bookingTariffBadge.textContent = badgeView.badge;
+			bookingTariffBadge.textContent = tariff.badge;
 		}
 
 		if (tariffChanged) {
@@ -483,11 +467,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		bookingCounters.querySelectorAll(".booking__counter").forEach((row) => {
 			const isOversized = row.hasAttribute("data-oversized");
 			const isTariffItem = row.hasAttribute("data-tariff-item");
-			const price = isOversized
-				? BOOKING_OVERSIZED_PRICE
-				: isTariffItem
-					? currentTariff.price
-					: Number(row.dataset.price) || 0;
+			const price = isOversized ? BOOKING_OVERSIZED_PRICE : isTariffItem ? currentTariff.price : Number(row.dataset.price) || 0;
 			const name = row.dataset.name || row.querySelector(".booking__counter-name")?.textContent?.trim() || "";
 			const qtyEl = row.querySelector("[data-qty]");
 			const qty = Number(qtyEl?.textContent) || 0;
@@ -496,9 +476,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			if (isTariffItem) {
 				row.dataset.price = String(price);
 				if (priceEl) priceEl.textContent = `${price} ₽/шт.`;
-			}
-
-			if (isOversized) {
+			} else if (isOversized) {
 				row.dataset.price = String(BOOKING_OVERSIZED_PRICE);
 				if (priceEl) priceEl.textContent = `${BOOKING_OVERSIZED_PRICE} ₽/шт.`;
 			}
@@ -608,7 +586,6 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			if (btn.dataset.action === "dec") qty = Math.max(0, qty - 1);
 			qtyEl.textContent = String(qty);
 			updateBookingTotal();
-			renderTariffBadge(currentTariff, false);
 		});
 		updateBookingTotal();
 	}
