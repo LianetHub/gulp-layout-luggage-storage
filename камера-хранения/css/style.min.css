@@ -3378,7 +3378,7 @@ body {
     width: 3.125rem;
     height: 3.125rem;
     margin-top: -1.25rem;
-    transform: translateX(1.25rem);
+    transform: translateX(0.5rem);
   }
 }
 .pricing__unit-note {
@@ -3545,14 +3545,35 @@ body {
   }
 }
 .pricing__tagline {
+  position: relative;
   display: flex;
   align-items: center;
-  margin: 0;
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 1.125rem;
   line-height: 1.45;
   text-transform: uppercase;
+}
+.pricing__tagline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 4.78125rem;
+  height: 5.203125rem;
+  pointer-events: none;
+  background: url("../img/sections//pricing/arrow.svg") 0 0/cover no-repeat;
+  top: 80%;
+}
+@media (min-width: 767.98px) {
+  .pricing__tagline::before {
+    width: 4.78125rem;
+    height: 5.203125rem;
+  }
+}
+@media (min-width: 1199.98px) {
+  .pricing__tagline::before {
+    top: 110%;
+  }
 }
 @media (min-width: 767.98px) {
   .pricing__tagline {
@@ -4595,7 +4616,6 @@ body {
 .contacts__decor-img {
   flex-shrink: 0;
   margin-bottom: -0.75rem;
-  margin-left: 1.25rem;
 }
 .contacts__decor-text {
   font-size: 0.8125rem;
@@ -4708,11 +4728,15 @@ body {
   width: 6rem;
   height: auto;
   object-fit: cover;
+  transform: rotate(13.35deg);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0.3125rem 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 767.98px) {
   .contacts__address-photo {
     display: block;
-    width: 7.5rem;
+    width: 6.25rem;
   }
 }
 .contacts__note {

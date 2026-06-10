@@ -80,7 +80,7 @@
 			width: rem(50);
 			height: rem(50);
 			margin-top: -1.25rem;
-			transform: translateX(1.25rem);
+			transform: translateX(0.5rem);
 		}
 	}
 
@@ -260,9 +260,30 @@
 	}
 
 	&__tagline {
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			width: rem(76.5);
+			height: rem(83.25);
+			pointer-events: none;
+			background: url("@img/sections//pricing/arrow.svg") 0 0 / cover no-repeat;
+			top: 80%;
+
+			@media (min-width:$md4) {
+				width: rem(76.5);
+				height: rem(83.25);
+			}
+
+			@media (min-width:$md2) {
+				top: 110%;
+			}
+		}
+
 		display: flex;
 		align-items: center;
-		margin: 0;
 		font-family: $font-display;
 		font-weight: 800;
 		font-size: 1.125rem;

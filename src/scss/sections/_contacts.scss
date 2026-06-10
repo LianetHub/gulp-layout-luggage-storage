@@ -150,7 +150,7 @@
 	&__decor-img {
 		flex-shrink: 0;
 		margin-bottom: -0.75rem;
-		margin-left: 1.25rem;
+
 	}
 
 	&__decor-text {
@@ -269,10 +269,14 @@
 		width: rem(96);
 		height: auto;
 		object-fit: cover;
+		transform: rotate(13.35deg);
+		border-radius: 0.5rem;
+		overflow: hidden;
+		box-shadow: rem(5) rem(5) rem(10) 0 rgba(0, 0, 0, 0.1);
 
 		@media (min-width: $md4) {
 			display: block;
-			width: rem(120);
+			width: rem(100);
 		}
 	}
 
