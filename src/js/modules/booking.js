@@ -22,7 +22,6 @@ const BOOKING_TIME_LABEL_CENTER_EDGE = 0.1;
 const BOOKING_TIME_DEFAULT = [BOOKING_TIME_MIN, 1050];
 const BOOKING_DEFAULT_QTY = [3, 1, 0];
 const BOOKING_OVERSIZED_PRICE = 800;
-const BOOKING_DAILY_PRICE = 600;
 
 let todayISO = "";
 let tomorrowISO = "";
@@ -79,7 +78,6 @@ function getHourlyTariff(fromMin, toMin) {
 			: "100 ₽/шт.",
 		badgeHtml: isExactlyOneHour,
 		isHourly: isExactlyOneHour,
-		isDaily: false,
 	};
 }
 
@@ -104,32 +102,10 @@ export function getTariff(fromMin, toMin) {
 		theme = "purple";
 	}
 
-	return { theme, price, badge: base.badge, isHourly: false, isDaily: false };
+	return { theme, price, badge: base.badge, isHourly: false };
 }
 
-function isDailyStorage(dateMode, fromMin, toMin) {
-	return dateMode === "tomorrow" && fromMin === BOOKING_TIME_MIN && toMin === BOOKING_TIME_MAX;
-}
-
-function getDailyTariff() {
-	return {
-		theme: "blue",
-		price: BOOKING_DAILY_PRICE,
-		badge: `${BOOKING_DAILY_PRICE} ₽/шт.`,
-		isHourly: false,
-		isDaily: true,
-	};
-}
-
-function getActiveDateMode() {
-	const activeChip = document.querySelector('[data-booking-chips="date"] .booking__chip.is-active');
-	return activeChip?.dataset.value || "today";
-}
-
-function resolveTariff(fromMin, toMin, dateMode) {
-	if (isDailyStorage(dateMode, fromMin, toMin)) {
-		return getDailyTariff();
-	}
+function resolveTariff(fromMin, toMin) {
 	return getTariff(fromMin, toMin);
 }
 
@@ -332,7 +308,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	let timeSlider = null;
 	let currentFromVal = BOOKING_TIME_DEFAULT[0];
 	let currentToVal = BOOKING_TIME_DEFAULT[1];
-	let currentTariff = resolveTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1], "today");
+	let currentTariff = resolveTariff(BOOKING_TIME_DEFAULT[0], BOOKING_TIME_DEFAULT[1]);
 
 	function initBookingDates() {
 		const today = new Date();
@@ -402,19 +378,16 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	function updateBookingTimeRange(fromVal, toVal) {
 		const fromTime = minutesToTime(fromVal);
 		const toTime = minutesToTime(toVal);
-		const isDaily = isDailyStorage(getActiveDateMode(), fromVal, toVal);
 
 		if (bookingTimeFromOut) bookingTimeFromOut.textContent = fromTime;
 		if (bookingTimeToOut) bookingTimeToOut.textContent = toTime;
 		if (bookingSummaryTime) {
-			bookingSummaryTime.textContent = isDaily
-				? "Суточное хранение"
-				: `С\u00A0${fromTime} до\u00A0${toTime}`;
+			bookingSummaryTime.textContent = `С\u00A0${fromTime} до\u00A0${toTime}`;
 		}
 		if (bookingTimeFromInput) bookingTimeFromInput.value = String(fromVal);
 		if (bookingTimeToInput) bookingTimeToInput.value = String(toVal);
 		if (bookingTimeGroup) {
-			bookingTimeGroup.classList.toggle("booking__group--daily", isDaily);
+			bookingTimeGroup.classList.remove("booking__group--daily");
 		}
 	}
 
@@ -438,12 +411,11 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		currentFromVal = fromVal;
 		currentToVal = toVal;
 
-		const tariff = resolveTariff(fromVal, toVal, getActiveDateMode());
+		const tariff = resolveTariff(fromVal, toVal);
 		const tariffChanged =
 			!currentTariff ||
 			currentTariff.theme !== tariff.theme ||
 			currentTariff.price !== tariff.price ||
-			currentTariff.isDaily !== tariff.isDaily ||
 			currentTariff.isHourly !== tariff.isHourly;
 
 		if (bookingTimeGroup) bookingTimeGroup.dataset.tariff = tariff.theme;

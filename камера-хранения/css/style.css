@@ -1787,7 +1787,11 @@ body {
 @media (min-width: 767.98px) {
   .rate__title {
     font-size: 1.5rem;
-    flex: 1 1 auto;
+  }
+}
+@media (min-width: 991.98px) {
+  .rate__title {
+    max-width: 11rem;
   }
 }
 .rate__ratings {
@@ -1807,23 +1811,22 @@ body {
 }
 @media (min-width: 991.98px) {
   .rate__ratings {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     width: auto;
     align-items: center;
-    justify-content: end;
+    flex: 1 1 auto;
     gap: 1rem 1.5rem;
   }
 }
 .rate__ratings-item {
   flex-shrink: 0;
   display: block;
-  cursor: pointer;
+  width: 18.75rem;
 }
-.rate__ratings-item iframe {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  display: block;
-  transform-origin: top left;
+.rate__ratings-item img {
+  width: 100%;
+  height: auto;
 }
 .rate__item {
   display: block;
@@ -2742,10 +2745,6 @@ body {
 }
 .booking__group--time[data-tariff=purple] .booking__badge {
   background: #8f2fff;
-}
-.booking__group--time.booking__group--daily .booking__time-range {
-  opacity: 0.45;
-  pointer-events: none;
 }
 .booking__dates {
   display: grid;

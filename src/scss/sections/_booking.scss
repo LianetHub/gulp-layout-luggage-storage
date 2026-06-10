@@ -211,13 +211,6 @@ $booking-purple: #8f2fff;
 		&[data-tariff="purple"] .booking__badge {
 			background: $booking-purple;
 		}
-
-		&.booking__group--daily {
-			.booking__time-range {
-				opacity: 0.45;
-				pointer-events: none;
-			}
-		}
 	}
 
 	&__dates {
