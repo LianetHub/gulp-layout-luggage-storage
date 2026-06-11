@@ -445,7 +445,7 @@ body {
   color: rgba(0, 0, 0, 0.8);
 }
 .popup--calendar {
-  max-width: 26.25rem;
+  max-width: 47.5rem;
   width: 100%;
   padding: 1.25rem 1rem 1rem;
 }
@@ -2135,16 +2135,18 @@ body {
 }
 
 .booking__date-picker-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .booking__date-picker-nav {
+  grid-column: 2;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   min-width: 0;
 }
@@ -2166,13 +2168,14 @@ body {
 
 .booking__date-picker-arrow {
   flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
   border: none;
-  border-radius: 50%;
-  background: rgba(143, 47, 255, 0.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f2fff' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E") center/1.25rem no-repeat;
+  border-radius: 0;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E") center/1.25rem no-repeat;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s;
 }
 .booking__date-picker-arrow--prev {
   transform: rotate(90deg);
@@ -2180,13 +2183,20 @@ body {
 .booking__date-picker-arrow--next {
   transform: rotate(-90deg);
 }
+.booking__date-picker-arrow--prev:disabled {
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+}
 @media (any-hover: hover) {
-  .booking__date-picker-arrow:hover {
-    background-color: rgba(143, 47, 255, 0.2);
+  .booking__date-picker-arrow:hover:not(:disabled) {
+    opacity: 0.55;
   }
 }
 
 .booking__date-picker-close {
+  grid-column: 3;
+  justify-self: end;
   position: static;
   flex-shrink: 0;
 }
@@ -2895,7 +2905,8 @@ body {
   height: 4.375rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: -0.875rem;
 }
 .booking__item-image.booking__item-image--large img {
   width: 100%;
@@ -3021,20 +3032,35 @@ body {
 }
 @media (min-width: 767.98px) {
   .booking__summary-row {
-    flex-wrap: wrap;
-    align-items: stretch;
-    flex-direction: row;
     gap: 0.75rem 1rem;
   }
 }
+@media (min-width: 991.98px) {
+  .booking__summary-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 8.75rem;
+  }
+}
+@media (min-width: 1329.98px) {
+  .booking__summary-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
 .booking__summary-col {
-  flex: 1 1 7.5rem;
+  flex: 0 1 16rem;
   min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-@media (max-width: 767.98px) {
+@media (min-width: 991.98px) {
+  .booking__summary-col--time {
+    flex: 0 1 13.75rem;
+  }
+}
+@media (max-width: 991.98px) {
   .booking__summary-col--time, .booking__summary-col--items {
     flex: 1 1 calc(50% - 1.75rem);
   }
@@ -3046,7 +3072,7 @@ body {
 @media (min-width: 767.98px) {
   .booking__summary-col--total {
     flex: 0 1 auto;
-    min-width: 8.75rem;
+    min-width: 7.5rem;
   }
 }
 .booking__summary-total {
@@ -3054,6 +3080,7 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.5rem;
+  min-width: 8.75rem;
 }
 @media (min-width: 991.98px) {
   .booking__summary-total {
@@ -3104,11 +3131,6 @@ body {
   flex-direction: column;
   min-height: 1.95rem;
 }
-@media (max-width: 767.98px) {
-  .booking__summary-main .booking__summary-sep {
-    display: none;
-  }
-}
 @media (min-width: 767.98px) {
   .booking__summary-main {
     flex-direction: row;
@@ -3129,12 +3151,16 @@ body {
 }
 .booking__summary-qty {
   margin: 0;
-  white-space: nowrap;
   min-width: 0;
 }
 @media (max-width: 767.98px) {
   .booking__summary-qty {
     width: 100%;
+  }
+}
+@media (min-width: 1329.98px) {
+  .booking__summary-qty {
+    white-space: nowrap;
   }
 }
 .booking__summary-qty-count {
@@ -3169,14 +3195,7 @@ body {
   line-height: 1;
 }
 @media (min-width: 767.98px) {
-  .booking__summary-sep.booking__summary-sep--vertical {
-    display: none;
-  }
-}
-@media (min-width: 767.98px) {
   .booking__summary-sep {
-    margin: 0 auto;
-    padding-left: 1rem;
     height: 2.015rem;
     font-size: 1.55rem;
   }

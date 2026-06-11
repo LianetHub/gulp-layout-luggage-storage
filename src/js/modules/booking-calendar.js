@@ -10,6 +10,26 @@ let dateValueInput = null;
 let headerMonthEl = null;
 let onDatePickCallback = null;
 
+function getTodayMonthYear() {
+	const now = new Date();
+	return { month: now.getMonth(), year: now.getFullYear() };
+}
+
+function canGoToPrevMonth(selectedMonth, selectedYear) {
+	const { month, year } = getTodayMonthYear();
+	return selectedYear > year || (selectedYear === year && selectedMonth > month);
+}
+
+function clampToCurrentMonth(selectedMonth, selectedYear) {
+	const { month, year } = getTodayMonthYear();
+
+	if (selectedYear < year || (selectedYear === year && selectedMonth < month)) {
+		return { selectedMonth: month, selectedYear: year };
+	}
+
+	return { selectedMonth, selectedYear };
+}
+
 export function formatBookingDate(iso) {
 	if (!iso) return '';
 	const [year, month, day] = iso.split('-');
@@ -31,6 +51,19 @@ function syncHeaderMonth(self = calendarInstance) {
 	headerMonthEl.textContent = `${locale.months.long[selectedMonth]} ${selectedYear}`;
 }
 
+function syncHeaderNav(self = calendarInstance) {
+	syncHeaderMonth(self);
+
+	const prevBtn = popupEl?.querySelector('[data-calendar-prev]');
+	if (!prevBtn || !self) return;
+
+	const { selectedMonth, selectedYear } = self.context;
+	const showPrev = canGoToPrevMonth(selectedMonth, selectedYear);
+
+	prevBtn.disabled = !showPrev;
+	prevBtn.tabIndex = showPrev ? 0 : -1;
+}
+
 function changeMonth(delta) {
 	if (!calendarInstance) return;
 
@@ -45,8 +78,8 @@ function changeMonth(delta) {
 		selectedYear -= 1;
 	}
 
-	calendarInstance.set({ selectedMonth, selectedYear }, { dates: true });
-	syncHeaderMonth();
+	calendarInstance.set(clampToCurrentMonth(selectedMonth, selectedYear), { dates: true });
+	syncHeaderNav();
 }
 
 export function initBookingCalendar({ onDatePick } = {}) {
@@ -80,12 +113,12 @@ export function initBookingCalendar({ onDatePick } = {}) {
 			hideBookingCalendar();
 		},
 		onUpdate(self) {
-			syncHeaderMonth(self);
+			syncHeaderNav(self);
 		},
 	});
 
 	calendarInstance.init();
-	syncHeaderMonth();
+	syncHeaderNav();
 
 	popupEl.querySelector('[data-calendar-prev]')?.addEventListener('click', () => changeMonth(-1));
 	popupEl.querySelector('[data-calendar-next]')?.addEventListener('click', () => changeMonth(1));
@@ -109,6 +142,7 @@ export function showBookingCalendar() {
 		},
 	);
 	otherChipEl?.setAttribute('aria-expanded', 'true');
+	syncHeaderNav();
 }
 
 export function hideBookingCalendar() {

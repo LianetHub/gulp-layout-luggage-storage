@@ -4,19 +4,20 @@ $booking-calendar-blue-soft: #ebf8ff;
 $booking-calendar-pink: #ff2d9b;
 $booking-calendar-pink-hover: #ff4dad;
 $booking-calendar-pink-soft: #fff0f8;
-$booking-calendar-purple: #8f2fff;
 
 .booking__date-picker-header {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
-	justify-content: space-between;
 	gap: 1rem;
-	margin-bottom: 0.75rem;
+	margin-bottom: 1.25rem;
 }
 
 .booking__date-picker-nav {
+	grid-column: 2;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
 	min-width: 0;
 }
@@ -37,13 +38,14 @@ $booking-calendar-purple: #8f2fff;
 
 .booking__date-picker-arrow {
 	flex-shrink: 0;
-	width: rem(36);
-	height: rem(36);
+	width: rem(24);
+	height: rem(24);
+	padding: 0;
 	border: none;
-	border-radius: 50%;
-	background: rgba($booking-calendar-purple, 0.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f2fff' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E") center / rem(20) no-repeat;
+	border-radius: 0;
+	background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E") center / rem(20) no-repeat;
 	cursor: pointer;
-	transition: background-color 0.2s;
+	transition: opacity 0.2s;
 
 	&--prev {
 		transform: rotate(90deg);
@@ -53,14 +55,22 @@ $booking-calendar-purple: #8f2fff;
 		transform: rotate(-90deg);
 	}
 
+	&--prev:disabled {
+		opacity: 0;
+		pointer-events: none;
+		cursor: default;
+	}
+
 	@media (any-hover: hover) {
-		&:hover {
-			background-color: rgba($booking-calendar-purple, 0.2);
+		&:hover:not(:disabled) {
+			opacity: 0.55;
 		}
 	}
 }
 
 .booking__date-picker-close {
+	grid-column: 3;
+	justify-self: end;
 	position: static;
 	flex-shrink: 0;
 }
