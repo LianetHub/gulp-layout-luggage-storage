@@ -64,31 +64,39 @@ function getBaseTariff(duration) {
 	return { theme: "blue", price: 300, badge: "300 ₽/шт." };
 }
 
-function getHourlyTariff(fromMin, toMin) {
+function getHourlyBadge(isExactlyOneHour) {
+	return isExactlyOneHour
+		? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.'
+		: "100 ₽/шт.";
+}
+
+function getHourlyTariff(fromMin, toMin, theme = "purple") {
 	const duration = toMin - fromMin;
 	const hours = Math.ceil(duration / 60);
 	const price = BOOKING_HOURLY_RATE * hours;
 	const isExactlyOneHour = duration === 60;
 
 	return {
-		theme: "purple",
+		theme,
 		price,
-		badge: isExactlyOneHour
-			? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.'
-			: "100 ₽/шт.",
+		badge: getHourlyBadge(isExactlyOneHour),
 		badgeHtml: isExactlyOneHour,
 		isHourly: isExactlyOneHour,
 	};
 }
 
+function isHourlyAfterEvening(fromMin, toMin) {
+	return fromMin >= BOOKING_TIME_EVENING || toMin > BOOKING_TIME_EVENING;
+}
+
 export function getTariff(fromMin, toMin) {
 	const duration = toMin - fromMin;
 
-	if (fromMin >= BOOKING_TIME_HOURLY_START) {
-		return getHourlyTariff(fromMin, toMin);
+	if (duration === 60) {
+		return getHourlyTariff(fromMin, toMin, isHourlyAfterEvening(fromMin, toMin) ? "purple" : "pink");
 	}
 
-	if (duration === 60) {
+	if (fromMin >= BOOKING_TIME_HOURLY_START) {
 		return getHourlyTariff(fromMin, toMin);
 	}
 
