@@ -87,8 +87,13 @@
 </div>
 
 <div id="form-success" class="popup popup--success" role="dialog" aria-modal="true" aria-labelledby="form-success-title" aria-hidden="true">
-    <button type="button" data-fancybox-close class="popup__close icon-close" aria-label="Закрыть окно"></button>
-    <h2 id="form-success-title" class="popup__title title-md-desktop title-sm">Заявка принята</h2>
-    <p class="popup__text">Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время для&nbsp;подтверждения бронирования.</p>
-    <button type="button" class="form__btn btn btn-primary" data-fancybox-close>Хорошо</button>
+
+    <div class="popup__success-content">
+        <div class="popup__success-check">
+            <img src="@img/tick.svg" alt="Иконка">
+        </div>
+        <h2 id="form-success-title" class="popup__success-title">Ваша бронь<br>успешно оформлена</h2>
+        <p class="popup__success-text">Ждем вас в&nbsp;назначенное время,<br>как и&nbsp;в&nbsp;любое другое <span aria-hidden="true" class="popup__success-heart"><img src="@img/heart.svg" alt="иконка"></span></p>
+    </div>
+    <img class="popup__success-logo" src="@img/logo.svg" alt="Логотип">
 </div>

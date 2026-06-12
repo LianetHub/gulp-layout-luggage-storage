@@ -1,3 +1,5 @@
+import { openSuccessModal } from "./success-modal.js";
+
 export const formSubmit = () => {
 	const forms = document.querySelectorAll("form");
 	forms.forEach((form) => {
@@ -101,12 +103,6 @@ export const formSubmit = () => {
 
 
 	function closeAndShowSuccessModal() {
-		if (Fancybox.getInstance()) {
-			Fancybox.close(true);
-		}
-		Fancybox.show([{ src: "#success", type: "inline" }], {
-			dragToClose: false,
-			closeButton: false,
-		});
+		openSuccessModal();
 	}
 };

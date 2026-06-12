@@ -780,6 +780,19 @@ $booking-purple: #8f2fff;
 				font-size: 1.55rem;
 			}
 		}
+
+		&._error {
+			.form__control {
+				border-bottom-color: #e53935;
+				border-bottom-width: rem(2);
+				color: #c62828;
+
+				&::placeholder {
+					color: #e53935;
+					opacity: 1;
+				}
+			}
+		}
 	}
 
 	&__field-icon {
@@ -795,6 +808,10 @@ $booking-purple: #8f2fff;
 
 		.booking__field:focus-within & {
 			color: $accent;
+		}
+
+		.booking__field._error & {
+			color: #e53935;
 		}
 	}
 
@@ -847,6 +864,21 @@ $booking-purple: #8f2fff;
 	&__footer-col {
 		.checkbox {
 			margin-top: 0.875rem;
+
+			&._error {
+				.checkbox__text {
+					color: #e53935;
+
+					&::before {
+						border-color: #e53935;
+						box-shadow: 0 0 0 rem(1) rgba(#e53935, 0.25);
+					}
+
+					a {
+						color: #e53935;
+					}
+				}
+			}
 		}
 	}
 }

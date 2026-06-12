@@ -146,9 +146,12 @@ export function showBookingCalendar() {
 }
 
 export function hideBookingCalendar() {
-	if (typeof Fancybox !== 'undefined' && Fancybox.getInstance()) {
+	const isCalendarOpen = Boolean(document.querySelector('.fancybox__container #booking-date-popup'));
+
+	if (typeof Fancybox !== 'undefined' && Fancybox.getInstance() && isCalendarOpen) {
 		Fancybox.close();
 	}
+
 	otherChipEl?.setAttribute('aria-expanded', 'false');
 }
 

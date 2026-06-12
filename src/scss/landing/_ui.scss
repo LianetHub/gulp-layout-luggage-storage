@@ -98,7 +98,6 @@
 	box-shadow: 0 0 0 rem(1) rgba(#e53935, 0.35);
 }
 
-.booking__status,
 .form__status {
 	margin-top: 0.75rem;
 	font-size: 0.9375rem;
@@ -109,7 +108,6 @@
 		display: none;
 	}
 
-	&.booking__status--error,
 	&.form__status--error {
 		color: #c62828;
 	}

@@ -112,8 +112,13 @@
 		}
 
 		&._error {
-			outline: 1px solid #ba2028;
-			background: #fff1ed;
+			border-bottom-color: #e53935;
+			color: #c62828;
+
+			&::placeholder {
+				color: #e53935;
+				opacity: 1;
+			}
 		}
 
 		&:is(textarea) {

@@ -3,6 +3,7 @@
 import { initPromoAnimation } from "./modules/promo-animation.js";
 import { initBooking } from "./modules/booking.js";
 import { initYandexMaps } from "./modules/map.js";
+import { openSuccessModal } from "./modules/success-modal.js";
 
 // Инициализация Fancybox
 if (typeof Fancybox !== "undefined" && Fancybox !== null) {
@@ -164,13 +165,34 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!input) return;
 		input.classList.toggle("_error", hasError);
 		input.setAttribute("aria-invalid", hasError ? "true" : "false");
+		input.closest(".booking__field")?.classList.toggle("_error", hasError);
+	}
+
+	function setCheckboxError(input, hasError) {
+		if (!input) return;
+		input.classList.toggle("_error", hasError);
+		input.closest(".checkbox")?.classList.toggle("_error", hasError);
+	}
+
+	function focusFirstFormError(form) {
+		const target =
+			form.querySelector(".booking__field._error .form__control") ||
+			form.querySelector(".checkbox._error .checkbox__input") ||
+			form.querySelector("._error");
+
+		if (!target) return;
+
+		target.focus({ preventScroll: true });
+		target.closest(".booking__field, .checkbox, .form__field")?.scrollIntoView({
+			behavior: "smooth",
+			block: "center",
+		});
 	}
 
 	function showFormStatus(container, message, isError = false) {
 		if (!container) return;
 		container.textContent = message;
 		container.hidden = !message;
-		container.classList.toggle("booking__status--error", isError);
 		container.classList.toggle("form__status--error", isError);
 	}
 
@@ -195,10 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		if (agreeInput && !agreeInput.checked) {
-			agreeInput.classList.add("_error");
+			setCheckboxError(agreeInput, true);
 			valid = false;
 		} else if (agreeInput) {
-			agreeInput.classList.remove("_error");
+			setCheckboxError(agreeInput, false);
 		}
 
 		return valid;
@@ -228,10 +250,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		if (agreeInput && !agreeInput.checked) {
-			agreeInput.classList.add("_error");
+			setCheckboxError(agreeInput, true);
 			valid = false;
 		} else if (agreeInput) {
-			agreeInput.classList.remove("_error");
+			setCheckboxError(agreeInput, false);
 		}
 
 		if (!valid) {
@@ -241,21 +263,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		return valid;
 	}
 
-	function openSuccessModal() {
-		if (typeof Fancybox === "undefined") return;
-		Fancybox.close(true);
-		Fancybox.show([{ src: "#form-success", type: "inline" }], {
-			dragToClose: false,
-			closeButton: false,
-		});
-	}
-
 	document.querySelectorAll(".booking__fields .form__control, .popup__form .form__control").forEach((input) => {
 		input.addEventListener("input", () => setFieldError(input, false));
 	});
 
 	document.querySelectorAll(".checkbox__input").forEach((input) => {
-		input.addEventListener("change", () => input.classList.remove("_error"));
+		input.addEventListener("change", () => setCheckboxError(input, false));
 	});
 
 	// Функция для блокировки/разблокировки прокрутки страницы
@@ -312,14 +325,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	initBooking({
 		validateForm: validateBookingForm,
-		showStatus: showFormStatus,
+		onSuccess: openSuccessModal,
+		onValidationFail: focusFirstFormError,
 	});
 
 	document.querySelectorAll(".popup__form").forEach((form) => {
 		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			if (!validatePopupForm(form)) {
-				form.querySelector('._error, [aria-invalid="true"]')?.focus();
+				focusFirstFormError(form);
 				return;
 			}
 			form.reset();

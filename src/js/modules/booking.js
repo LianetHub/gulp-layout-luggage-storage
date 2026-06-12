@@ -292,7 +292,7 @@ function decorateTimeHandles(sliderEl) {
 	return outputs;
 }
 
-export function initBooking({ validateForm, showStatus } = {}) {
+export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) {
 	const bookingForm = document.getElementById("booking-form");
 	if (!bookingForm) return;
 
@@ -311,7 +311,6 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	const bookingTimeFromInput = document.getElementById("booking-time-from-value");
 	const bookingTimeToInput = document.getElementById("booking-time-to-value");
 	const bookingTimeSlider = document.getElementById("booking-time-slider");
-	const bookingStatus = document.getElementById("booking-status");
 
 	let timeSlider = null;
 	let currentFromVal = BOOKING_TIME_DEFAULT[0];
@@ -621,11 +620,9 @@ export function initBooking({ validateForm, showStatus } = {}) {
 	bookingForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		if (validateForm && !validateForm(bookingForm)) {
-			showStatus?.(bookingStatus, "Проверьте поля формы, номер телефона (+7) и\u00A0согласие на\u00A0обработку данных.", true);
-			bookingForm.querySelector("._error")?.focus();
+			onValidationFail?.(bookingForm);
 			return;
 		}
-		showStatus?.(bookingStatus, "Заявка отправлена. Мы свяжемся с\u00A0вами для\u00A0подтверждения.", false);
 		bookingForm.reset();
 		resetBookingCalendar();
 		hideBookingCalendar();
@@ -641,5 +638,6 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		}
 		resetBookingCounters();
 		resetBookingTimeRange();
+		onSuccess?.();
 	});
 }
