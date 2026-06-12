@@ -341,134 +341,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	if (document.querySelector(".promo__slider")) {
-		new Swiper(".promo__slider", {
-			slidesPerView: 1,
-			speed: 800,
-			loop: true,
-			autoplay: {
-				delay: 15000,
-				stopOnLastSlide: false,
-			},
-			effect: "fade",
-			fadeEffect: {
-				crossFade: true,
-			},
-			navigation: {
-				prevEl: ".promo__controls-prev",
-				nextEl: ".promo__controls-next",
-			},
-			on: {
-				init: (swiper) => {
-					const nextEl = swiper.navigation.nextEl;
-					let speed = swiper.params.speed;
-					let autoplaySpeed = swiper.params.autoplay.delay;
-					nextEl.style.setProperty("--counting-speed", (speed + autoplaySpeed) / 1000 + "s");
-					nextEl.classList.add("counting");
-				},
-				slideChangeTransitionStart: (swiper) => {
-					const nextEl = swiper.navigation.nextEl;
-					nextEl.classList.remove("counting");
-					void nextEl.offsetWidth;
-					nextEl.classList.add("counting");
-				},
-			},
-		});
-	}
-
-	if (document.querySelector(".cases__slider-block")) {
-		new Swiper(".cases__slider-block", {
-			spaceBetween: 15,
-			slidesPerView: 1,
-
-			watchSlidesProgress: true,
-			navigation: {
-				nextEl: ".cases__next",
-				prevEl: ".cases__prev",
-			},
-			breakpoints: {
-				991.98: {
-					slidesPerView: 2,
-					spaceBetween: 18,
-				},
-			},
-		});
-	}
-
-	if (document.querySelector(".how-we-work__slider")) {
-		new MobileSwiper(".how-we-work__slider", {
-			slidesPerView: "auto",
-			spaceBetween: 24,
-			watchOverflow: true,
-		});
-	}
-
 	if (document.querySelector(".benefits__slider")) {
 		new MobileSwiper(".benefits__slider", {
-			slidesPerView: 1.08,
+			slidesPerView: 1.2,
 			spaceBetween: 12,
 			watchOverflow: true,
 		});
 	}
 
-	if (document.querySelector(".tariffs__slider")) {
-		new Swiper(".tariffs__slider", {
-			slidesPerView: "auto",
-			spaceBetween: 30,
-			watchOverflow: true,
-			autoHeight: true,
-			pagination: {
-				el: ".tariffs__slider-pagination",
-				clickable: true,
-			},
-			breakpoints: {
-				991.98: {
-					slidesPerView: 2,
-					autoHeight: false,
-				},
 
-				1279.98: {
-					slidesPerView: 3,
-					autoHeight: false,
-				},
-			},
-		});
-	}
 
-	if (document.querySelectorAll(".service__gallery").length > 0) {
-		document.querySelectorAll(".service__gallery").forEach(function (gallery) {
-			const slider = gallery.querySelector(".service__slider");
-			const prevBtn = gallery.querySelector(".service__prev");
-			const nextBtn = gallery.querySelector(".service__next");
-
-			new Swiper(slider, {
-				slidesPerView: 1,
-				speed: 800,
-				loop: true,
-				autoplay: {
-					delay: 20000,
-					stopOnLastSlide: false,
-				},
-				navigation: {
-					prevEl: prevBtn,
-					nextEl: nextBtn,
-				},
-				on: {
-					init: (swiper) => {
-						const nextEl = swiper.navigation.nextEl;
-						let speed = swiper.params.speed;
-						let autoplaySpeed = swiper.params.autoplay.delay;
-						nextEl.style.setProperty("--counting-speed", (speed + autoplaySpeed) / 1000 + "s");
-						nextEl.classList.add("counting");
-					},
-					slideChangeTransitionStart: (swiper) => {
-						const nextEl = swiper.navigation.nextEl;
-						nextEl.classList.remove("counting");
-						void nextEl.offsetWidth;
-						nextEl.classList.add("counting");
-					},
-				},
-			});
-		});
-	}
 });

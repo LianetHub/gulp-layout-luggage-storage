@@ -87,12 +87,9 @@
 		text-transform: uppercase;
 		letter-spacing: 0.02em;
 
-		@media (min-width: $md5) {
-			font-size: 1.5rem;
-		}
 
 		@media (min-width: $md4) {
-			font-size: 1.875rem;
+			font-size: 3rem;
 		}
 
 
@@ -299,19 +296,29 @@
 	}
 
 	&__icons {
-		display: none;
-		margin-top: 1.375rem;
-		gap: 1.25rem;
-		padding-left: 0.75rem;
 
-		@media (min-width: $md4) {
-			display: flex;
+		padding-left: 1.5rem;
+
+		display: flex;
+		gap: 0.875rem;
+
+		@media (min-width:$md4) {
+			padding-left: 0.75rem;
+			margin-top: 1.375rem;
+			gap: 1.25rem;
+
 		}
 	}
 
 	&__icons-item {
-		width: rem(56);
-		height: rem(56);
+		width: rem(41);
+		height: rem(41);
+
+		@media (min-width:$md4) {
+			width: rem(56);
+			height: rem(56);
+
+		}
 
 		& img {
 			width: 100%;

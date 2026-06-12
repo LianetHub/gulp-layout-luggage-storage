@@ -8,11 +8,12 @@
 	&__intro {
 		position: relative;
 		z-index: 1;
-		margin-bottom: 2rem;
+		margin-bottom: 4rem;
 		padding-bottom: 0;
 
 		.section-head__title {
 			text-transform: uppercase;
+
 		}
 
 		@media (min-width: $md4) {
@@ -22,10 +23,10 @@
 	}
 
 	&__highlight {
-		margin-top: 0.75rem;
+
 		display: inline-flex;
 		align-items: center;
-		padding: 0.35em 0.85em;
+		padding: 0.45em 0.85em;
 		border-radius: 0.35em;
 		transform: rotate(-2deg);
 		background: linear-gradient(165deg,
@@ -41,7 +42,7 @@
 			inset 0 rem(1) rem(0) rgba(#fff, 0.35);
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.25rem;
+		font-size: rem(40);
 		line-height: 1.15;
 		color: $text-inverse;
 
@@ -193,7 +194,7 @@
 	&__title {
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.625rem;
+		font-size: rem(36);
 		line-height: 1.15;
 		text-transform: uppercase;
 
@@ -203,7 +204,7 @@
 	}
 
 	&__list {
-		margin-top: 1.25rem;
+		margin-top: 1.75rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
@@ -250,7 +251,7 @@
 
 	&__address {
 		font-style: normal;
-		font-size: 1.125rem;
+		font-size: 1.5rem;
 		line-height: 1.45;
 
 		@media (min-width: $md4) {
@@ -299,7 +300,7 @@
 		gap: 0.125rem;
 
 		a {
-			font-size: 1.125rem;
+			font-size: 1.5rem;
 			font-weight: 700;
 			line-height: 1.45;
 			transition: color 0.2s;
@@ -330,7 +331,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem;
-		column-gap: 2rem;
+		column-gap: 3.5rem;
 		margin-top: 0.75rem;
 
 		@media (min-width: $md4) {
@@ -341,7 +342,7 @@
 	}
 
 	&__messenger {
-		font-size: 1.125rem;
+		font-size: 1.5rem;
 		font-weight: 700;
 		line-height: 1.45;
 		transition: color 0.2s;

@@ -6,10 +6,16 @@
 		z-index: 1;
 		margin-bottom: 1.75rem;
 
+		@media (max-width:$md5) {
+			margin-inline: -0.25rem;
+		}
+
 		.section-head__lead {
 			margin-top: 0;
 			margin-bottom: 0.5rem;
 			max-width: none;
+
+
 
 			@media (min-width: $md4) {
 				margin-bottom: 0.75rem;
@@ -19,21 +25,7 @@
 
 		.section-head__title {
 			text-transform: uppercase;
-			font-size: 1.375rem;
-			line-height: 1.35;
 
-			@media (min-width: $md5) {
-				font-size: 1.625rem;
-			}
-
-			@media (min-width: $md4) {
-				font-size: 2.25rem;
-				line-height: 1.25;
-			}
-
-			@media (min-width: $md2) {
-				font-size: 3.75rem;
-			}
 		}
 
 		@media (min-width: $md4) {
@@ -45,7 +37,7 @@
 		margin-top: 0.25rem;
 		display: inline-block;
 		position: relative;
-		padding: 0.45em 0.85em;
+		padding: 0.45em 0.45em;
 		border-radius: 0.35em;
 		transform: rotate(2deg);
 		background: linear-gradient(165deg,
@@ -61,14 +53,9 @@
 			inset 0 rem(1) rem(0) rgba(#fff, 0.35);
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.5rem;
+		font-size: rem(30);
 		line-height: 1.15;
 		color: $text-inverse;
-
-		@media (min-width: $md5) {
-			margin-top: 0.75rem;
-			font-size: 1.25rem;
-		}
 
 		@media (min-width: $md4) {
 			margin-top: -0.5rem;
@@ -107,8 +94,7 @@
 		height: rem(44);
 		pointer-events: none;
 		position: absolute;
-		bottom: calc(100% - 1.5rem);
-		left: calc(100% - 3.25rem);
+
 		z-index: -1;
 
 		img {
@@ -118,12 +104,10 @@
 			object-fit: contain;
 		}
 
-		@media (min-width: $md5) {
-			width: rem(52);
-			height: rem(52);
-			bottom: calc(100% - 1.75rem);
-			left: calc(100% - 3.75rem);
-		}
+		width: rem(75);
+		height: rem(75);
+		bottom: calc(100% - 2rem);
+		left: calc(100% - 3rem);
 
 		@media (min-width: $md4) {
 			width: rem(95);
@@ -137,13 +121,14 @@
 		display: grid;
 		gap: 2rem;
 		align-items: start;
+		margin-top: 3.5rem;
 
 		@media (min-width: $md4) {
 			gap: 2.5rem;
 		}
 
 		@media (min-width: $md3) {
-			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-columns: 1fr auto;
 			gap: 2rem 1.5rem;
 			align-items: center;
 		}
@@ -156,7 +141,6 @@
 		}
 
 		@media (min-width: $md1) {
-		
 			gap: 1.5rem 3rem;
 		}
 	}
@@ -168,7 +152,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100%;
-		gap: 1.75rem;
+		gap: 2rem;
 
 		@media (min-width: $md4) {
 			padding-top: 0.5rem;
@@ -184,7 +168,7 @@
 	&__feature {
 		display: grid;
 		grid-template-columns: rem(56) 1fr;
-		gap: 1rem;
+		gap: 1rem 2rem;
 		align-items: start;
 
 		@media (min-width: $md4) {
@@ -198,20 +182,19 @@
 	}
 
 	&__feature-icon {
-		width: rem(56);
-		height: rem(56);
-		object-fit: contain;
+		width: rem(64);
 
-		@media (min-width: $md4) {
-			width: rem(64);
-			height: rem(64);
-		}
+		flex-shrink: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
 	}
 
 	&__feature-title {
 		font-family: $font-display;
 		font-weight: 700;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		margin-bottom: 0.25rem;
 
 		@media (min-width: $md4) {
@@ -221,7 +204,7 @@
 	}
 
 	&__feature-text {
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 		line-height: 1.55;
 		color: rgba($text, 0.75);
 
@@ -242,7 +225,7 @@
 	&__media-img {
 		display: block;
 		width: 100%;
-		max-width: rem(300);
+		max-width: 65%;
 		height: auto;
 		margin-inline: auto;
 		object-fit: contain;

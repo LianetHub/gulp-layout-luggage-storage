@@ -5,7 +5,7 @@ $booking-purple: #8f2fff;
 @import "booking-calendar";
 
 .booking {
-	padding: 2rem 0 1.5rem;
+	padding: 2.75rem 0 1rem;
 	background: #fff;
 
 	@media (min-width: $md4) {
@@ -70,8 +70,8 @@ $booking-purple: #8f2fff;
 
 	&__panel {
 		background: $bg-white;
-		border-radius: rem(16);
-		padding: 1.25rem 1rem;
+		border-radius: rem(8);
+		padding: 1.875rem 1.25rem;
 		box-shadow: 0px 7px 9.7px 0.3px rgba(0, 0, 0, 0.02);
 
 		border: rem(1) solid #ebebeb;
@@ -92,21 +92,23 @@ $booking-purple: #8f2fff;
 	&__form-title {
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 1.375rem;
-		line-height: 1.1;
+		font-size: rem(33);
 		text-transform: uppercase;
-		letter-spacing: 0.02em;
-		margin-bottom: 1.5rem;
+		line-height: 1.25;
+
+		margin-bottom: 1.375rem;
 
 		@media (min-width: $md4) {
 			font-size: 2.875rem;
+			line-height: 1.1;
 			margin-bottom: 2rem;
+			letter-spacing: 0.02em;
 		}
 	}
 
 	&__group {
 		&:not(:last-of-type) {
-			margin-bottom: 2rem;
+			margin-bottom: 3.75rem;
 		}
 
 		@media (min-width: $md4) {
@@ -120,11 +122,10 @@ $booking-purple: #8f2fff;
 		display: block;
 		font-family: $font-display;
 		font-weight: 700;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 
 		@media (max-width:$md4) {
-
-			margin-bottom: 0.35rem;
+			margin-bottom: 1rem;
 		}
 
 		@media (min-width: $md4) {
@@ -144,6 +145,9 @@ $booking-purple: #8f2fff;
 
 	&__group-head-text {
 		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
 
 		.booking__group-title {
 			margin-bottom: 0.35rem;
@@ -151,17 +155,21 @@ $booking-purple: #8f2fff;
 	}
 
 	&__note {
-		margin-top: 0.75rem;
 		font-size: 0.875rem;
 		line-height: 1.4;
 		color: $muted;
+
+		@media (min-width:$md4) {
+			margin-top: 0.75rem;
+
+		}
 
 	}
 
 	&__badge {
 		flex-shrink: 0;
 		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
+		font-size: 1.125rem;
 		font-weight: 700;
 		color: $text-inverse;
 		background: $booking-pink;
@@ -216,7 +224,7 @@ $booking-purple: #8f2fff;
 	&__dates {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 0.625rem;
+		gap: 1.5rem 0.625rem;
 
 		@media (min-width: $md5) {
 			margin-top: 2.25rem;
@@ -230,13 +238,13 @@ $booking-purple: #8f2fff;
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: center;
 		gap: 0.25rem;
 		min-height: rem(72);
-		padding: 0.5rem 0.5rem;
+		padding: 0.5rem 1.25rem;
 		border: rem(1) solid rgba($text, 0.1);
-		border-radius: rem(12);
+		border-radius: rem(8);
 		background: $bg-white;
 		font: inherit;
 		color: inherit;
@@ -244,6 +252,8 @@ $booking-purple: #8f2fff;
 		transition: border-color 0.2s;
 
 		@media (min-width: $md5) {
+			padding: 0.5rem 0.5rem;
+			align-items: center;
 			min-height: rem(80);
 		}
 
@@ -303,6 +313,10 @@ $booking-purple: #8f2fff;
 		cursor: pointer;
 		transition: background-color 0.2s;
 
+		@media (max-width:$md5) {
+			min-height: rem(76);
+		}
+
 		@media (min-width: $md5) {
 			grid-column: auto;
 			min-height: rem(80);
@@ -326,10 +340,12 @@ $booking-purple: #8f2fff;
 
 	&__items {
 		display: grid;
-		gap: 0.625rem;
+		margin-top: 2rem;
+		gap: 1.25rem;
 
 		@media (min-width: $md5) {
 			margin-top: 2rem;
+			gap: 0.625rem;
 			grid-template-columns: repeat(2, 1fr);
 		}
 
@@ -352,28 +368,39 @@ $booking-purple: #8f2fff;
 	&__item {
 		display: flex;
 		align-items: flex-start;
-		gap: 0.75rem;
-		padding: 0.875rem 0.75rem;
+		gap: 0.375rem;
+		padding: 0.875rem 0.25rem;
 		border: rem(1) solid rgba($text, 0.1);
 		border-radius: rem(12);
+		overflow: hidden;
 
 		@media (min-width: $md4) {
+			gap: 0.75rem;
 			padding: 1rem 0.75rem;
 		}
 	}
 
 	&__item-image {
 		flex-shrink: 0;
-		width: rem(48);
-		height: rem(48);
+		width: rem(70);
+		height: rem(70);
 
 		&.booking__item-image--large {
-			width: rem(60);
-			height: rem(70);
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
 			margin-left: rem(-14);
+			width: rem(90);
+			height: rem(90);
+			margin-block: -0.5rem;
+
+
+			@media (min-width:$md4) {
+				margin-block: 0;
+				width: rem(60);
+				height: rem(70);
+
+			}
 
 			& img {
 				width: 100%;
@@ -411,11 +438,8 @@ $booking-purple: #8f2fff;
 		text-align: left;
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 1rem;
 
-		@media (min-width: $md4) {
-			gap: 1rem;
-		}
 	}
 
 	&__item-footer {
@@ -434,9 +458,14 @@ $booking-purple: #8f2fff;
 
 	&__item-price {
 		margin: 0;
-		font-size: 0.8125rem;
 		color: $muted;
 		flex-shrink: 0;
+		font-size: 1rem;
+
+		@media (min-width:$md4) {
+			font-size: 0.8125rem;
+
+		}
 	}
 
 	&__counter-controls {
@@ -446,6 +475,11 @@ $booking-purple: #8f2fff;
 		padding: rem(8) rem(4);
 		background: $bg-muted;
 		border-radius: rem(8);
+		width: rem(130);
+
+		@media (min-width:$md4) {
+			width: auto;
+		}
 	}
 
 	&__counter-btn {
@@ -487,7 +521,7 @@ $booking-purple: #8f2fff;
 	}
 
 	&__summary {
-		margin-top: 1.25rem;
+		margin-top: 3.5rem;
 
 		@media (min-width: $md4) {
 			margin-top: 1.675rem;
@@ -498,7 +532,7 @@ $booking-purple: #8f2fff;
 		font-family: $font-display;
 		font-weight: 800;
 		font-size: 2rem;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.75rem;
 
 		@media (min-width: $md4) {
 			font-size: 3rem;
@@ -563,12 +597,13 @@ $booking-purple: #8f2fff;
 
 	&__summary-total {
 		display: flex;
-		align-items: flex-end;
+		align-items: flex-start;
 		justify-content: space-between;
 		gap: 0.5rem;
 		min-width: rem(140);
 
 		@media (min-width:$md3) {
+			align-items: flex-end;
 			justify-content: flex-end;
 
 		}
@@ -582,8 +617,10 @@ $booking-purple: #8f2fff;
 	&__summary-figure {
 		display: flex;
 		align-items: center;
-		width: 56%;
-		margin: 0;
+		justify-content: space-between;
+		margin-top: -3rem;
+		flex: 1 1 auto;
+		padding-left: 2rem;
 
 		@media (min-width: $md3) {
 			display: none;
@@ -593,8 +630,11 @@ $booking-purple: #8f2fff;
 	&__summary-figure-img {
 		display: block;
 		height: auto;
-		object-fit: contain;
-		width: 50%;
+		max-width: rem(70);
+
+		& img {
+			width: 100%;
+		}
 	}
 
 	&__summary-figure-caption {
@@ -679,9 +719,14 @@ $booking-purple: #8f2fff;
 
 	&__summary-list {
 
-		font-size: 0.75rem;
 		line-height: 1.45;
 		color: $muted;
+		font-size: rem(14);
+
+		@media (min-width:$md4) {
+			font-size: 0.75rem;
+
+		}
 
 		li+li {
 			margin-top: 0.15rem;
@@ -708,9 +753,6 @@ $booking-purple: #8f2fff;
 		}
 
 		&--eq {
-			@media (max-width: $md4) {
-				display: none;
-			}
 
 			@media (min-width: $md4) {
 				height: calc(1.75rem * 1.1);
@@ -720,13 +762,13 @@ $booking-purple: #8f2fff;
 	}
 
 	&__footer {
-		margin-top: 1.25rem;
+		margin-top: 1.75rem;
 		border-top: rem(1) solid rgba($text, 0.1);
-		padding-top: 1.25rem;
+		padding-top: 2.5rem;
 		display: grid;
 		align-items: start;
 		grid-template-columns: 1fr;
-		gap: 1.25rem;
+		gap: 2.75rem;
 
 		@media (min-width: $md4) {
 			margin-top: 1.5rem;
@@ -750,7 +792,7 @@ $booking-purple: #8f2fff;
 		margin: 0 0 0.25rem;
 		font-family: $font-display;
 		font-weight: 800;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		line-height: 1.1;
 		color: $text;
 
@@ -762,7 +804,7 @@ $booking-purple: #8f2fff;
 	&__fields {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 1.75rem;
 
 		@media (min-width: $md4) {
 			gap: 1.5rem;
@@ -773,7 +815,7 @@ $booking-purple: #8f2fff;
 		position: relative;
 
 		.form__control {
-			font-size: 1.125rem;
+			font-size: 1.5rem;
 			padding-right: rem(22);
 
 			@media (min-width: $md4) {

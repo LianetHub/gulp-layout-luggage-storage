@@ -53,7 +53,7 @@ body {
 [class*=__container] {
   margin: 0 auto;
   max-width: 100%;
-  padding: 0 1.1875rem;
+  padding: 0 1rem;
 }
 @media (min-width: 575.98px) {
   [class*=__container] {
@@ -1425,11 +1425,12 @@ body {
 .section-head__title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.625rem;
-  line-height: 1.25;
+  font-size: 2.0625rem;
+  line-height: 1.3;
 }
 @media (min-width: 767.98px) {
   .section-head__title {
+    line-height: 1.25;
     font-size: 2.25rem;
   }
 }
@@ -1509,7 +1510,7 @@ body {
 }
 
 .section-padding, .contacts, .guests, .storage, .benefits, .pricing {
-  padding: 2.5rem 0;
+  padding: 2rem 0;
 }
 @media (min-width: 767.98px) {
   .section-padding, .contacts, .guests, .storage, .benefits, .pricing {
@@ -1603,14 +1604,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
-@media (min-width: 575.98px) {
-  .promo__title {
-    font-size: 1.5rem;
-  }
-}
 @media (min-width: 767.98px) {
   .promo__title {
-    font-size: 1.875rem;
+    font-size: 3rem;
   }
 }
 @media (min-width: 991.98px) {
@@ -1786,19 +1782,26 @@ body {
   }
 }
 .promo__icons {
-  display: none;
-  margin-top: 1.375rem;
-  gap: 1.25rem;
-  padding-left: 0.75rem;
+  padding-left: 1.5rem;
+  display: flex;
+  gap: 0.875rem;
 }
 @media (min-width: 767.98px) {
   .promo__icons {
-    display: flex;
+    padding-left: 0.75rem;
+    margin-top: 1.375rem;
+    gap: 1.25rem;
   }
 }
 .promo__icons-item {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5625rem;
+  height: 2.5625rem;
+}
+@media (min-width: 767.98px) {
+  .promo__icons-item {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 .promo__icons-item img {
   width: 100%;
@@ -1942,7 +1945,7 @@ body {
 .rate__content {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
   padding: 1.25rem 1.1875rem 1.5rem;
 }
 @media (min-width: 991.98px) {
@@ -1965,7 +1968,7 @@ body {
 .rate__title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   line-height: 1.35;
 }
 @media (min-width: 767.98px) {
@@ -1982,7 +1985,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.875rem;
   width: 100%;
   min-width: 0;
 }
@@ -2006,7 +2009,12 @@ body {
 .rate__ratings-item {
   flex-shrink: 0;
   display: block;
-  width: 18.75rem;
+  width: 100%;
+}
+@media (min-width: 575.98px) {
+  .rate__ratings-item {
+    max-width: 18.75rem;
+  }
 }
 .rate__ratings-item img {
   width: 100%;
@@ -2753,7 +2761,7 @@ body {
 }
 
 .booking {
-  padding: 2rem 0 1.5rem;
+  padding: 2.75rem 0 1rem;
   background: #fff;
 }
 @media (min-width: 767.98px) {
@@ -2812,8 +2820,8 @@ body {
 }
 .booking__panel {
   background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.25rem 1rem;
+  border-radius: 0.5rem;
+  padding: 1.875rem 1.25rem;
   box-shadow: 0px 7px 9.7px 0.3px rgba(0, 0, 0, 0.02);
   border: 0.0625rem solid #ebebeb;
   flex: 1 1 auto;
@@ -2834,20 +2842,21 @@ body {
 .booking__form-title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.375rem;
-  line-height: 1.1;
+  font-size: 2.0625rem;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin-bottom: 1.5rem;
+  line-height: 1.25;
+  margin-bottom: 1.375rem;
 }
 @media (min-width: 767.98px) {
   .booking__form-title {
     font-size: 2.875rem;
+    line-height: 1.1;
     margin-bottom: 2rem;
+    letter-spacing: 0.02em;
   }
 }
 .booking__group:not(:last-of-type) {
-  margin-bottom: 2rem;
+  margin-bottom: 3.75rem;
 }
 @media (min-width: 767.98px) {
   .booking__group:not(:last-of-type) {
@@ -2858,11 +2867,11 @@ body {
   display: block;
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 @media (max-width: 767.98px) {
   .booking__group-title {
-    margin-bottom: 0.35rem;
+    margin-bottom: 1rem;
   }
 }
 @media (min-width: 767.98px) {
@@ -2880,20 +2889,27 @@ body {
 }
 .booking__group-head-text {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 .booking__group-head-text .booking__group-title {
   margin-bottom: 0.35rem;
 }
 .booking__note {
-  margin-top: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.4;
   color: #acacac;
 }
+@media (min-width: 767.98px) {
+  .booking__note {
+    margin-top: 0.75rem;
+  }
+}
 .booking__badge {
   flex-shrink: 0;
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: #ffffff;
   background: #ff2d9b;
@@ -2943,7 +2959,7 @@ body {
 .booking__dates {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.625rem;
+  gap: 1.5rem 0.625rem;
 }
 @media (min-width: 575.98px) {
   .booking__dates {
@@ -2957,13 +2973,13 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 0.25rem;
   min-height: 4.5rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 1.25rem;
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   background: #ffffff;
   font: inherit;
   color: inherit;
@@ -2972,6 +2988,8 @@ body {
 }
 @media (min-width: 575.98px) {
   .booking__date-card {
+    padding: 0.5rem 0.5rem;
+    align-items: center;
     min-height: 5rem;
   }
 }
@@ -3023,6 +3041,11 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
 }
+@media (max-width: 575.98px) {
+  .booking__date-other {
+    min-height: 4.75rem;
+  }
+}
 @media (min-width: 575.98px) {
   .booking__date-other {
     grid-column: auto;
@@ -3043,11 +3066,13 @@ body {
 }
 .booking__items {
   display: grid;
-  gap: 0.625rem;
+  margin-top: 2rem;
+  gap: 1.25rem;
 }
 @media (min-width: 575.98px) {
   .booking__items {
     margin-top: 2rem;
+    gap: 0.625rem;
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -3069,28 +3094,38 @@ body {
 .booking__item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.875rem 0.75rem;
+  gap: 0.375rem;
+  padding: 0.875rem 0.25rem;
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
   border-radius: 0.75rem;
+  overflow: hidden;
 }
 @media (min-width: 767.98px) {
   .booking__item {
+    gap: 0.75rem;
     padding: 1rem 0.75rem;
   }
 }
 .booking__item-image {
   flex-shrink: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 4.375rem;
+  height: 4.375rem;
 }
 .booking__item-image.booking__item-image--large {
-  width: 3.75rem;
-  height: 4.375rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-left: -0.875rem;
+  width: 5.625rem;
+  height: 5.625rem;
+  margin-block: -0.5rem;
+}
+@media (min-width: 767.98px) {
+  .booking__item-image.booking__item-image--large {
+    margin-block: 0;
+    width: 3.75rem;
+    height: 4.375rem;
+  }
 }
 .booking__item-image.booking__item-image--large img {
   width: 100%;
@@ -3123,12 +3158,7 @@ body {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-@media (min-width: 767.98px) {
-  .booking__item-content {
-    gap: 1rem;
-  }
+  gap: 1rem;
 }
 .booking__item-footer {
   display: flex;
@@ -3144,9 +3174,14 @@ body {
 }
 .booking__item-price {
   margin: 0;
-  font-size: 0.8125rem;
   color: #acacac;
   flex-shrink: 0;
+  font-size: 1rem;
+}
+@media (min-width: 767.98px) {
+  .booking__item-price {
+    font-size: 0.8125rem;
+  }
 }
 .booking__counter-controls {
   gap: 0;
@@ -3155,6 +3190,12 @@ body {
   padding: 0.5rem 0.25rem;
   background: #ebebeb;
   border-radius: 0.5rem;
+  width: 8.125rem;
+}
+@media (min-width: 767.98px) {
+  .booking__counter-controls {
+    width: auto;
+  }
 }
 .booking__counter-btn {
   flex-shrink: 0;
@@ -3191,7 +3232,7 @@ body {
   text-align: center;
 }
 .booking__summary {
-  margin-top: 1.25rem;
+  margin-top: 3.5rem;
 }
 @media (min-width: 767.98px) {
   .booking__summary {
@@ -3202,7 +3243,7 @@ body {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 @media (min-width: 767.98px) {
   .booking__summary-title {
@@ -3261,13 +3302,14 @@ body {
 }
 .booking__summary-total {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 0.5rem;
   min-width: 8.75rem;
 }
 @media (min-width: 991.98px) {
   .booking__summary-total {
+    align-items: flex-end;
     justify-content: flex-end;
   }
 }
@@ -3277,8 +3319,10 @@ body {
 .booking__summary-figure {
   display: flex;
   align-items: center;
-  width: 56%;
-  margin: 0;
+  justify-content: space-between;
+  margin-top: -3rem;
+  flex: 1 1 auto;
+  padding-left: 2rem;
 }
 @media (min-width: 991.98px) {
   .booking__summary-figure {
@@ -3288,8 +3332,10 @@ body {
 .booking__summary-figure-img {
   display: block;
   height: auto;
-  object-fit: contain;
-  width: 50%;
+  max-width: 4.375rem;
+}
+.booking__summary-figure-img img {
+  width: 100%;
 }
 .booking__summary-figure-caption {
   margin-top: 0.35rem;
@@ -3360,9 +3406,14 @@ body {
   align-items: flex-start;
 }
 .booking__summary-list {
-  font-size: 0.75rem;
   line-height: 1.45;
   color: #acacac;
+  font-size: 0.875rem;
+}
+@media (min-width: 767.98px) {
+  .booking__summary-list {
+    font-size: 0.75rem;
+  }
 }
 .booking__summary-list li + li {
   margin-top: 0.15rem;
@@ -3384,11 +3435,6 @@ body {
     font-size: 1.55rem;
   }
 }
-@media (max-width: 767.98px) {
-  .booking__summary-sep--eq {
-    display: none;
-  }
-}
 @media (min-width: 767.98px) {
   .booking__summary-sep--eq {
     height: 1.925rem;
@@ -3396,13 +3442,13 @@ body {
   }
 }
 .booking__footer {
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
   border-top: 0.0625rem solid rgba(0, 0, 0, 0.1);
-  padding-top: 1.25rem;
+  padding-top: 2.5rem;
   display: grid;
   align-items: start;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 2.75rem;
 }
 @media (min-width: 767.98px) {
   .booking__footer {
@@ -3426,7 +3472,7 @@ body {
   margin: 0 0 0.25rem;
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.1;
   color: #000000;
 }
@@ -3438,7 +3484,7 @@ body {
 .booking__fields {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.75rem;
 }
 @media (min-width: 767.98px) {
   .booking__fields {
@@ -3449,7 +3495,7 @@ body {
   position: relative;
 }
 .booking__field .form__control {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   padding-right: 1.375rem;
 }
 @media (min-width: 767.98px) {
@@ -3570,18 +3616,18 @@ body {
   text-transform: uppercase;
 }
 .pricing__speed {
-  margin-top: 0.75rem;
+  margin-top: -0.5rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35em 0.85em;
+  padding: 0.25em 0.35em;
   border-radius: 0.35em;
-  transform: rotate(-3deg);
+  transform: rotate(-2deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
   box-shadow: 0 0 0.4375rem rgba(255, 45, 155, 0.65), 0 0 1rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 3.125rem;
   line-height: 1.15;
   color: #ffffff;
 }
@@ -3720,7 +3766,7 @@ body {
   background: url("../img/pricing-arrow.svg") center/contain no-repeat;
 }
 .pricing__rates {
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 @media (min-width: 767.98px) {
   .pricing__rates {
@@ -3728,14 +3774,14 @@ body {
   }
 }
 .pricing__rates-title {
-  margin-bottom: 1.25rem;
+  display: none;
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.125rem;
   line-height: 1.2;
 }
 @media (min-width: 767.98px) {
   .pricing__rates-title {
+    display: block;
     margin-bottom: 2.25rem;
     font-size: 1.5rem;
   }
@@ -3743,7 +3789,7 @@ body {
 .pricing__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  gap: 1.5rem 0.75rem;
 }
 @media (min-width: 767.98px) {
   .pricing__grid {
@@ -3781,37 +3827,21 @@ body {
 }
 .pricing__tagline {
   position: relative;
+  margin-top: 1.75rem;
   display: flex;
   align-items: center;
   font-family: "Geologica", "GolosText", sans-serif;
-  font-weight: 800;
-  font-size: 1.125rem;
-  line-height: 1.45;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.7;
   text-transform: uppercase;
-}
-.pricing__tagline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 4.78125rem;
-  height: 5.203125rem;
-  pointer-events: none;
-  background: url("../img/sections//pricing/arrow.svg") 0 0/cover no-repeat;
-  top: 80%;
-}
-@media (min-width: 767.98px) {
-  .pricing__tagline::before {
-    width: 4.78125rem;
-    height: 5.203125rem;
-  }
-}
-@media (min-width: 1199.98px) {
-  .pricing__tagline::before {
-    top: 110%;
-  }
+  padding-bottom: 2rem;
 }
 @media (min-width: 767.98px) {
   .pricing__tagline {
+    font-weight: 800;
+    padding-bottom: 0;
+    margin-top: 0;
     font-size: 1.75rem;
     line-height: 1.5;
   }
@@ -3822,13 +3852,37 @@ body {
     max-width: 30rem;
   }
 }
+.pricing__tagline::before {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: rotate(12deg);
+  width: 5.625rem;
+  height: 6.25rem;
+  pointer-events: none;
+  background: url("../img/sections/pricing/arrow.svg") 0 0/cover no-repeat;
+  top: calc(100% - 3rem);
+}
+@media (min-width: 767.98px) {
+  .pricing__tagline::before {
+    transform: none;
+    left: 50%;
+    width: 4.78125rem;
+    height: 5.203125rem;
+  }
+}
+@media (min-width: 1199.98px) {
+  .pricing__tagline::before {
+    top: 110%;
+  }
+}
 .pricing__card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  min-height: 12.5rem;
-  padding: 0.875rem 1rem;
+  min-height: 11.25rem;
+  padding: 0.25rem 1rem;
   border-radius: 1rem;
   background-color: #ffffff;
   background-size: cover;
@@ -3870,7 +3924,7 @@ body {
 .pricing__card-price {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #000000;
   line-height: 1.1;
   display: flex;
@@ -3918,10 +3972,10 @@ body {
 }
 .pricing__card-desc {
   margin-top: 0.625rem;
-  font-size: 0.8125rem;
+  font-size: 0.625rem;
   line-height: 1.45;
   padding-left: 0.125rem;
-  max-width: 8.125rem;
+  max-width: 7.5rem;
   color: #000;
 }
 @media (min-width: 767.98px) {
@@ -3934,7 +3988,7 @@ body {
   }
 }
 .pricing__card-desc.pricing__card-desc--wide {
-  max-width: 9.375rem;
+  max-width: 7.5rem;
 }
 @media (min-width: 767.98px) {
   .pricing__card-desc.pricing__card-desc--wide {
@@ -3991,7 +4045,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 25rem;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.75rem;
   border-radius: 1rem;
   color: #ffffff;
   background: var(--benefits-card-bg, none) right bottom/cover no-repeat, linear-gradient(173deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120.71%);
@@ -4004,12 +4058,15 @@ body {
   }
 }
 @media (min-width: 575.98px) {
-  .benefits__card--wide {
+  .benefits__card.benefits__card--wide {
     grid-column: span 2;
   }
 }
-.benefits__card--paid {
+.benefits__card.benefits__card--paid {
   background: var(--benefits-card-bg, none), #ffffff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
   color: #000000;
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
 }
@@ -4046,18 +4103,24 @@ body {
 }
 @media (max-width: 767.98px) {
   .benefits__card-title {
-    font-size: 1.25rem;
-    line-height: 1.35;
+    font-size: 1rem;
+    line-height: 1.75;
     max-width: none;
   }
 }
 .benefits__card-text {
   margin-top: 0.5rem;
-  font-size: 1rem;
   line-height: 1.45;
   opacity: 0.9;
-  max-width: 12.8125rem;
   z-index: 1;
+  font-size: 0.875rem;
+  max-width: 15.8125rem;
+}
+@media (min-width: 767.98px) {
+  .benefits__card-text {
+    max-width: 12.8125rem;
+    font-size: 1rem;
+  }
 }
 .benefits__card--paid .benefits__card-text {
   opacity: 0.75;
@@ -4078,6 +4141,11 @@ body {
   z-index: 1;
   margin-bottom: 1.75rem;
 }
+@media (max-width: 575.98px) {
+  .storage__head {
+    margin-inline: -0.25rem;
+  }
+}
 .storage__head .section-head__lead {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -4090,24 +4158,6 @@ body {
 }
 .storage__head .section-head__title {
   text-transform: uppercase;
-  font-size: 1.375rem;
-  line-height: 1.35;
-}
-@media (min-width: 575.98px) {
-  .storage__head .section-head__title {
-    font-size: 1.625rem;
-  }
-}
-@media (min-width: 767.98px) {
-  .storage__head .section-head__title {
-    font-size: 2.25rem;
-    line-height: 1.25;
-  }
-}
-@media (min-width: 1199.98px) {
-  .storage__head .section-head__title {
-    font-size: 3.75rem;
-  }
 }
 @media (min-width: 767.98px) {
   .storage__head {
@@ -4118,22 +4168,16 @@ body {
   margin-top: 0.25rem;
   display: inline-block;
   position: relative;
-  padding: 0.45em 0.85em;
+  padding: 0.45em 0.45em;
   border-radius: 0.35em;
   transform: rotate(2deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
   box-shadow: 0 0 0.625rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.18), 0 0 2.25rem rgba(255, 45, 155, 0.1), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   line-height: 1.15;
   color: #ffffff;
-}
-@media (min-width: 575.98px) {
-  .storage__accent {
-    margin-top: 0.75rem;
-    font-size: 1.25rem;
-  }
 }
 @media (min-width: 767.98px) {
   .storage__accent {
@@ -4165,23 +4209,17 @@ body {
   height: 2.75rem;
   pointer-events: none;
   position: absolute;
-  bottom: calc(100% - 1.5rem);
-  left: calc(100% - 3.25rem);
   z-index: -1;
+  width: 4.6875rem;
+  height: 4.6875rem;
+  bottom: calc(100% - 2rem);
+  left: calc(100% - 3rem);
 }
 .storage__accent-icon img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-@media (min-width: 575.98px) {
-  .storage__accent-icon {
-    width: 3.25rem;
-    height: 3.25rem;
-    bottom: calc(100% - 1.75rem);
-    left: calc(100% - 3.75rem);
-  }
 }
 @media (min-width: 767.98px) {
   .storage__accent-icon {
@@ -4194,6 +4232,7 @@ body {
   display: grid;
   gap: 2rem;
   align-items: start;
+  margin-top: 3.5rem;
 }
 @media (min-width: 767.98px) {
   .storage__body {
@@ -4202,7 +4241,7 @@ body {
 }
 @media (min-width: 991.98px) {
   .storage__body {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr auto;
     gap: 2rem 1.5rem;
     align-items: center;
   }
@@ -4227,7 +4266,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  gap: 1.75rem;
+  gap: 2rem;
 }
 @media (min-width: 767.98px) {
   .storage__features {
@@ -4244,7 +4283,7 @@ body {
 .storage__feature {
   display: grid;
   grid-template-columns: 3.5rem 1fr;
-  gap: 1rem;
+  gap: 1rem 2rem;
   align-items: start;
 }
 @media (min-width: 767.98px) {
@@ -4259,20 +4298,16 @@ body {
   }
 }
 .storage__feature-icon {
-  width: 3.5rem;
-  height: 3.5rem;
-  object-fit: contain;
-}
-@media (min-width: 767.98px) {
-  .storage__feature-icon {
-    width: 4rem;
-    height: 4rem;
-  }
+  width: 4rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .storage__feature-title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 0.25rem;
 }
 @media (min-width: 767.98px) {
@@ -4282,7 +4317,7 @@ body {
   }
 }
 .storage__feature-text {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   color: rgba(0, 0, 0, 0.75);
 }
@@ -4303,7 +4338,7 @@ body {
 .storage__media-img {
   display: block;
   width: 100%;
-  max-width: 18.75rem;
+  max-width: 65%;
   height: auto;
   margin-inline: auto;
   object-fit: contain;
@@ -4345,12 +4380,13 @@ body {
   gap: 0.15em;
   text-transform: uppercase;
   font-family: "Geologica", "GolosText", sans-serif;
-  font-weight: 800;
-  font-size: 1.375rem;
-  line-height: 1.55;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.7;
 }
 @media (min-width: 767.98px) {
   .guests__title {
+    font-weight: 800;
     font-size: 1.75rem;
   }
 }
@@ -4385,14 +4421,8 @@ body {
   flex-direction: column;
   align-items: stretch;
   gap: 0.75rem;
-}
-@media (min-width: 575.98px) {
-  .guests__ratings {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-  }
+  flex-direction: row;
+  align-items: center;
 }
 .guests__rating {
   display: flex;
@@ -4444,16 +4474,14 @@ body {
 }
 .guests__contrast {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
 }
-@media (min-width: 767.98px) {
+@media (min-width: 575.98px) {
   .guests__contrast {
-    flex-direction: row;
-    align-items: flex-start;
     justify-content: center;
-    gap: 0.5rem 1.25rem;
   }
 }
 @media (min-width: 1199.98px) {
@@ -4505,9 +4533,15 @@ body {
   padding-left: 0;
   text-align: center;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
+  gap: 1rem;
+}
+@media (min-width: 991.98px) {
+  .guests__contrast-figure {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 @media (min-width: 1199.98px) {
   .guests__contrast-figure {
@@ -4517,15 +4551,20 @@ body {
 }
 .guests__contrast-arrow {
   display: block;
-  width: 2.5rem;
+  width: 3.75rem;
   height: auto;
   margin-bottom: 0.35rem;
-  transform: translateX(-35%);
   margin-inline: auto;
+  transform: rotate(-127deg) scale(-1, 1);
 }
 @media (min-width: 767.98px) {
   .guests__contrast-arrow {
     width: 3rem;
+  }
+}
+@media (min-width: 991.98px) {
+  .guests__contrast-arrow {
+    transform: translateX(-35%);
   }
 }
 @media (min-width: 1199.98px) {
@@ -4592,23 +4631,13 @@ body {
 .guests__warning-title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
-@media (min-width: 767.98px) {
-  .guests__warning-title {
-    font-size: 1.5rem;
-  }
-}
 .guests__warning-text {
-  font-size: 0.9375rem;
   line-height: 1.5;
-}
-@media (min-width: 767.98px) {
-  .guests__warning-text {
-    font-size: 1rem;
-  }
+  font-size: 1rem;
 }
 .guests__warning-text + .guests__warning-text {
   margin-top: 1rem;
@@ -4620,29 +4649,32 @@ body {
 }
 .guests__gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(12, 1fr);
   gap: 0.75rem;
   min-width: 0;
 }
 @media (min-width: 767.98px) {
   .guests__gallery {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 }
 @media (min-width: 1199.98px) {
   .guests__gallery {
-    grid-template-columns: repeat(12, 1fr);
     gap: 1.5rem;
   }
 }
 .guests__photo {
   margin: 0;
   overflow: hidden;
-  border-radius: 0.75rem;
   grid-column: auto;
   grid-row: auto;
   height: auto;
+  border-radius: 0.5rem;
+}
+@media (min-width: 767.98px) {
+  .guests__photo {
+    border-radius: 0.75rem;
+  }
 }
 .guests__photo a {
   display: block;
@@ -4653,70 +4685,26 @@ body {
 .guests__photo img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
-@media (max-width: 1199.98px) {
-  .guests__photo:nth-child(1) {
-    max-height: 30rem;
-  }
-}
-.guests__photo:nth-child(1) img {
+.guests__photo:nth-child(1) {
+  grid-column: span 8;
+  grid-row: 1/3;
   aspect-ratio: 480/640;
 }
-.guests__photo:nth-child(2) img, .guests__photo:nth-child(3) img {
-  aspect-ratio: 280/200;
+.guests__photo:nth-child(2) {
+  grid-column: span 4;
+  grid-row: 1;
 }
-.guests__photo:nth-child(4) img, .guests__photo:nth-child(5) img {
+.guests__photo:nth-child(3) {
+  grid-column: span 4;
+  grid-row: 2;
+}
+.guests__photo:nth-child(4), .guests__photo:nth-child(5) {
+  grid-column: span 6;
+  grid-row: 3;
   aspect-ratio: 380/220;
-}
-@media (min-width: 767.98px) and (max-width: 1199.98px) {
-  .guests__photo:nth-child(1) {
-    grid-column: 1/-1;
-  }
-}
-@media (min-width: 1199.98px) {
-  .guests__photo img {
-    height: 100%;
-  }
-  .guests__photo:nth-child(1) {
-    grid-column: span 9;
-    grid-row: 1/3;
-    height: 34.125rem;
-  }
-  .guests__photo:nth-child(1) img {
-    aspect-ratio: auto;
-  }
-  .guests__photo:nth-child(2) {
-    grid-column: span 3;
-    grid-row: 1;
-  }
-  .guests__photo:nth-child(2) img {
-    aspect-ratio: auto;
-  }
-  .guests__photo:nth-child(3) {
-    grid-column: span 3;
-    grid-row: 2;
-  }
-  .guests__photo:nth-child(3) img {
-    aspect-ratio: auto;
-  }
-  .guests__photo:nth-child(4) {
-    grid-column: span 6;
-    grid-row: 3;
-    height: 15.625rem;
-  }
-  .guests__photo:nth-child(4) img {
-    aspect-ratio: auto;
-  }
-  .guests__photo:nth-child(5) {
-    grid-column: span 6;
-    grid-row: 3;
-    height: 15.625rem;
-  }
-  .guests__photo:nth-child(5) img {
-    aspect-ratio: auto;
-  }
 }
 
 @media (max-width: 575.98px) {
@@ -4727,7 +4715,7 @@ body {
 .contacts__intro {
   position: relative;
   z-index: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding-bottom: 0;
 }
 .contacts__intro .section-head__title {
@@ -4739,17 +4727,16 @@ body {
   }
 }
 .contacts__highlight {
-  margin-top: 0.75rem;
   display: inline-flex;
   align-items: center;
-  padding: 0.35em 0.85em;
+  padding: 0.45em 0.85em;
   border-radius: 0.35em;
   transform: rotate(-2deg);
   background: linear-gradient(165deg, #ff6bb8 0%, #ff2d9b 42%, #d4146f 100%);
   box-shadow: 0 0 0.4375rem rgba(255, 45, 155, 0.65), 0 0 1rem rgba(255, 45, 155, 0.35), 0 0 1.5rem rgba(255, 45, 155, 0.35), inset 0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.55), inset -0.125rem -0.25rem 0.625rem rgba(212, 20, 111, 0.55), inset 0 0.0625rem 0rem rgba(255, 255, 255, 0.35);
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   line-height: 1.15;
   color: #ffffff;
 }
@@ -4893,7 +4880,7 @@ body {
 .contacts__title {
   font-family: "Geologica", "GolosText", sans-serif;
   font-weight: 800;
-  font-size: 1.625rem;
+  font-size: 2.25rem;
   line-height: 1.15;
   text-transform: uppercase;
 }
@@ -4903,7 +4890,7 @@ body {
   }
 }
 .contacts__list {
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -4945,7 +4932,7 @@ body {
 }
 .contacts__address {
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   line-height: 1.45;
 }
 @media (min-width: 767.98px) {
@@ -4993,7 +4980,7 @@ body {
   gap: 0.125rem;
 }
 .contacts__phones a {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.45;
   transition: color 0.2s;
@@ -5022,7 +5009,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  column-gap: 2rem;
+  column-gap: 3.5rem;
   margin-top: 0.75rem;
 }
 @media (min-width: 767.98px) {
@@ -5033,7 +5020,7 @@ body {
   }
 }
 .contacts__messenger {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.45;
   transition: color 0.2s;
