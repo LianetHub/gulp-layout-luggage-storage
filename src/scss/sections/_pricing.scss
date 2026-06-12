@@ -341,8 +341,8 @@
 
 		&.pricing__card--wide {
 			@media (max-width:$md4) {
-				background-size: 75%;
-				background-position: right 0%;
+				background-size: 100%;
+				background-position: calc(100% + 2.25rem) 0%;
 			}
 
 			@media (min-width: $md2) {
