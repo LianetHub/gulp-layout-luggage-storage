@@ -464,7 +464,7 @@ export function initBooking({ validateForm, showStatus } = {}) {
 			total += price * qty;
 			totalQty += qty;
 			if (qty > 0) {
-				lines.push({ name, qty, price });
+				lines.push({ name, qty, price, isOversized });
 			}
 		});
 
@@ -484,9 +484,23 @@ export function initBooking({ validateForm, showStatus } = {}) {
 		}
 
 		if (bookingSummaryCalc) {
-			const priced = lines.filter((item) => item.qty > 0);
-			const samePrice = priced.length > 0 && priced.every((item) => item.price === priced[0].price);
-			bookingSummaryCalc.textContent = samePrice && totalQty > 0 ? `${totalQty}шт. × ${priced[0].price} ₽` : "";
+			const tariffLines = lines.filter((item) => !item.isOversized);
+			const oversizedLines = lines.filter((item) => item.isOversized);
+			const calcParts = [];
+
+			if (tariffLines.length > 0) {
+				const tariffQty = tariffLines.reduce((sum, item) => sum + item.qty, 0);
+				const sameTariffPrice = tariffLines.every((item) => item.price === tariffLines[0].price);
+				if (sameTariffPrice) {
+					calcParts.push(`${tariffQty}шт. × ${tariffLines[0].price} ₽`);
+				}
+			}
+
+			oversizedLines.forEach((item) => {
+				calcParts.push(`${item.qty}шт. × ${item.price} ₽`);
+			});
+
+			bookingSummaryCalc.innerHTML = calcParts.map((line) => `<span>${line}</span>`).join("");
 		}
 	}
 
