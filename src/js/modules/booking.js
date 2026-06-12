@@ -58,16 +58,16 @@ function toDisplayDate(date) {
 
 function getBaseTariff(duration) {
 	if (duration <= BOOKING_TARIFF_SHORT_MAX) {
-		return { theme: "pink", price: 200, badge: "200 ₽/шт." };
+		return { theme: "pink", price: 200, badge: "200 ₽/ШТ." };
 	}
 
-	return { theme: "blue", price: 300, badge: "300 ₽/шт." };
+	return { theme: "blue", price: 300, badge: "300 ₽/ШТ." };
 }
 
 function getHourlyBadge(isExactlyOneHour) {
 	return isExactlyOneHour
-		? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/шт.'
-		: "100 ₽/шт.";
+		? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/ШТ.'
+		: "100 ₽/ШТ.";
 }
 
 function getHourlyTariff(fromMin, toMin, theme = "purple") {
@@ -308,6 +308,8 @@ export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) 
 	const bookingDateValue = document.getElementById("booking-date-value");
 	let bookingTimeFromOut = document.getElementById("booking-time-from");
 	let bookingTimeToOut = document.getElementById("booking-time-to");
+	const bookingTimeFromMobile = document.getElementById("booking-time-from-mobile");
+	const bookingTimeToMobile = document.getElementById("booking-time-to-mobile");
 	const bookingTimeFromInput = document.getElementById("booking-time-from-value");
 	const bookingTimeToInput = document.getElementById("booking-time-to-value");
 	const bookingTimeSlider = document.getElementById("booking-time-slider");
@@ -388,6 +390,8 @@ export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) 
 
 		if (bookingTimeFromOut) bookingTimeFromOut.textContent = fromTime;
 		if (bookingTimeToOut) bookingTimeToOut.textContent = toTime;
+		if (bookingTimeFromMobile) bookingTimeFromMobile.textContent = fromTime;
+		if (bookingTimeToMobile) bookingTimeToMobile.textContent = toTime;
 		if (bookingSummaryTime) {
 			bookingSummaryTime.textContent = `С\u00A0${fromTime} до\u00A0${toTime}`;
 		}
@@ -454,10 +458,10 @@ export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) 
 
 			if (isTariffItem) {
 				row.dataset.price = String(price);
-				if (priceEl) priceEl.textContent = `${price} ₽/шт.`;
+				if (priceEl) priceEl.textContent = `${price} ₽/ШТ.`;
 			} else if (isOversized) {
 				row.dataset.price = String(BOOKING_OVERSIZED_PRICE);
-				if (priceEl) priceEl.textContent = `${BOOKING_OVERSIZED_PRICE} ₽/шт.`;
+				if (priceEl) priceEl.textContent = `${BOOKING_OVERSIZED_PRICE} ₽/ШТ.`;
 			}
 
 			total += price * qty;
@@ -479,7 +483,7 @@ export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) 
 		}
 
 		if (bookingSummaryList) {
-			bookingSummaryList.innerHTML = lines.map(({ name, qty, price }) => `<li>${name} ${qty}шт. ${price} ₽/шт.</li>`).join("");
+			bookingSummaryList.innerHTML = lines.map(({ name, qty, price }) => `<li>${name} ${qty}шт. ${price} ₽/ШТ.</li>`).join("");
 		}
 
 		if (bookingSummaryCalc) {

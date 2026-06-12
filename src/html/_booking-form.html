@@ -56,9 +56,19 @@
                 <legend class="booking__group-title">В какое время?</legend>
                 <p class="booking__note booking__note--inline">Работаем с&nbsp;09:00 до&nbsp;00:00</p>
             </div>
-            <span class="booking__badge" id="booking-tariff-badge">200 ₽/шт.</span>
+            <span class="booking__badge" id="booking-tariff-badge">200 ₽/ШТ.</span>
         </div>
         <div class="booking__time-range" data-booking-time-range>
+            <div class="booking__time-labels-mobile" aria-hidden="true">
+                <span class="booking__time-label booking__time-label--from">
+                    <span class="booking__time-prefix">с</span>
+                    <output class="booking__time-output" id="booking-time-from-mobile"></output>
+                </span>
+                <span class="booking__time-label booking__time-label--to">
+                    <span class="booking__time-prefix">до</span>
+                    <output class="booking__time-output" id="booking-time-to-mobile"></output>
+                </span>
+            </div>
             <div class="booking__time-slider" id="booking-time-slider" aria-label="Интервал времени хранения"></div>
             <input type="hidden" name="time_from" id="booking-time-from-value" value="540">
             <input type="hidden" name="time_to" id="booking-time-to-value" value="1050">
@@ -81,7 +91,7 @@
                             <span class="booking__counter-value" data-qty>0</span>
                             <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить ручную кладь">+</button>
                         </div>
-                        <p class="booking__item-price booking__counter-price">200 ₽/шт.</p>
+                        <p class="booking__item-price booking__counter-price">200 ₽/ШТ.</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +107,7 @@
                             <span class="booking__counter-value" data-qty>1</span>
                             <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить чемоданы">+</button>
                         </div>
-                        <p class="booking__item-price booking__counter-price">200 ₽/шт.</p>
+                        <p class="booking__item-price booking__counter-price">200 ₽/ШТ.</p>
                     </div>
                 </div>
             </div>
@@ -113,7 +123,7 @@
                             <span class="booking__counter-value" data-qty>0</span>
                             <button type="button" class="booking__counter-btn" data-action="inc" aria-label="Увеличить негабарит">+</button>
                         </div>
-                        <p class="booking__item-price booking__counter-price">800 ₽/шт.</p>
+                        <p class="booking__item-price booking__counter-price">800 ₽/ШТ.</p>
                     </div>
                 </div>
             </div>

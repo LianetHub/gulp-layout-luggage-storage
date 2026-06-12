@@ -1,6 +1,7 @@
 $booking-track-height: rem(2);
 $booking-track-active-height: rem(4);
 $booking-handle-size: rem(44);
+$booking-handle-size-sm: rem(52);
 $booking-handle-size-md: rem(56);
 $booking-handle-gap: rem(6);
 
@@ -14,6 +15,39 @@ $booking-handle-gap: rem(6);
 		padding-top: rem(24);
 		margin-bottom: 5.5rem;
 
+	}
+}
+
+.booking__time-labels-mobile {
+	display: none;
+
+	@media (max-width: $md5) {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: rem(8);
+		margin-bottom: rem(12);
+	}
+}
+
+.booking__time-label {
+	white-space: nowrap;
+	font-size: rem(24);
+	line-height: 1.2;
+	color: $text;
+	background: #fff;
+
+	.booking__time-prefix {
+		@media (min-width:$md5) {
+			margin-right: 0.25em;
+
+		}
+
+		font-weight: 400;
+	}
+
+	.booking__time-output {
+		font-weight: 700;
 	}
 }
 
@@ -132,6 +166,7 @@ $booking-handle-gap: rem(6);
 			}
 
 			&--combined {
+
 				.booking__time-prefix--to,
 				.booking__time-output--to {
 					display: inline-block;
@@ -176,6 +211,7 @@ $booking-handle-gap: rem(6);
 			}
 
 			&--combined {
+
 				.booking__time-prefix--from,
 				.booking__time-output--from {
 					display: inline-block;
@@ -233,8 +269,12 @@ $booking-handle-gap: rem(6);
 
 .booking__time-prefix {
 	display: inline-block;
-	margin-right: 0.25em;
 	font-weight: 400;
+
+	@media (min-width:$md5) {
+		margin-right: 0.25em;
+
+	}
 }
 
 .booking__time-output {
@@ -275,6 +315,12 @@ $booking-handle-gap: rem(6);
 	color: $text-inverse;
 	transition: background-color 0.25s ease;
 
+	@media (max-width: $md5) {
+		top: calc(#{rem(2)} + #{rem(4)} + #{rem(16)});
+		width: $booking-handle-size-sm;
+		height: $booking-handle-size-sm;
+	}
+
 	@media (min-width: $md4) {
 		top: calc(#{rem(2)} + #{rem(5)} + #{rem(20)});
 		width: $booking-handle-size-md;
@@ -301,6 +347,7 @@ $booking-handle-gap: rem(6);
 
 .booking__group--time {
 	&[data-tariff="blue"] .booking__time-slider {
+
 		.noUi-connect,
 		.booking__time-handle-dot,
 		.booking__time-handle-pin {
@@ -309,10 +356,27 @@ $booking-handle-gap: rem(6);
 	}
 
 	&[data-tariff="purple"] .booking__time-slider {
+
 		.noUi-connect,
 		.booking__time-handle-dot,
 		.booking__time-handle-pin {
 			background: $booking-purple;
+		}
+	}
+}
+
+@media (max-width: $md5) {
+	.booking__time-slider {
+		margin-top: rem(8);
+
+		&.noUi-horizontal .noUi-handle {
+			width: $booking-handle-size-sm;
+			height: calc(#{rem(2)} + #{rem(4)} + #{rem(16)} + #{$booking-handle-size-sm});
+			right: calc(#{$booking-handle-size-sm} / -2);
+		}
+
+		.booking__time-handle-time {
+			display: none;
 		}
 	}
 }
