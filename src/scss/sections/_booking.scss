@@ -152,6 +152,9 @@ $booking-purple: #8f2fff;
 		.booking__group-title {
 			margin-bottom: 0.35rem;
 		}
+		.booking__note {
+			margin-right: -60%;
+		}
 	}
 
 	&__note {
@@ -202,7 +205,7 @@ $booking-purple: #8f2fff;
 
 	&__badge-hour {
 		display: inline-block;
-		font-size: 0.875rem;
+		font-size: 1.125rem;
 		line-height: 0.75;
 		font-weight: 700;
 

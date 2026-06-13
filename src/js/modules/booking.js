@@ -108,6 +108,7 @@ export function getTariff(fromMin, toMin) {
 		const extraHours = Math.ceil((toMin - BOOKING_TIME_EVENING) / 60);
 		price = base.price + BOOKING_EVENING_SURCHARGE * extraHours;
 		theme = "purple";
+		return { theme, price, badge: `${price} ₽/ШТ.`, isHourly: false };
 	}
 
 	return { theme, price, badge: base.badge, isHourly: false };

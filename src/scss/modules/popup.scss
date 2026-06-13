@@ -209,13 +209,16 @@
 		overflow: hidden;
 		color: $text-inverse;
 		border-radius: rem(8);
-		background: url("@img/hero/plane-reverse.png") -77% 110% / 59% auto no-repeat, url("@img/hero/cloud-2.png") -90% 110%/65% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
-
+		
 		.f-button.is-close-button {
 			--f-close-button-color: #{rgba(#fff, 1)};
 			--f-close-button-hover-color: #{rgba(#fff, 0.5)};
 		}
-
+		
+		background: url("@img/hero/plane-reverse.png") -77% 110% / 75% auto no-repeat, url("@img/hero/cloud-2.png") -90% 110%/85% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
+		@media (min-width:$md5) {
+			background: url("@img/hero/plane-reverse.png") -77% 110% / 59% auto no-repeat, url("@img/hero/cloud-2.png") -90% 110%/65% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
+		}
 		@media (min-width: $md4) {
 			min-height: rem(420);
 			padding: rem(24) rem(48) rem(40);

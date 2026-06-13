@@ -376,7 +376,7 @@ body {
   overflow: hidden;
   color: #ffffff;
   border-radius: 0.5rem;
-  background: url("../img/hero/plane-reverse.png") -77% 110%/59% auto no-repeat, url("../img/hero/cloud-2.png") -90% 110%/65% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
+  background: url("../img/hero/plane-reverse.png") -77% 110%/75% auto no-repeat, url("../img/hero/cloud-2.png") -90% 110%/85% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
 }
 
 .popup--success .f-button.is-close-button {
@@ -1997,14 +1997,6 @@ summary,
           transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - 0.375rem));
 }
 
-.booking__time-slider .noUi-handle-lower .booking__time-handle-pin {
-  left: 0;
-  right: auto;
-  -webkit-transform: rotate(135deg);
-      -ms-transform: rotate(135deg);
-          transform: rotate(135deg);
-}
-
 .booking__time-slider .noUi-handle-upper .booking__time-handle-time {
   left: auto;
   right: 1.5rem;
@@ -2033,14 +2025,6 @@ summary,
   -webkit-transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - 0.375rem));
       -ms-transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - 0.375rem));
           transform: translate(calc(-50% + var(--time-label-offset, 0px)), calc(-100% - 0.375rem));
-}
-
-.booking__time-slider .noUi-handle-upper .booking__time-handle-pin {
-  left: auto;
-  right: 0;
-  -webkit-transform: rotate(135deg);
-      -ms-transform: rotate(135deg);
-          transform: rotate(135deg);
 }
 
 .booking__time-handle-visual {
@@ -2094,15 +2078,20 @@ summary,
 }
 
 .booking__time-handle-pin {
+  --pin-size: 2.75rem;
   position: absolute;
+  left: calc(50% - var(--pin-size) / 2);
   top: calc(0.125rem + 0.25rem + 0.875rem);
-  width: 2.75rem;
-  height: 2.75rem;
+  width: var(--pin-size);
+  height: var(--pin-size);
   background: #ff2d9b;
   border-radius: 50% 50% 50% 0;
   -webkit-transform-origin: center center;
       -ms-transform-origin: center center;
           transform-origin: center center;
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
   color: #ffffff;
   -webkit-transition: background-color 0.25s ease;
   transition: background-color 0.25s ease;
@@ -2631,6 +2620,10 @@ summary,
   margin-bottom: 0.35rem;
 }
 
+.booking__group-head-text .booking__note {
+  margin-right: -60%;
+}
+
 .booking__note {
   font-size: 0.875rem;
   line-height: 1.4;
@@ -2678,7 +2671,7 @@ summary,
 
 .booking__badge-hour {
   display: inline-block;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   line-height: 0.75;
   font-weight: 700;
 }
@@ -3846,8 +3839,8 @@ summary,
   z-index: -1;
   width: 4.6875rem;
   height: 4.6875rem;
-  bottom: calc(100% - 2rem);
-  left: calc(100% - 3rem);
+  bottom: calc(100% - 3rem);
+  left: calc(100% - 3.5rem);
 }
 
 .storage__accent-icon img {
@@ -4601,6 +4594,10 @@ summary,
     max-width: 33.75rem;
   }
 
+  .popup--success {
+    background: url("../img/hero/plane-reverse.png") -77% 110%/59% auto no-repeat, url("../img/hero/cloud-2.png") -90% 110%/65% auto no-repeat, linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 75.71%, #FFF 120%);
+  }
+
   .footer__copy {
     max-width: 20rem;
   }
@@ -4950,9 +4947,8 @@ summary,
   }
 
   .booking__time-handle-pin {
+    --pin-size: 3.5rem;
     top: calc(0.125rem + 0.3125rem + 1.25rem);
-    width: 3.5rem;
-    height: 3.5rem;
   }
 
   .booking__time-handle-pin-text {
@@ -6097,9 +6093,12 @@ summary,
   }
 
   .booking__time-handle-pin {
+    --pin-size: 2rem;
     top: calc(0.125rem + 0.25rem + 1rem);
-    width: 3.25rem;
-    height: 3.25rem;
+  }
+
+  .booking__time-handle-pin-text {
+    font-size: 0.875rem;
   }
 
   .booking__time-slider {
@@ -6110,6 +6109,18 @@ summary,
     width: 3.25rem;
     height: calc(0.125rem + 0.25rem + 1rem + 3.25rem);
     right: calc(3.25rem / -2);
+  }
+
+  .booking__time-slider.booking__time-slider--close .noUi-handle-lower .booking__time-handle-visual {
+    -webkit-transform: translateX(calc(0.375rem / -2));
+        -ms-transform: translateX(calc(0.375rem / -2));
+            transform: translateX(calc(0.375rem / -2));
+  }
+
+  .booking__time-slider.booking__time-slider--close .noUi-handle-upper .booking__time-handle-visual {
+    -webkit-transform: translateX(calc(0.375rem / 2));
+        -ms-transform: translateX(calc(0.375rem / 2));
+            transform: translateX(calc(0.375rem / 2));
   }
 
   .booking__time-slider .booking__time-handle-time {

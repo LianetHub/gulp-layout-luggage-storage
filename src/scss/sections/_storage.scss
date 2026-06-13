@@ -106,8 +106,8 @@
 
 		width: rem(75);
 		height: rem(75);
-		bottom: calc(100% - 2rem);
-		left: calc(100% - 3rem);
+		bottom: calc(100% - 3rem);
+		left: calc(100% - 3.5rem);
 
 		@media (min-width: $md4) {
 			width: rem(95);
