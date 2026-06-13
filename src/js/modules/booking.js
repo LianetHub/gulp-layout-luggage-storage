@@ -64,10 +64,10 @@ function getBaseTariff(duration) {
 	return { theme: "blue", price: 300, badge: "300 ₽/ШТ." };
 }
 
-function getHourlyBadge(isExactlyOneHour) {
+function getHourlyBadge(isExactlyOneHour, price) {
 	return isExactlyOneHour
-		? '<span class="booking__badge-hour">НА ЧАС</span> 100 ₽/ШТ.'
-		: "100 ₽/ШТ.";
+		? `<span class="booking__badge-hour">НА ЧАС</span> ${BOOKING_HOURLY_RATE} ₽/ШТ.`
+		: `${price} ₽/ШТ.`;
 }
 
 function getHourlyTariff(fromMin, toMin, theme = "purple") {
@@ -79,7 +79,7 @@ function getHourlyTariff(fromMin, toMin, theme = "purple") {
 	return {
 		theme,
 		price,
-		badge: getHourlyBadge(isExactlyOneHour),
+		badge: getHourlyBadge(isExactlyOneHour, price),
 		badgeHtml: isExactlyOneHour,
 		isHourly: isExactlyOneHour,
 	};

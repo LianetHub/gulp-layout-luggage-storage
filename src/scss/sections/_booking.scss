@@ -152,6 +152,7 @@ $booking-purple: #8f2fff;
 		.booking__group-title {
 			margin-bottom: 0.35rem;
 		}
+
 		.booking__note {
 			margin-right: -60%;
 		}
@@ -392,7 +393,7 @@ $booking-purple: #8f2fff;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
-			margin-left: rem(-14);
+			margin-left: -1.25rem;
 			width: rem(90);
 			height: rem(90);
 			margin-block: -0.5rem;
@@ -447,10 +448,15 @@ $booking-purple: #8f2fff;
 
 	&__item-footer {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 0.5rem;
+		gap: 1rem;
+
+		@media (min-width:$md5) {
+			gap: 0.5rem;
+			justify-content: space-between;
+
+		}
 	}
 
 	&__item-controls {
@@ -502,6 +508,7 @@ $booking-purple: #8f2fff;
 		line-height: 1;
 		cursor: pointer;
 		transition: opacity 0.2s;
+		touch-action: manipulation;
 
 		@media (any-hover: hover) {
 			&:hover {
