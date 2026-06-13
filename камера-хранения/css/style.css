@@ -2835,7 +2835,7 @@ summary,
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-left: -0.875rem;
+  margin-left: -1.25rem;
   width: 5.625rem;
   height: 5.625rem;
   margin-block: -0.5rem;
@@ -2885,15 +2885,12 @@ summary,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .booking__item-controls {
@@ -4667,6 +4664,13 @@ summary,
     gap: 0.625rem;
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .booking__item-footer {
+    gap: 0.5rem;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 
   .benefits__card.benefits__card--wide {
