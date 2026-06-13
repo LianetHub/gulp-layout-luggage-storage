@@ -2946,6 +2946,8 @@ summary,
   cursor: pointer;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
 }
 
 .booking__counter-value {
