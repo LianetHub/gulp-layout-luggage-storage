@@ -1422,8 +1422,8 @@ summary,
   color: #ffffff;
   overflow: hidden;
   z-index: 1;
-  min-height: 100svh;
-  padding: 1.5rem 0rem 5.5rem;
+  min-height: 51.875rem;
+  padding: 1.5rem 0rem 2.25rem;
   background: linear-gradient(175deg, #5BA5DB 15.06%, #5BA5DB 50.5%, #5BA5DB 71.69%, #FFF 120%);
 }
 
@@ -1723,8 +1723,8 @@ summary,
   position: absolute;
   bottom: 4.5%;
   right: 6%;
-  width: 50vw;
-  max-height: 23.125rem;
+  width: min(50vw, 23.125rem * 975 / 369);
+  aspect-ratio: 975/369;
   z-index: 2;
   -webkit-transform-origin: center center;
       -ms-transform-origin: center center;
@@ -1732,8 +1732,9 @@ summary,
 }
 
 .promo__plane img {
-  width: auto;
-  height: 100%;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .promo__bar {
@@ -6018,9 +6019,8 @@ summary,
     left: 0;
     right: -39%;
     margin-inline: auto;
-    bottom: 23%;
-    width: 115vw;
-    max-height: 13.75rem;
+    bottom: 28%;
+    width: min(115vw, 13.75rem * 975 / 369);
   }
 
   .booking__group-title {

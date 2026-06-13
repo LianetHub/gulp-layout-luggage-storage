@@ -7,8 +7,8 @@
 	color: $text-inverse;
 	overflow: hidden;
 	z-index: 1;
-	min-height: 100svh;
-	padding: rem(24) rem(0) rem(88);
+	min-height: rem(830);
+	padding: rem(24) rem(0) rem(36);
 
 
 	@media (max-width:$md3) {
@@ -400,8 +400,8 @@
 		position: absolute;
 		bottom: 4.5%;
 		right: 6%;
-		width: 50vw;
-		max-height: rem(370);
+		width: min(50vw, calc(#{rem(370)} * 975 / 369));
+		aspect-ratio: 975 / 369;
 		z-index: 2;
 		transform-origin: center center;
 
@@ -409,15 +409,14 @@
 			left: 0;
 			right: -39%;
 			margin-inline: auto;
-			bottom: 23%;
-			width: 115vw;
-			max-height: rem(220);
+			bottom: 28%;
+			width: min(115vw, calc(#{rem(220)} * 975 / 369));
 		}
 
 		& img {
-			width: auto;
-			height: 100%;
-
+			display: block;
+			width: 100%;
+			height: auto;
 		}
 	}
 
