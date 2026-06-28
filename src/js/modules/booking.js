@@ -20,7 +20,7 @@ const BOOKING_TARIFF_SHORT_MAX = 180;
 const BOOKING_TIME_LABEL_FREEZE_PX = 200;
 const BOOKING_TIME_LABEL_CENTER_EDGE = 0.1;
 const BOOKING_TIME_DEFAULT = [BOOKING_TIME_MIN, 1050];
-const BOOKING_DEFAULT_QTY = [3, 1, 0];
+const BOOKING_DEFAULT_QTY = [0, 0, 0];
 const BOOKING_OVERSIZED_PRICE = 800;
 
 let todayISO = "";
@@ -484,7 +484,7 @@ export function initBooking({ validateForm, onSuccess, onValidationFail } = {}) 
 		}
 
 		if (bookingSummaryList) {
-			bookingSummaryList.innerHTML = lines.map(({ name, qty, price }) => `<li>${name} ${qty}шт. ${price} ₽/ШТ.</li>`).join("");
+			bookingSummaryList.innerHTML = lines.map(({ name, qty, price }) => `<li>${name} ${qty}шт.: ${price} ₽/ШТ.</li>`).join("");
 		}
 
 		if (bookingSummaryCalc) {

@@ -136,6 +136,7 @@ export function showBookingCalendar() {
 		],
 		{
 			dragToClose: false,
+			hideScrollbar: false,
 			Carousel: {
 				closeButton: false,
 			},

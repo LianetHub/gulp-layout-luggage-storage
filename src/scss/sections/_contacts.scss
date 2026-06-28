@@ -142,6 +142,7 @@
 			bottom: 3.75rem;
 			left: calc(100% - 2rem);
 			right: auto;
+			gap: 0.5rem;
 		}
 	}
 
@@ -358,8 +359,10 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.25rem;
+		box-sizing: border-box;
 		width: 100%;
-		padding: 1rem 1.5rem;
+		max-width: 100%;
+		padding: 1rem 1rem;
 		border-radius: rem(10);
 		background: #8f2fff;
 		color: $text-inverse;
@@ -367,8 +370,13 @@
 		text-align: center;
 		transition: filter 0.2s, transform 0.15s;
 
+		@media (max-width: $md4) {
+			padding: 1rem 0.875rem;
+		}
+
 		@media (min-width: $md4) {
 			margin-top: 3rem;
+			padding: 1rem 1.5rem;
 		}
 
 		@media (any-hover: hover) {
@@ -392,10 +400,14 @@
 	&__route-note {
 		display: inline-flex;
 		align-items: center;
+		max-width: 100%;
+		overflow: hidden;
+	
 
 		img {
 			flex-shrink: 0;
 			width: auto;
+			max-width: 100%;
 			height: rem(22);
 		}
 	}

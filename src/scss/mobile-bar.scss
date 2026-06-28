@@ -11,6 +11,9 @@ $mobile-bar-height: rem(72);
 		z-index: $ui-index-5;
 		display: flex;
 		align-items: stretch;
+		width: 100%;
+		max-width: 100%;
+		overflow: hidden;
 		min-height: $mobile-bar-height;
 		box-shadow: 0 rem(-4) rem(24) rgba($secondary, 0.12);
 	}
@@ -23,7 +26,12 @@ $mobile-bar-height: rem(72);
 		justify-content: center;
 		gap: 0.15rem;
 		min-width: 0;
-		padding: 0.5rem 0.75rem;
+		overflow: hidden;
+		padding: 0.5rem 0.5rem;
+
+		@media (max-width: 399.98px) {
+			padding: 0.5rem 0.35rem;
+		}
 		background: #8f2fff;
 		color: $text-inverse;
 		font-family: $font-display;
@@ -43,15 +51,27 @@ $mobile-bar-height: rem(72);
 		line-height: 1.15;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		@media (max-width: 399.98px) {
+			font-size: 0.625rem;
+			letter-spacing: 0.02em;
+		}
 	}
 
 	&__route-note {
 		display: inline-flex;
 		align-items: center;
+		max-width: 100%;
+		overflow: hidden;
 
 		img {
 			flex-shrink: 0;
 			width: auto;
+			max-width: 100%;
 			height: rem(11);
 		}
 	}
@@ -108,4 +128,8 @@ $mobile-bar-height: rem(72);
 		width: rem(28);
 		height: rem(28);
 	}
+}
+
+html.with-fancybox .mobile-bar {
+	padding-right: var(--fancybox-scrollbar-compensate, 0px);
 }

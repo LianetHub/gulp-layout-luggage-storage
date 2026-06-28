@@ -121,6 +121,10 @@
 		}));
 	}
 
+	function getTotalQty(items) {
+		return items.reduce((sum, item) => sum + item.qty, 0);
+	}
+
 	function resetBookingForm(form) {
 		form.reset();
 		window.location.reload();
@@ -154,9 +158,16 @@
 				return;
 			}
 
+			const items = collectItems();
+			if (getTotalQty(items) <= 0) {
+				showStatus(form, "Выберите хотя бы одну единицу багажа.", true);
+				document.getElementById("booking-counters")?.scrollIntoView({ behavior: "smooth", block: "center" });
+				return;
+			}
+
 			const submit = form.querySelector('[type="submit"]');
 			const itemsInput = ensureHidden(form, "items_json");
-			itemsInput.value = JSON.stringify(collectItems());
+			itemsInput.value = JSON.stringify(items);
 
 			try {
 				await loadCaptcha(form);
