@@ -451,11 +451,18 @@ $booking-purple: #8f2fff;
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 1rem;
+<<<<<<< HEAD
 
 		@media (min-width:$md5) {
 			gap: 0.5rem;
 			justify-content: space-between;
 
+=======
+		@media (min-width:$md5) {
+			gap: 0.5rem;
+			justify-content: space-between;
+		
+>>>>>>> d46908c8cdcf2ae4094eafffb86e6875e8d2823c
 		}
 	}
 
