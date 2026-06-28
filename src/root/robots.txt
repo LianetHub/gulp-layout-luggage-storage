@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://locker39.ru/sitemap.xml

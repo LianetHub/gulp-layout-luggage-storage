@@ -22,6 +22,7 @@ export const path = {
 	},
 	src: {
 		files: `${srcFolder}/files/**/*.*`,
+		root: `${srcFolder}/root/**/*.*`,
 		html: `${srcFolder}/*.html`,
 		scss: `${srcFolder}/scss/style.scss`,
 		cssLibs: `${srcFolder}/scss/libs/**/*.*`,
@@ -45,6 +46,7 @@ export const path = {
 		json: `${srcFolder}/json/*.*`,
 		fonts: `${srcFolder}/fonts/*.{ttf,otf,woff,woff2}`,
 		php: `${srcFolder}/**/*.php`,
+		root: `${srcFolder}/root/**/*.*`,
 
 	},
 	clean: buildFolder,

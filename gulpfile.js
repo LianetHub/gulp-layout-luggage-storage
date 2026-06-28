@@ -12,6 +12,7 @@ global.app = {
 };
 
 import { copy } from "./gulp/tasks/copy.js";
+import { copyRoot } from "./gulp/tasks/copyRoot.js";
 import { reset } from "./gulp/tasks/reset.js";
 import { html } from "./gulp/tasks/html.js";
 import { server } from "./gulp/tasks/server.js";
@@ -38,6 +39,7 @@ function watcher() {
     gulp.watch(path.watch.json, json);
     gulp.watch(path.watch.images, images);
     gulp.watch(path.watch.php, php);
+    gulp.watch(path.watch.root, copyRoot);
     gulp.watch(path.watch.fonts, fonts);
 }
 
@@ -46,7 +48,7 @@ const fonts = gulp.series(otf2ttf, ttfToWoff, copyWoff, fontsStyle);
 const mainTasks = gulp.series(
 
     fonts,
-    gulp.parallel(copy, html, normalize, scss, copyCssLibs, favicon, js, copyJsLibs, jsChunks, json, images)
+    gulp.parallel(copy, copyRoot, html, normalize, scss, copyCssLibs, favicon, js, copyJsLibs, jsChunks, json, images, php)
 );
 // const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, normalize, scss, js, images));
 
